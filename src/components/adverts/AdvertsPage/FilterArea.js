@@ -8,12 +8,14 @@ import "rc-slider/assets/index.css";
 //y filtrar con un array.filter()
 //TODO: implementar el campo 'sale' con 3 valores (no parece ser boolean como el del NewAdvertsPage)
 
-export default function FilterArea() {
+
+
+export default function FilterArea({adverts, filterAdverts}) {
   const [filters, setFilters] = useState({
     name: "",
     price: "",
     price: "",
-    sale: true,
+    sale: "",
     tags: [],
   });
 
@@ -41,12 +43,16 @@ export default function FilterArea() {
     console.log(event.target.type, event.target.name, event.target.value);
     setFilters((prevState) =>
       event.target.checked
-        ? { ...prevState, sale: event.target.value }
+        ? { ...prevState, sale: event.target.value==="true" ? true : false}
         : { ...prevState }
     );
   };
 
-  const handleSubmit = () => {};
+
+
+
+
+
 
   return (
     <div className="container">
@@ -66,13 +72,13 @@ export default function FilterArea() {
             />
            </label>
 
-         <label htmlFor="price">
+{/*          <label htmlFor="price">
           <input type="range" id="price" name="price" min="0" max="1000000" />
-          </label>
+          </label> */}
 
 
               
-          {/* <Range defaultValue={[0,1000000]} max={1000000} step={2}  handle={(value) => console.log(value.value) /* <p>{(value.value)}</p> */}  /> */}
+          <Range name="price" defaultValue={[0,10000]} max={10000} allowCross={false} handle={(props) =>  <span key={props.value}> {props.value} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span> }  /> 
           
 
 
@@ -129,7 +135,8 @@ export default function FilterArea() {
               value=""
               //onChange={(prevState) => setfilters({...prevState, sale:false})}
               checked={filters.sale === ""}
-              onChange={handleRadio}
+              onChange={ event => setFilters(prevState => event.target.checked ? {...prevState, sale: event.target.value } : {...prevState}) }
+  
             />
           </label>
 
@@ -150,7 +157,7 @@ export default function FilterArea() {
           </label>
         </div>
 
-        <Button type="submit">Filtrar</Button>
+        <Button onClick={filterAdverts}>Filtrar</Button>
       </form>
     </div>
   );

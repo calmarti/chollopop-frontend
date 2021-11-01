@@ -20,12 +20,19 @@ export default function AdvertsPage({ ...props }) {
     getAdverts()
       .then((adverts) => setAdverts(adverts))
       .catch((error) => console.log(error));
-  }, []);
+  }, [adverts]);
   /* style = {{backgroundColor: 'blue'}} */
+
+
+  const filterAdverts = (event) => {
+    setAdverts(adverts.filter(advert => {}));
+};
+
 
   return (
     <Fragment>
-      <FilterArea />
+      <FilterArea adverts={adverts} filterAdverts={filterAdverts} />
+
       <Layout {...props}>
       <div className="">
         {adverts.length ? (
