@@ -1,24 +1,54 @@
+import "./Header.css";
 import Button from "../shared/Button";
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from "react-router-dom";
+import { useContext, Fragment } from 'react';
+import AuthContext from '../auth/context';
 
-export default function Header({ isLogged }) {
+
+//TODO: LEER SIEMPRE LA PARTE RELEVANTE DEL ENUNCIADO ANTES DE CREAR ALGO NUEVO!!!!!!!!!!!!!!!!
+//TODO: Estilos a header y navbar minimamente funcionales (botones dentro y barra fija)
+//por último: botón 'crear anuncio' sólo en AdvertsPage y AdvertPage (fuera de NewAdvertPage)
+
+//TODO. Estilos del AdvertsPage (flexbox con Cards) y crear un componente Filtros con: 
+//un input text (name), un rango de precios(input type=range o GitHub)) o bien usar el compo
+//recomendado en https://github.com/react-component/slider, un input radio para compra/venta/todos 
+//y un select multiple para las tags
+
+
+//TODO: en el enunciado dice que los enlaces deben ser con Link, revisar video a ver si tambien le vale history.push
+
+
+export default function Header({history, ...props}) {
+  
+  const { isLogged , handleLogout } = useContext(AuthContext);
+
+  const handleRedirect = () => {
+    history.push("/adverts/new");
+  }
+  
+
   return (
-    <div className="header">
-      <div className="logo"></div>
-      <nav className="navbar">
-        <ul>
-          <li>
-            <Link to="/adverts">Home</Link>
-          </li>
-        </ul>
-        {isLogged ? (
-          <Button>Salir</Button>
+    <header className="header">
+      <nav className="header-nav">
+      <Link className="header-link" to="/">
+        <div className="logo">Logo</div>
+      </Link>
+        <Link className="header-link" to="/">
+          Home
+        </Link>
+        {isLogged ? (   //OJO: al ser login la única ruta NO protegida no tiene mucho sentido el último botón..
+          <div>
+            <Button className="header-button"  onClick={handleLogout}>Salir</Button>
+            <Button className="header-button"  onClick={handleRedirect}>
+              Crear anuncio
+            </Button>
+          </div>
         ) : (
-          <Button to="/login" as={Link}>
+          <Button className="header-button" to="/login" as={Link}>
             Iniciar sesión
           </Button>
         )}
       </nav>
-    </div>
+    </header>
   );
 }

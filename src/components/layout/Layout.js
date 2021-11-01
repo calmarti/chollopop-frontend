@@ -1,11 +1,12 @@
+import './Layout.css';
 import Header from "./Header";
 
-export default function Layout({isLogged, children, ...props}) {
+export default function Layout({children, history, ...props}) {
   return (
-    <div style={{backgroundColor:'orange'}}>
-      <Header isLogged={isLogged} {...props} />
-        <main>Layout minimalista
-          <section>{children}</section>
+    <div className="layout-container">
+      <Header history={history} {...props} />
+        <main className="layout-main"  style={{backgroundColor:'orange'}}>Layout minimalista
+         {children}
         </main>
     </div>
   );

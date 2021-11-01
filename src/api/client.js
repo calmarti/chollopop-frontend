@@ -4,13 +4,25 @@ import axios from "axios";
 
 //console.log('baseURL: ', baseURL)
 
+//OJO: esto de abajo incluye el post a login, lo cual está mal
+//axios.defaults.headers.post['Content-type'] = "multipart/form-data"; 
+
+
 const client = axios.create({ baseURL: "http://localhost:3001" });
 
-//client.interceptors.response.use((response) => response.data)
+client.interceptors.response.use((response) => response.data);
 
-export function addTokenToHeaders(AUTH_TOKEN){
-    client.defaults.headers.common['Authorization'] = `Bearer ${AUTH_TOKEN}`;
-}
+export const addTokenToHeaders = (token) => {
+  client.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+};
+
+export const deleteTokenFromHeaders = () => {
+  delete client.defaults.headers.common["Authorization"];
+};
+
+
+
 
 
 export default client;
+

@@ -1,11 +1,28 @@
+import storage from "../../utils/storage";
 import client, { addTokenToHeaders } from "../../api/client";
 
-//const loginBaseUrl = '/api/auth'
+const loginBaseUrl = "/api/auth";
 
 export function login(credentials) {
-  const url = "/api/auth/login";
-  return client.post(url, credentials).then((AUTH_TOKEN) => {
-    addTokenToHeaders(AUTH_TOKEN);
-    //guardar el token
-  });
+  const url = `${loginBaseUrl}/login`;
+  return client
+    .post(url, credentials)
+    .then(({ accessToken }) => {
+      addTokenToHeaders(accessToken);
+      storage.set("AUTH_TOKEN", accessToken);
+    })
+    .catch((error) => {
+      //console.log(error)
+      throw error;
+      //gestionar todos los posibles errores
+    });
 }
+
+export const logout = () => {
+  return new Promise (function(resolve){
+    //valorar si en este caso también falta quitar el token de los headers
+    storage.remove("AUTH_TOKEN");
+    resolve();
+  })
+}
+
