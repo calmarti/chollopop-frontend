@@ -8,6 +8,8 @@ import FilterArea from "./FilterArea"
 
 //TODO: crear un componente tipo Empty list: <Empty /> con una call to action a crear un nuevo anuncio
 //TODO: loader y gestor de errores al hacer llamada al api
+//TODO: filterAdverts para pasarselo a FilterArea
+
 
 function Empty(props) {
   return "Empty";
@@ -30,7 +32,7 @@ export default function AdvertsPage({ ...props }) {
 
 
   return (
-    <Fragment>
+    <>
       <FilterArea adverts={adverts} filterAdverts={filterAdverts} />
 
       <Layout {...props}>
@@ -55,7 +57,8 @@ export default function AdvertsPage({ ...props }) {
         )}
       </div>
     </Layout>
-    </Fragment>
+    
+    </>
   );
 }
 

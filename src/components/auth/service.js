@@ -20,7 +20,7 @@ export function login(credentials) {
 
 export const logout = () => {
   return new Promise (function(resolve){
-    //valorar si en este caso también falta quitar el token de los headers
+    //valorar si en este caso también falta quitar el token de los headers (supongo que sí ya que David lo hace!)
     storage.remove("AUTH_TOKEN");
     resolve();
   })

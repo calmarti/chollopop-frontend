@@ -8,8 +8,6 @@ import "rc-slider/assets/index.css";
 //y filtrar con un array.filter()
 //TODO: implementar el campo 'sale' con 3 valores (no parece ser boolean como el del NewAdvertsPage)
 
-
-
 export default function FilterArea({adverts, filterAdverts}) {
   const [filters, setFilters] = useState({
     name: "",
