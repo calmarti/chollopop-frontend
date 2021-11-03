@@ -17,19 +17,19 @@ import Modal from "../shared/Modal";
 //TODO: en el enunciado dice que los enlaces deben ser con Link, revisar video a ver si tambien le vale history.push
 
 export default function Header({ history, ...props }) {
-  const [isModalOn, setModalOn] = useState(false);
-  
+  const [isModalOn, setIsModalOn] = useState(false);
+
   const modalProps = {
     isModalOn: isModalOn,
-    
+
     modalMessage: "¿Realmente quieres cerrar la sesión?",
-    
+
     showModal: () => {
-      setModalOn(true);
+      setIsModalOn(true);
     },
-    
+
     hideModal: () => {
-      setModalOn(false);
+      setIsModalOn(false);
     },
   };
 
@@ -57,10 +57,7 @@ export default function Header({ history, ...props }) {
             <Button className="header-button" onClick={logoutConfirmation}>
               Salir
             </Button>
-            <Modal
-              handleLogout={handleLogout}
-              {...modalProps}
-            />
+            <Modal handleClick={handleLogout} {...modalProps} />
 
             <Button className="header-button" onClick={handleRedirect}>
               Crear anuncio

@@ -23,22 +23,24 @@ export default function NewAdvertPage({...props}) {
   const [newAdvertId, setNewAdvertId] = useState("");
 
   const handleOnChange = event => {
-    if (event.target.type === "text" || event.target.type === "number") {
+    if (event.target.type === "text" || event.target.type === "number" || event.target.type==="file") {
       setFields((prevState) => ({
         ...prevState,
         [event.target.name]: event.target.value,
       }));
     } else if (event.target.type === "select-multiple") {
       const selected = event.target.selectedOptions;
+      console.log(selected)
       const tagsValues = [];
 
-      for (let i = 0; i < selected.length; i++) {
-        tagsValues.push(selected[i].value);
+      /* for (let i = 0; i < selected.length; i++)  */
+        Array.from(selected).forEach((tag) => {      
+        tagsValues.push(tag.value);
         setFields((prevState) => ({
           ...prevState,
           [event.target.name]: tagsValues,
         }));
-      }
+      })
     }
   };
 

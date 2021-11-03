@@ -1,14 +1,17 @@
 import types, { func } from "prop-types";
-import { useState, useEffect, Fragment } from "react";
+import { useState, useEffect } from "react";
 import { Redirect } from "react-router-dom";
 import Layout from "../../layout/Layout";
 import { getAdvert } from "../service";
+import Button from "../../shared/Button";
+import Modal from "../../shared/Modal";
 
 //TODO: Falta la cancelación de la petición (getAdvert) en el useEffect (ver clase 5 a partir de min 2:37)
 
 export default function AdvertPage({ match, ...props }) {
   const [advert, setAdvert] = useState([]); // null en vez de [] para que renderice la 1º vez pero debería ser null!
   const [error, setError] = useState(null);
+  const [isModalOn, setIsModalOn] = useState(false)
 
   useEffect( async () => {
     const id = match.params.id;
@@ -28,20 +31,42 @@ if (error && error.response.data.statusCode === 404) {
   return <Redirect to="/404" />;
 }
 
+const modalProps = {
+  isModalOn: isModalOn,
+
+  modalMessage: "¿Realmente quieres cerrar la sesión?",
+
+  showModal: () => {
+    setIsModalOn(true);
+  },
+
+  hideModal: () => {
+    setIsModalOn(false);
+  },
+};
+
+
+const handleDelete = () => {
+  console.log('');
+}
+
+
   return (
     <Layout {...props}>
       <div className="item-card">
-        <Fragment>
-          {" "}
-          {/*al final este Fragment es superfluo y si dejas el div debes quitarlo! */}
+        
+          
+          <img src={`${advert.photo}`} alt={advert.name}/> 
           <h2>{advert.name}</h2>
-          {/*<img src="">FOTO</img>*/}
+         
           <p>{advert.price}</p>
           <p>{advert.sale ? "Venta" : "Compra"}</p>
           <p>{advert.tags /* .join(" ") */}</p> {/*arreglar esto*/}
-        </Fragment>
+        
       </div>
       <div>{match.params.id}</div>
+      <Button>Borrar</Button>
+      <Modal handleClick={handleDelete} {...modalProps} />
     </Layout>
   );
 }

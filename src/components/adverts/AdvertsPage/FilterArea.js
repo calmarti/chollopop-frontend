@@ -8,14 +8,37 @@ import "rc-slider/assets/index.css";
 //y filtrar con un array.filter()
 //TODO: implementar el campo 'sale' con 3 valores (no parece ser boolean como el del NewAdvertsPage)
 
-export default function FilterArea({adverts, filterAdverts}) {
-  const [filters, setFilters] = useState({
+export default function FilterArea({ filters, setFilters }) {
+/*   const [filters, setFilters] = useState({
     name: "",
     price: "",
-    price: "",
+    //price: "",
     sale: "",
     tags: [],
-  });
+  }); */
+
+/*   useEffect(() => {
+    //Implementar los filtros como cambios del estado filters
+    setAdverts((adverts) =>
+      adverts.filter((advert) => advert.sale === filters.sale)
+    );
+  }, [filters]); */
+
+  //el input adverts debe inicializarse a 'TODOS' tras cada filtrado
+
+/*    const filterAdverts = (event) => {
+    console.log('entra')
+    event.preventDefault()
+    setAdverts((adverts) => adverts.filter((advert) => (
+      //advert.name === filters.name &&
+      advert.sale === filters.sale 
+      //advert.tags === filters.tags
+      )));
+  }; */
+
+  const resetFilters = () => {
+    console.log("reset");
+  };
 
   const handleOnChange = (event) => {
     if (event.target.type === "text" || event.target.type === "number") {
@@ -27,13 +50,13 @@ export default function FilterArea({adverts, filterAdverts}) {
       const selected = event.target.selectedOptions;
       const tagsValues = [];
 
-      for (let i = 0; i < selected.length; i++) {
-        tagsValues.push(selected[i].value);
+      Array.from(selected).forEach((tag) => {
+        tagsValues.push(tag.value);
         setFilters((prevState) => ({
           ...prevState,
-          [event.target.name]: tagsValues,
+          tags: tagsValues,
         }));
-      }
+      });
     }
   };
 
@@ -41,16 +64,10 @@ export default function FilterArea({adverts, filterAdverts}) {
     console.log(event.target.type, event.target.name, event.target.value);
     setFilters((prevState) =>
       event.target.checked
-        ? { ...prevState, sale: event.target.value==="true" ? true : false}
+        ? { ...prevState, sale: event.target.value === "true" ? true : false }
         : { ...prevState }
     );
   };
-
-
-
-
-
-
 
   return (
     <div className="container">
@@ -68,17 +85,21 @@ export default function FilterArea({adverts, filterAdverts}) {
               value={filters.name}
               autoFocus
             />
-           </label>
+          </label>
 
-{/*          <label htmlFor="price">
+          {/* <label htmlFor="price">
           <input type="range" id="price" name="price" min="0" max="1000000" />
           </label> */}
 
-
-              
-          <Range name="price" defaultValue={[0,10000]} max={10000} allowCross={false} handle={(props) =>  <span key={props.value}> {props.value} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span> }  /> 
-          
-
+          <Range
+            name="price"
+            defaultValue={[0, 10000]}
+            max={10000}
+            allowCross={false}
+            handle={(props) => (
+              <span key={props.value}> {props.value} &emsp; </span>
+            )}
+          />
 
           {/* <label className="form-filter" htmlFor="price">
             Precio mínimo
@@ -133,8 +154,13 @@ export default function FilterArea({adverts, filterAdverts}) {
               value=""
               //onChange={(prevState) => setfilters({...prevState, sale:false})}
               checked={filters.sale === ""}
-              onChange={ event => setFilters(prevState => event.target.checked ? {...prevState, sale: event.target.value } : {...prevState}) }
-  
+              onChange={(event) =>
+                setFilters((prevState) =>
+                  event.target.checked
+                    ? { ...prevState, sale: event.target.value }
+                    : { ...prevState }
+                )
+              }
             />
           </label>
 
@@ -155,7 +181,7 @@ export default function FilterArea({adverts, filterAdverts}) {
           </label>
         </div>
 
-        <Button onClick={filterAdverts}>Filtrar</Button>
+         <Button /* onClick={filterAdverts} */>Buscar</Button>
       </form>
     </div>
   );
