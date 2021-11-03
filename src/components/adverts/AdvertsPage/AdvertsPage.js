@@ -7,7 +7,7 @@ import types, { func } from "prop-types";
 import FilterArea from "./FilterArea";
 
 //TODO: loader y gestor de errores al hacer llamada al api
-//TODO: filterAdverts para pasarselo a FilterArea
+//TODO: Faltan filtros 'name' (regex) y price
 
 export default function AdvertsPage({ ...props }) {
   function Empty(props) {
@@ -29,19 +29,21 @@ export default function AdvertsPage({ ...props }) {
       //una opción: filtrar aquí con filter y renderizar cada vez que cambien los filtros (y arreglar loop de abajo)
       .then((adverts) => {
         setAdverts(adverts);
+
         console.log(adverts, adverts.length);
         /*         if (filters.name)
         console.log('name')
           setAdverts((adverts) =>
             adverts.filter((advert) => advert.name === filters.name)
           ); */
-        /*         if (filters.sale !== "")
-        console.log('sale')
+        if (filters.sale !== "") {
+          console.log("sale");
           setAdverts((adverts) =>
             adverts.filter((advert) => advert.sale === filters.sale)
-          ); */
+          );
+        }
 
-        if (JSON.stringify(filters.tags) !== '[""]') {
+                if (JSON.stringify(filters.tags) !== '[""]') {
           console.log("tags", filters.tags);
           setAdverts((adverts) =>
             adverts.filter(

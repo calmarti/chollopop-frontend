@@ -9,7 +9,7 @@ import "rc-slider/assets/index.css";
 //TODO: implementar el campo 'sale' con 3 valores (no parece ser boolean como el del NewAdvertsPage)
 
 export default function FilterArea({ filters, setFilters }) {
-/*   const [filters, setFilters] = useState({
+  /*   const [filters, setFilters] = useState({
     name: "",
     price: "",
     //price: "",
@@ -17,7 +17,7 @@ export default function FilterArea({ filters, setFilters }) {
     tags: [],
   }); */
 
-/*   useEffect(() => {
+  /*   useEffect(() => {
     //Implementar los filtros como cambios del estado filters
     setAdverts((adverts) =>
       adverts.filter((advert) => advert.sale === filters.sale)
@@ -26,7 +26,7 @@ export default function FilterArea({ filters, setFilters }) {
 
   //el input adverts debe inicializarse a 'TODOS' tras cada filtrado
 
-/*    const filterAdverts = (event) => {
+  /*    const filterAdverts = (event) => {
     console.log('entra')
     event.preventDefault()
     setAdverts((adverts) => adverts.filter((advert) => (
@@ -182,8 +182,6 @@ export default function FilterArea({ filters, setFilters }) {
             </select>
           </label>
         </div>
-
-         <Button /* onClick={filterAdverts} */>Buscar</Button>
       </form>
     </div>
   );
