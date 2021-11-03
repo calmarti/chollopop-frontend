@@ -164,15 +164,17 @@ export default function FilterArea({ filters, setFilters }) {
             />
           </label>
 
-          <label className="form-filter">
+          <label htmlFor="tags" className="form-filter">
             Categoría
             <select
+              id="tags"
               className="form-filter-tags"
               name="tags"
               value={filters.tags}
               onChange={handleOnChange}
               multiple={true}
             >
+              <option value={[]}>All</option>
               <option value="lifestyle">Lifestyle</option>
               <option value="mobile">Mobile</option>
               <option value="motor">Motor</option>

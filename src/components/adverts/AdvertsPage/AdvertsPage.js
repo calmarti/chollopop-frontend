@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext, Fragment } from "react";
+import { useEffect, useState, useRef, useContext, Fragment } from "react";
 import Layout from "../../layout/Layout";
 import { getAdverts } from "../service";
 import AuthContext from "../../auth/context";
@@ -21,27 +21,49 @@ export default function AdvertsPage({ ...props }) {
     price: "",
     //price: "",
     sale: "",
-    tags: [],
+    tags: [""],
   });
 
   useEffect(() => {
-    const adverts = getAdverts()
+    getAdverts()
       //una opción: filtrar aquí con filter y renderizar cada vez que cambien los filtros (y arreglar loop de abajo)
-      .then((adverts) => setAdverts(adverts))
+      .then((adverts) => {
+        setAdverts(adverts);
+        console.log(adverts, adverts.length);
+        /*         if (filters.name)
+        console.log('name')
+          setAdverts((adverts) =>
+            adverts.filter((advert) => advert.name === filters.name)
+          ); */
+        /*         if (filters.sale !== "")
+        console.log('sale')
+          setAdverts((adverts) =>
+            adverts.filter((advert) => advert.sale === filters.sale)
+          ); */
+
+        if (JSON.stringify(filters.tags) !== '[""]') {
+          console.log("tags", filters.tags);
+          setAdverts((adverts) =>
+            adverts.filter(
+              (advert) =>
+                JSON.stringify(advert.tags) === JSON.stringify(filters.tags)
+            )
+          );
+        }
+      })
       .catch((error) => console.log(error));
+  }, [filters]);
 
-    /*    const arrAdverts = Array.from(adverts);
-      return [...arrAdverts] */
-  }, []);
-
-  useEffect(
-    (prevState) => {
-      setAdverts(adverts.filter((advert) => advert.sale === filters.sale));
+  /*   useEffect(
+    () => {
+       setAdverts(filteredAdverts);  
       //otra opción: aprender el useEffect y devolver una función que me devuelva al estado sin filtros
       //return () => setFilters(() => filters.sale = prevState);
+      return () => setAdverts()
+      
     },
     [filters.sale]
-  );
+  ); */
 
   return (
     <>

@@ -9,10 +9,7 @@ import Modal from "../shared/Modal";
 //TODO: Estilos a header y navbar minimamente funcionales (botones dentro y barra fija)
 //por último: botón 'crear anuncio' sólo en AdvertsPage y AdvertPage (fuera de NewAdvertPage)
 
-//TODO. Estilos del AdvertsPage (flexbox con Cards) y crear un componente Filtros con:
-//un input text (name), un rango de precios(input type=range o GitHub)) o bien usar el compo
-//recomendado en https://github.com/react-component/slider, un input radio para compra/venta/todos
-//y un select multiple para las tags
+//TODO: Un componente Card reutilizable para AdvertsPage (flexbox con Cards) y AdvertPage 
 
 //TODO: en el enunciado dice que los enlaces deben ser con Link, revisar video a ver si tambien le vale history.push
 

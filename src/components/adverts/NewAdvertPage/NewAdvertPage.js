@@ -8,7 +8,8 @@ import { postNewAdvert } from "../service";
 import { Redirect } from "react-router-dom";
 
 
-
+//TODO: arreglar input de tipo file, por definición es 'no controlado', hay que usar ref?
+//Además, arreglar lío de donde guarda la foto realmente para mostrarla 
 //TODO: en navbar no debe aparecer botón 'Crear Anuncio' (condicional en Header.js)
 
 export default function NewAdvertPage({...props}) {

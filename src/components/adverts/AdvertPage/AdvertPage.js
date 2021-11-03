@@ -6,7 +6,9 @@ import { getAdvert } from "../service";
 import Button from "../../shared/Button";
 import Modal from "../../shared/Modal";
 
+//TODO: Falta implementar petición DELETE de axios (hacer demo en el swagger primero)
 //TODO: Falta la cancelación de la petición (getAdvert) en el useEffect (ver clase 5 a partir de min 2:37)
+//TODO: Falta lograr que muestre la foto (problema parece ser la ruta)
 
 export default function AdvertPage({ match, ...props }) {
   const [advert, setAdvert] = useState([]); // null en vez de [] para que renderice la 1º vez pero debería ser null!
@@ -34,7 +36,7 @@ if (error && error.response.data.statusCode === 404) {
 const modalProps = {
   isModalOn: isModalOn,
 
-  modalMessage: "¿Realmente quieres cerrar la sesión?",
+  modalMessage: "¿Realmente quieres borrar el anuncio?",
 
   showModal: () => {
     setIsModalOn(true);
@@ -44,6 +46,8 @@ const modalProps = {
     setIsModalOn(false);
   },
 };
+
+
 
 
 const handleDelete = () => {
@@ -65,7 +69,7 @@ const handleDelete = () => {
         
       </div>
       <div>{match.params.id}</div>
-      <Button>Borrar</Button>
+      <Button onClick={modalProps.showModal}>Borrar</Button>
       <Modal handleClick={handleDelete} {...modalProps} />
     </Layout>
   );
