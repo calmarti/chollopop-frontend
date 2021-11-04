@@ -3,6 +3,9 @@ import Button from "../../shared/Button";
 import { login } from "../service";
 import types, { func, object } from "prop-types";
 
+
+//TODO: implementar funcionalidad de 'recordar contraseña'
+
 export default function LoginPage({ onLogin, history, location }) {
   const [credentials, setCredentials] = useState({
     email: "",

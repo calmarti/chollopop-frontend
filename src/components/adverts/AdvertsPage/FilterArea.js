@@ -6,17 +6,10 @@ import "rc-slider/assets/index.css";
 
 //OJO: Es un filtro en el front, hay que traerse todos los anuncios en la llamada al backend
 //y filtrar con un array.filter()
-//TODO: implementar el campo 'sale' con 3 valores (no parece ser boolean como el del NewAdvertsPage)
+
 
 export default function FilterArea({ filters, setFilters }) {
-  /*   const [filters, setFilters] = useState({
-    name: "",
-    price: "",
-    //price: "",
-    sale: "",
-    tags: [],
-  }); */
-
+  
   /*   useEffect(() => {
     //Implementar los filtros como cambios del estado filters
     setAdverts((adverts) =>

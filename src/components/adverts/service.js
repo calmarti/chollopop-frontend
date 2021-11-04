@@ -19,3 +19,7 @@ export function getAdvert(id) {
     return client.get(url);
 }
 
+export function deleteAdvert(id) {
+    const url = `${advertsBaseUrl}/adverts/${id}`;
+    return client.delete(url);
+}

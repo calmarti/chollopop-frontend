@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState, useRef } from "react";
 import types, { func } from "prop-types";
 import "./NewAdvertPage.css";
 import Layout from "../../layout/Layout.js";
@@ -8,20 +8,25 @@ import { postNewAdvert } from "../service";
 import { Redirect } from "react-router-dom";
 
 
-//TODO: arreglar input de tipo file, por definición es 'no controlado', hay que usar ref?
+//TODO: arreglar input de tipo file, por definición es 'no controlado', creo que hay que usar ref (ver video) 
 //Además, arreglar lío de donde guarda la foto realmente para mostrarla 
 //TODO: en navbar no debe aparecer botón 'Crear Anuncio' (condicional en Header.js)
+//TODO: problema con desabilitación del botón: no coge el valor tags: [] como 'not true', pero si como 'false' WTF? (¿usar JSON.stringify?)
 
 export default function NewAdvertPage({...props}) {
+  
   const [fields, setFields] = useState({
     name: "",
     price: 0,
     sale: true,
     tags: [],
-    photo: "",
+    photo: ''
   });
-
+  
   const [newAdvertId, setNewAdvertId] = useState("");
+  
+  const photoRef = useRef(null);
+  //photoRef.current.value
 
   const handleOnChange = event => {
     if (event.target.type === "text" || event.target.type === "number" || event.target.type==="file") {
@@ -63,6 +68,7 @@ export default function NewAdvertPage({...props}) {
   const handleSubmit = async event => {
     event.preventDefault();
     const data = new FormData(event.target);
+    data.set['photo'] = photoRef.current.value;
     
     try {
       const response = await postNewAdvert(data); 
@@ -156,17 +162,18 @@ export default function NewAdvertPage({...props}) {
 
           <label className="form-field" htmlFor="photo">
             {" "}
-            {/*OJO: ESTO ES PASARLE UN FICHERO NO UNA URL*/}
+            {/*OJO: ESTO ES PASARLE UN FICHERO,  NO UNA URL*/}
             Foto
             <input
               type="file"
               id="photo"
               name="photo"
+              ref={photoRef}
               onChange={handleOnChange}
-              value={fields.photo}
+              /* value={fields.photo} */
             ></input>
           </label>
-          <Button type="submit">Crear anuncio</Button>
+          <Button disabled={ !fields.name || !fields.price || fields.sale=='' || fields.tags==[]} type="submit">Crear anuncio</Button>
         </form>
       </div>
     </Layout>

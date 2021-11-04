@@ -9,6 +9,7 @@ import FilterArea from "./FilterArea";
 //TODO: loader y gestor de errores al hacer llamada al api
 //TODO: Faltan filtros 'name' (regex) y price
 
+
 export default function AdvertsPage({ ...props }) {
   function Empty(props) {
     return "Empty";
@@ -16,6 +17,7 @@ export default function AdvertsPage({ ...props }) {
   }
 
   const [adverts, setAdverts] = useState([]);
+
   const [filters, setFilters] = useState({
     name: "",
     price: "",
@@ -24,6 +26,7 @@ export default function AdvertsPage({ ...props }) {
     tags: [""],
   });
 
+  
   useEffect(() => {
     getAdverts()
       //una opción: filtrar aquí con filter y renderizar cada vez que cambien los filtros (y arreglar loop de abajo)
