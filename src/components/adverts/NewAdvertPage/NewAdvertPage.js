@@ -8,50 +8,53 @@ import { postNewAdvert } from "../service";
 import { Redirect } from "react-router-dom";
 
 
-//TODO: arreglar input de tipo file, por definición es 'no controlado', creo que hay que usar ref (ver video) 
-//Además, arreglar lío de donde guarda la foto realmente para mostrarla 
 //TODO: en navbar no debe aparecer botón 'Crear Anuncio' (condicional en Header.js)
-//TODO: problema con desabilitación del botón: no coge el valor tags: [] como 'not true', pero si como 'false' WTF? (¿usar JSON.stringify?)
+//TODO: problema con desabilitación del botón: no coge el valor tags: [] como 'not true', pero si como 'false' WTF? (¿usar JSON.stringify?),
+//tampoco coge el valor 'compra' (sale:false)
 
-export default function NewAdvertPage({...props}) {
-  
+
+export default function NewAdvertPage({ ...props }) {
   const [fields, setFields] = useState({
     name: "",
     price: 0,
     sale: true,
     tags: [],
-    photo: ''
+    photo: "",
   });
-  
+
   const [newAdvertId, setNewAdvertId] = useState("");
-  
+
   const photoRef = useRef(null);
   //photoRef.current.value
 
-  const handleOnChange = event => {
-    if (event.target.type === "text" || event.target.type === "number" || event.target.type==="file") {
+  const handleOnChange = (event) => {
+    if (
+      event.target.type === "text" ||
+      event.target.type === "number" ||
+      event.target.type === "file"
+    ) {
       setFields((prevState) => ({
         ...prevState,
         [event.target.name]: event.target.value,
       }));
     } else if (event.target.type === "select-multiple") {
       const selected = event.target.selectedOptions;
-      console.log(selected)
+      console.log(selected);
       const tagsValues = [];
 
       /* for (let i = 0; i < selected.length; i++)  */
-        Array.from(selected).forEach((tag) => {      
+      Array.from(selected).forEach((tag) => {
         tagsValues.push(tag.value);
         setFields((prevState) => ({
           ...prevState,
           [event.target.name]: tagsValues,
         }));
-      })
+      });
     }
   };
 
-  const handleRadio = event => {
-/*     console.log(
+  const handleRadio = (event) => {
+    /*     console.log(
       event.target.type,
       event.target.name,
       typeof event.target.value,
@@ -60,21 +63,26 @@ export default function NewAdvertPage({...props}) {
 
     setFields((prevState) =>
       event.target.checked
-        ? { ...prevState, sale: event.target.value==="true" ? true : false /*JSON.parse(event.target.value)*/ }
+        ? {
+            ...prevState,
+            sale:
+              event.target.value === "true"
+                ? true
+                : false /*JSON.parse(event.target.value)*/,
+          }
         : { ...prevState }
     );
   };
 
-  const handleSubmit = async event => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const data = new FormData(event.target);
-    data.set['photo'] = photoRef.current.value;
-    
     try {
-      const response = await postNewAdvert(data); 
+      const data = new FormData(event.target);
+      data.set["photo"] = photoRef.current.value;
+
+      const response = await postNewAdvert(data);
       console.log(response);
       setNewAdvertId(response.id);
-     
 
       /*setFields({
         name: "",
@@ -92,10 +100,10 @@ export default function NewAdvertPage({...props}) {
 
   if (newAdvertId) {
     return <Redirect to={`/adverts/${newAdvertId}`} />;
-}
+  }
 
   return (
-    <Layout {...props} >
+    <Layout {...props}>
       <div name="form-container">
         <form encType="multipart/form-data" onSubmit={handleSubmit}>
           <label className="form-field" htmlFor="name">
@@ -125,9 +133,9 @@ export default function NewAdvertPage({...props}) {
             Venta
             <input
               name="sale"
-              type="radio" 
+              type="radio"
               value={true}
-              checked={fields.sale===true}
+              checked={fields.sale === true}
               onChange={handleRadio}
             />
           </label>
@@ -136,10 +144,10 @@ export default function NewAdvertPage({...props}) {
             Compra
             <input
               name="sale"
-              type="radio" 
+              type="radio"
               value={false}
               //onChange={(prevState) => setFields({...prevState, sale:false})}
-              checked={fields.sale===false}
+              checked={fields.sale === false}
               onChange={handleRadio}
             />
           </label>
@@ -169,11 +177,21 @@ export default function NewAdvertPage({...props}) {
               id="photo"
               name="photo"
               ref={photoRef}
-              onChange={handleOnChange}
+           
               /* value={fields.photo} */
             ></input>
           </label>
-          <Button disabled={ !fields.name || !fields.price || fields.sale=='' || fields.tags==[]} type="submit">Crear anuncio</Button>
+          <Button
+            disabled={
+              !fields.name ||
+              !fields.price ||
+              fields.sale == "" ||
+              fields.tags == []
+            }
+            type="submit"
+          >
+            Crear anuncio
+          </Button>
         </form>
       </div>
     </Layout>

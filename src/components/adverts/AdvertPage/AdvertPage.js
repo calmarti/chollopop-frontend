@@ -6,9 +6,7 @@ import { deleteAdvert, getAdvert } from "../service";
 import Button from "../../shared/Button";
 import Modal from "../../shared/Modal";
 
-
 //TODO: Falta la cancelación de la petición (getAdvert) en el useEffect (ver clase 5 a partir de min 2:37)
-//TODO: Falta lograr que muestre la foto (problema parece ser la ruta)
 
 
 export default function AdvertPage({ match, history, ...props }) {
@@ -56,7 +54,11 @@ export default function AdvertPage({ match, history, ...props }) {
   return (
     <Layout {...props}>
       <div className="item-card">
-        <img src={`${advert.photo}`} alt={advert.name} />
+        {advert.photo ? (
+          <img src={`http://localhost:3001${advert.photo}`} alt={advert.name} />
+        ) : (
+          <div>"No hay foto"</div>
+        )}
         <h2>{advert.name}</h2>
         <p>{advert.price}</p>
         <p>{advert.sale ? "Venta" : "Compra"}</p>

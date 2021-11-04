@@ -7,7 +7,7 @@ import types, { func } from "prop-types";
 import FilterArea from "./FilterArea";
 
 //TODO: loader y gestor de errores al hacer llamada al api
-//TODO: Faltan filtros 'name' (regex) y price
+//TODO: Falta implementar los filtros 'name' (regex) y price
 
 
 export default function AdvertsPage({ ...props }) {
