@@ -6,21 +6,24 @@ import { Link } from "react-router-dom";
 import types, { func } from "prop-types";
 import FilterArea from "./FilterArea";
 
+//TODO: Prioridad para el viernes 5: maquetación minimamente funcional sujeta a restricción de tiempo, luego seguir con lo demás
+
+
 //TODO: loader y gestor de errores al hacer llamada al api
 //TODO: Falta implementar los filtros 'name' (regex) y price
 //TODO: Falta crear componente Empty (se renderiza cuando (a) no hay anuncios del todo o (b) los filtros no corresponden a ningun artículo)
 //el componente Empty debe ten un botón que redirija a 'crear anuncio'
-//TODO: DUDA: ¿el filtro de tags debe filtrar por tags individuales y no sólo por todas las que tiene el anuncio?
-//TODO: mi filtro no cumple con el requisito de hacer una única petición, intentar arreglar esto
+//TODO: Crear componente de Error y reutilizar en NewAdvertsPage, AdvertPage y Login
+//TODO: Problemilla: al crear anuncio hay que hacer refresh para actualizar la lista; busca un workaround!
 
-export default function AdvertsPage({ ...props }) {
+export default function AdvertsPage({ list, requestError, ...props }) {
   function Empty(props) {
     return "Empty";
     //TODO: call to action para crear el primer anuncio
   }
 
   const [adverts, setAdverts] = useState([]);
-
+  const [error, setError] = useState(null);
   const [filters, setFilters] = useState({
     name: "",
     price: "",
@@ -30,50 +33,42 @@ export default function AdvertsPage({ ...props }) {
   });
 
   useEffect(() => {
-    getAdverts()
-      //una opción: filtrar aquí con filter y renderizar cada vez que cambien los filtros (y arreglar loop de abajo)
-      .then((adverts) => {
-        setAdverts(adverts);
+    setAdverts(list);
+    console.log(adverts, adverts.length);
+  }, [list]);
 
-        console.log(adverts, adverts.length);
+  useEffect(() => {
+    setError(requestError);
+  });
 
-        if (filters.name) {
+  useEffect(() => {
+
+    /* if (filters.name) {
           console.log("name");
           setAdverts((adverts) =>
             adverts.filter((advert) => advert.name === filters.name)
           );
-        }
+        }*/
 
-        if (filters.sale !== "") {
-          console.log("sale");
-          setAdverts((adverts) =>
-            adverts.filter((advert) => advert.sale === filters.sale)
-          );
-        }
+    if (filters.sale !== "") {
+      setAdverts(list);
+      setAdverts((adverts) =>
+        adverts.filter((advert) => advert.sale === filters.sale)
+      );
+    } else {
+      setAdverts(list);
+    }
 
-        if (JSON.stringify(filters.tags) !== '[""]') {
-          console.log("tags", filters.tags);
-          setAdverts((adverts) =>
-            adverts.filter(
-              (advert) =>
-                JSON.stringify(advert.tags) === JSON.stringify(filters.tags)
-            )
-          );
-        }
-      })
-      .catch((error) => console.log(error));
+    if (JSON.stringify(filters.tags) !== '[""]') {
+      //console.log("tags", filters.tags);
+      setAdverts((adverts) =>
+        adverts.filter(
+          (advert) =>
+            JSON.stringify(advert.tags) === JSON.stringify(filters.tags)
+        )
+      );
+    }
   }, [filters]);
-
-  /*   useEffect(
-    () => {
-       setAdverts(filteredAdverts);  
-      //otra opción: aprender el useEffect y devolver una función que me devuelva al estado sin filtros
-      //return () => setFilters(() => filters.sale = prevState);
-      return () => setAdverts()
-      
-    },
-    [filters.sale]
-  ); */
 
   return (
     <>
@@ -83,6 +78,15 @@ export default function AdvertsPage({ ...props }) {
         filters={filters}
         setFilters={setFilters}
       />
+      {error ? (
+        <div className="error">
+          {" "}
+          Error {error.statusCode}: {error.message}{" "}
+        </div>
+      ) : (
+        ""
+      )}
+
       <Layout {...props}>
         <div className="">
           {adverts.length ? (
