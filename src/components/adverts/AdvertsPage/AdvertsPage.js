@@ -8,6 +8,9 @@ import FilterArea from "./FilterArea";
 
 //TODO: loader y gestor de errores al hacer llamada al api
 //TODO: Falta implementar los filtros 'name' (regex) y price
+//TODO: Falta crear componente Empty (se renderiza cuando (a) no hay anuncios del todo o (b) los filtros no corresponden a ningun artículo)
+//TODO: Falta que el filtro de tags filtre por tags individuales y no sólo por todas las que tiene el anuncio
+
 
 
 export default function AdvertsPage({ ...props }) {

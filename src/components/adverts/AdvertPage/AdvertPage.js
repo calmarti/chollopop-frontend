@@ -52,7 +52,7 @@ export default function AdvertPage({ match, history, ...props }) {
   };
 
   return (
-    <Layout {...props}>
+    <Layout history={history} {...props}>
       <div className="item-card">
         {advert.photo ? (
           <img src={`http://localhost:3001${advert.photo}`} alt={advert.name} />

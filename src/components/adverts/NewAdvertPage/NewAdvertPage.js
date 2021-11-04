@@ -7,19 +7,18 @@ import Button from "../../shared/Button";
 import { postNewAdvert } from "../service";
 import { Redirect } from "react-router-dom";
 
-
 //TODO: en navbar no debe aparecer botón 'Crear Anuncio' (condicional en Header.js)
-//TODO: problema con desabilitación del botón: no coge el valor tags: [] como 'not true', pero si como 'false' WTF? (¿usar JSON.stringify?),
 //tampoco coge el valor 'compra' (sale:false)
 
+//TODO: TESTING del filtro: de momento deshabilitación del botón funciona con tag: undefined, price='"" y sale: true 
 
 export default function NewAdvertPage({ ...props }) {
   const [fields, setFields] = useState({
     name: "",
-    price: 0,
+    price: "",
     sale: true,
-    tags: [],
-    photo: "",
+    tags: undefined,
+    photo: null,
   });
 
   const [newAdvertId, setNewAdvertId] = useState("");
@@ -37,6 +36,7 @@ export default function NewAdvertPage({ ...props }) {
         ...prevState,
         [event.target.name]: event.target.value,
       }));
+
     } else if (event.target.type === "select-multiple") {
       const selected = event.target.selectedOptions;
       console.log(selected);
@@ -177,17 +177,12 @@ export default function NewAdvertPage({ ...props }) {
               id="photo"
               name="photo"
               ref={photoRef}
-           
+
               /* value={fields.photo} */
             ></input>
           </label>
           <Button
-            disabled={
-              !fields.name ||
-              !fields.price ||
-              fields.sale == "" ||
-              fields.tags == []
-            }
+            disabled={!fields.name || !fields.price || !fields.tags}
             type="submit"
           >
             Crear anuncio
