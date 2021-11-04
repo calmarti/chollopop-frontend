@@ -9,9 +9,9 @@ import FilterArea from "./FilterArea";
 //TODO: loader y gestor de errores al hacer llamada al api
 //TODO: Falta implementar los filtros 'name' (regex) y price
 //TODO: Falta crear componente Empty (se renderiza cuando (a) no hay anuncios del todo o (b) los filtros no corresponden a ningun artículo)
-//TODO: Falta que el filtro de tags filtre por tags individuales y no sólo por todas las que tiene el anuncio
-
-
+//el componente Empty debe ten un botón que redirija a 'crear anuncio'
+//TODO: DUDA: ¿el filtro de tags debe filtrar por tags individuales y no sólo por todas las que tiene el anuncio?
+//TODO: mi filtro no cumple con el requisito de hacer una única petición, intentar arreglar esto
 
 export default function AdvertsPage({ ...props }) {
   function Empty(props) {
@@ -29,7 +29,6 @@ export default function AdvertsPage({ ...props }) {
     tags: [""],
   });
 
-  
   useEffect(() => {
     getAdverts()
       //una opción: filtrar aquí con filter y renderizar cada vez que cambien los filtros (y arreglar loop de abajo)
@@ -49,7 +48,7 @@ export default function AdvertsPage({ ...props }) {
           );
         }
 
-                if (JSON.stringify(filters.tags) !== '[""]') {
+        if (JSON.stringify(filters.tags) !== '[""]') {
           console.log("tags", filters.tags);
           setAdverts((adverts) =>
             adverts.filter(
