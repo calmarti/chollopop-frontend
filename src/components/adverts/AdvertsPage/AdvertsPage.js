@@ -36,11 +36,14 @@ export default function AdvertsPage({ ...props }) {
         setAdverts(adverts);
 
         console.log(adverts, adverts.length);
-        /*         if (filters.name)
-        console.log('name')
+
+        if (filters.name) {
+          console.log("name");
           setAdverts((adverts) =>
             adverts.filter((advert) => advert.name === filters.name)
-          ); */
+          );
+        }
+
         if (filters.sale !== "") {
           console.log("sale");
           setAdverts((adverts) =>
