@@ -5,9 +5,10 @@ import AuthContext from "../../auth/context";
 import { Link } from "react-router-dom";
 import types, { func } from "prop-types";
 import FilterArea from "./FilterArea";
+import './FilterArea.css'
+import './AdvertsPage.css';
 
-//TODO: Prioridad para el viernes 5: maquetación minimamente funcional sujeta a restricción de tiempo, luego seguir con lo demás
-
+//TODO: Prioridad: acabar maquetación: login y AdvertPage
 
 //TODO: loader y gestor de errores al hacer llamada al api
 //TODO: Falta implementar los filtros 'name' (regex) y price
@@ -88,22 +89,23 @@ export default function AdvertsPage({ list, requestError, ...props }) {
       )}
 
       <Layout {...props}>
-        <div className="">
+        
           {adverts.length ? (
-            <ul>
+            <div>
+            <ul className="card-list">
               {adverts
                 /*                 .filter(
                   (advert) =>
                     advert.sale === filters.sale && advert.tags === filters.tags
                 ) */
                 .map((advert) => (
-                  <li
+                  <li className="card-list-item"
                     key={
                       advert.id
                     } /* onClick={() => history.push(`/adverts/${id}`)} */
                   >
-                    <Link to={`/adverts/${advert.id}`}>
-                      <div className="item-card">
+                    <Link className="card-list-item-link" to={`/adverts/${advert.id}`}>
+                      <div className="card">
                         <h2>{advert.name}</h2>
                         <p>{advert.price}</p>
                         <p>{advert.sale ? "Venta" : "Compra"}</p>
@@ -113,10 +115,11 @@ export default function AdvertsPage({ list, requestError, ...props }) {
                   </li>
                 ))}
             </ul>
+            </div>
           ) : (
             <Empty />
           )}
-        </div>
+        
       </Layout>
     </>
   );

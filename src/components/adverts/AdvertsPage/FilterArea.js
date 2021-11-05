@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from "react";
-import "./FilterArea.css";
 import Button from "../../shared/Button";
 import Slider, { Range } from "rc-slider";
 import "rc-slider/assets/index.css";
+import "./FilterArea.css";
+
 
 //OJO: Es un filtro en el front, hay que traerse todos los anuncios en la llamada al backend
 //y filtrar con un array.filter()
 
-
 export default function FilterArea({ filters, setFilters }) {
-  
   /*   useEffect(() => {
     //Implementar los filtros como cambios del estado filters
     setAdverts((adverts) =>
@@ -63,14 +62,14 @@ export default function FilterArea({ filters, setFilters }) {
   };
 
   return (
-    <div className="container">
-      <h2>Filtrar por:</h2>
+    <div className="filter-container">
+      <h2 className="filter-title">Busca tu artículo</h2>
 
       <form>
-        <div className="name-filter">
-          <label className="form-filter" htmlFor="name">
+        <div className="form-container">
+          <label className="filter-label" htmlFor="name">
             Artículo
-            <input
+            <input 
               type="text"
               id="name"
               name="name"
@@ -80,11 +79,11 @@ export default function FilterArea({ filters, setFilters }) {
             />
           </label>
 
-          {/* <label htmlFor="price">
+          <label htmlFor="price">Precio
           <input type="range" id="price" name="price" min="0" max="1000000" />
-          </label> */}
+          </label>
 
-          <Range
+{/*           <Range
             name="price"
             defaultValue={[0, 10000]}
             max={10000}
@@ -92,7 +91,7 @@ export default function FilterArea({ filters, setFilters }) {
             handle={(props) => (
               <span key={props.value}> {props.value} &emsp; </span>
             )}
-          />
+          /> */}
 
           {/* <label className="form-filter" htmlFor="price">
             Precio mínimo
@@ -116,7 +115,7 @@ export default function FilterArea({ filters, setFilters }) {
             />
           </label> */}
 
-          <label className="form-filter" htmlFor="sale">
+          <label className="filter-label" htmlFor="sale">
             Venta
             <input
               name="sale"
@@ -127,7 +126,7 @@ export default function FilterArea({ filters, setFilters }) {
             />
           </label>
 
-          <label className="form-filter" htmlFor="sale">
+          <label className="filter-label" htmlFor="sale">
             Compra
             <input
               name="sale"
@@ -139,7 +138,7 @@ export default function FilterArea({ filters, setFilters }) {
             />
           </label>
 
-          <label className="form-filter" htmlFor="sale">
+          <label className="filter-label" htmlFor="sale">
             Todos
             <input
               name="sale"
@@ -157,7 +156,7 @@ export default function FilterArea({ filters, setFilters }) {
             />
           </label>
 
-          <label htmlFor="tags" className="form-filter">
+          <label htmlFor="tags" className="filter-label">
             Categoría
             <select
               id="tags"

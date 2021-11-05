@@ -5,7 +5,7 @@ export default function Layout({children, history, ...props}) {
   return (
     <div className="layout-container">
       <Header history={history} {...props} />
-        <main className="layout-main"  style={{backgroundColor:'orange'}}>Layout minimalista
+        <main className="layout-main">
          {children}
         </main>
     </div>

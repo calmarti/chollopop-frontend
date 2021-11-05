@@ -1,0 +1,26 @@
+.filter-container {
+position:relative;
+top:5rem;
+
+}
+
+.filter-title {
+    margin-left: 4rem;
+    margin-bottom: 3.5rem; 
+}
+
+.form-container {
+display: flex;
+flex-flow: row nowrap;
+gap: 3rem;
+justify-content: space-around;
+width: 100%;
+
+
+}
+
+.filter-label {
+width: 5rem;
+flex: 0 1 auto;
+
+}

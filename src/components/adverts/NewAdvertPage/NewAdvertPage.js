@@ -1,16 +1,18 @@
 import { useState, useRef } from "react";
 import types, { func } from "prop-types";
-import "./NewAdvertPage.css";
 import Layout from "../../layout/Layout.js";
 import React from "react";
 import Button from "../../shared/Button";
 import { postNewAdvert } from "../service";
 import { Redirect } from "react-router-dom";
+import "./NewAdvertPage.css";
+import Header from "../../layout/Header.js";
+import "../../layout/Header.css";
 
 //TODO: en navbar no debe aparecer botón 'Crear Anuncio' (condicional en Header.js)
 //tampoco coge el valor 'compra' (sale:false)
 
-//TODO: TESTING del filtro: de momento deshabilitación del botón funciona con tag: undefined, price='"" y sale: true 
+//TODO: TESTING del filtro: de momento deshabilitación del botón funciona con tag: undefined, price='"" y sale: true
 
 export default function NewAdvertPage({ ...props }) {
   const [fields, setFields] = useState({
@@ -36,7 +38,6 @@ export default function NewAdvertPage({ ...props }) {
         ...prevState,
         [event.target.name]: event.target.value,
       }));
-
     } else if (event.target.type === "select-multiple") {
       const selected = event.target.selectedOptions;
       console.log(selected);
@@ -103,93 +104,106 @@ export default function NewAdvertPage({ ...props }) {
   }
 
   return (
-    <Layout {...props}>
-      <div name="form-container">
-        <form encType="multipart/form-data" onSubmit={handleSubmit}>
-          <label className="form-field" htmlFor="name">
-            Artículo
-            <input
-              type="text"
-              id="name"
-              name="name"
-              onChange={handleOnChange}
-              value={fields.name}
-              autoFocus
-            />
-          </label>
+    <>
+    <Header {...props} />
+     
+      <div className="new-advert-container">
+      <h2 className="new-advert-title">Crea tu anuncio</h2>
+          <form encType="multipart/form-data" onSubmit={handleSubmit}>
+            <div className="new-advert-form-container">
 
-          <label className="form-field" htmlFor="price">
-            Precio
-            <input
-              type="number" //poner de nuevo type=text si esto no sirve para cambiar el tipado de 'price'
-              id="price"
-              name="price"
-              onChange={handleOnChange}
-              value={fields.price}
-            />
-          </label>
+              <label className="new-advert-form-label" htmlFor="name">
+                Artículo &nbsp;
+                <input
+                  className="new-advert-form-field"
+                  type="text"
+                  id="name"
+                  name="name"
+                  onChange={handleOnChange}
+                  value={fields.name}
+                  autoFocus
+                />
+              </label>
 
-          <label className="form-field" htmlFor="sale">
-            Venta
-            <input
-              name="sale"
-              type="radio"
-              value={true}
-              checked={fields.sale === true}
-              onChange={handleRadio}
-            />
-          </label>
+              <label className="new-advert-form-label" htmlFor="price">
+                Precio &nbsp;
+                <input
+                  className="new-advert-form-field"
+                  type="number" //poner de nuevo type=text si esto no sirve para cambiar el tipado de 'price'
+                  id="price"
+                  name="price"
+                  onChange={handleOnChange}
+                  value={fields.price}
+                />
+              </label>
 
-          <label className="form-field" htmlFor="sale">
-            Compra
-            <input
-              name="sale"
-              type="radio"
-              value={false}
-              //onChange={(prevState) => setFields({...prevState, sale:false})}
-              checked={fields.sale === false}
-              onChange={handleRadio}
-            />
-          </label>
+              <label className="new-advert-form-label" htmlFor="sale">
+                Venta &nbsp;
+                <input
+                  className="new-advert-form-field"
+                  name="sale"
+                  type="radio"
+                  value={true}
+                  checked={fields.sale === true}
+                  onChange={handleRadio}
+                />
+              </label>
 
-          <label className="form-field">
-            Categoría
-            <select
-              className="form-field-tags"
-              name="tags"
-              value={fields.tags}
-              onChange={handleOnChange}
-              multiple={true}
-            >
-              <option value="lifestyle">Lifestyle</option>
-              <option value="mobile">Mobile</option>
-              <option value="motor">Motor</option>
-              <option value="work">Work</option>
-            </select>
-          </label>
+              <label className="new-advert-form-label" htmlFor="sale">
+                Compra &nbsp;
+                <input
+                  className="new-advert-form-field"
+                  name="sale"
+                  type="radio"
+                  value={false}
+                  //onChange={(prevState) => setFields({...prevState, sale:false})}
+                  checked={fields.sale === false}
+                  onChange={handleRadio}
+                />
+              </label>
+              
+              <label className="new-advert-form-label">
+                <span className="new-advert-form-select-span">Categoría</span>
+                
+                <select
+                  className="new-advert-form-field"
+                  name="tags"
+                  value={fields.tags}
+                  onChange={handleOnChange}
+                  multiple={true}
+                >
+                  <option value="lifestyle">Lifestyle</option>
+                  <option value="mobile">Mobile</option>
+                  <option value="motor">Motor</option>
+                  <option value="work">Work</option>
+                </select>
+              </label>
 
-          <label className="form-field" htmlFor="photo">
-            {" "}
-            {/*OJO: ESTO ES PASARLE UN FICHERO,  NO UNA URL*/}
-            Foto
-            <input
-              type="file"
-              id="photo"
-              name="photo"
-              ref={photoRef}
+              <label className="new-advert-form-label file-field" htmlFor="photo">
+                {" "}
+                {/*OJO: ESTO ES PASARLE UN FICHERO,  NO UNA URL*/}
+                Foto  &nbsp;
+                <input
+                  className="new-advert-form-field"
+                  type="file"
+                  id="photo"
+                  name="photo"
+                  ref={photoRef}
 
-              /* value={fields.photo} */
-            ></input>
-          </label>
-          <Button
-            disabled={!fields.name || !fields.price || !fields.tags}
-            type="submit"
-          >
-            Crear anuncio
-          </Button>
-        </form>
-      </div>
-    </Layout>
+                  /* value={fields.photo} */
+                ></input>
+              </label>
+              <Button
+                disabled={!fields.name || !fields.price || !fields.tags}
+                type="submit"
+              >
+                Continuar
+              </Button>
+            </div>
+          </form>
+        </div>
+    
+    </>
   );
 }
 

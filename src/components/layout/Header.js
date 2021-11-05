@@ -49,8 +49,8 @@ export default function Header({ history, ...props }) {
         <Link className="header-link" to="/">
           Home
         </Link>
-        {isLogged ? ( //OJO: al ser login la única ruta NO protegida no tiene mucho sentido el último botón..
-          <div>
+        {isLogged ? ( //OJO: al ser login la única ruta NO protegida y no tener login barra de menú no tiene mucho sentido el último botón..
+          <>
             <Button className="header-button" onClick={logoutConfirmation}>
               Salir
             </Button>
@@ -59,7 +59,7 @@ export default function Header({ history, ...props }) {
             <Button className="header-button" onClick={handleRedirect}>
               Crear anuncio
             </Button>
-          </div>
+          </>
         ) : (
           <Button className="header-button" to="/login" as={Link}>
             Iniciar sesión
