@@ -19,9 +19,9 @@ import Error from "../../shared/Error";
 //TODO: no olvidar los propTypes
 //TODO: poner algo más decente en la página 404
 //TODO: poner index en carpetas AdvertsPage, AdvertPage y NewAdvertPage
+//TODO: pasar mensaje diferenciado a Empty según su causa: lista del backend vacía o por filtrado
 
 export default function AdvertsPage({ list, requestError, ...props }) {
-
 
   const [adverts, setAdverts] = useState([]);
   const [error, setError] = useState(null);
@@ -36,7 +36,7 @@ export default function AdvertsPage({ list, requestError, ...props }) {
   useEffect(() => {
     setAdverts(list);
     console.log(adverts, adverts.length);
-  },[list]);
+  },[list, filters]);
 
   useEffect(() => {
     setError(requestError);
@@ -44,20 +44,19 @@ export default function AdvertsPage({ list, requestError, ...props }) {
 
   useEffect(() => {
 
-    /* if (filters.name) {
-          console.log("name");
-          setAdverts((adverts) =>
+     if (filters.name) {
+          console.log("name", filters.name);
+            setAdverts((adverts) =>
             adverts.filter((advert) => advert.name === filters.name)
           );
-        }*/
+        }
+
 
     if (filters.sale !== "") {
-      setAdverts(list);
+      //setAdverts(list);
       setAdverts((adverts) =>
         adverts.filter((advert) => advert.sale === filters.sale)
       );
-    } else {
-      setAdverts(list);
     }
 
     if (JSON.stringify(filters.tags) !== '[""]') {
@@ -84,7 +83,6 @@ export default function AdvertsPage({ list, requestError, ...props }) {
       {error && error.response.status!=404 ? <Error className="adverts-page-error" error={error}/> : ""}
        
       
- 
      
 
       <Layout {...props}>

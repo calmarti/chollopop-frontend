@@ -28,9 +28,6 @@ export default function FilterArea({ filters, setFilters }) {
       )));
   }; */
 
-  const resetFilters = () => {
-    console.log("reset");
-  };
 
   const handleOnChange = (event) => {
     if (event.target.type === "text" || event.target.type === "number") {
