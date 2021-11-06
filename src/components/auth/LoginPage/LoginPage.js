@@ -7,8 +7,6 @@ import "./LoginPage.css";
 import Error from "../../shared/Error";
 import storage from "../../../utils/storage";
 
-//TODO: implementar funcionalidad de 'recordar contraseña'
-//TODO: borrar boton de iniciar sesión de la navbar
 
 export default function LoginPage({ onLogin, history, location }) {
   const [credentials, setCredentials] = useState({
@@ -54,7 +52,7 @@ export default function LoginPage({ onLogin, history, location }) {
         const { from } = location.state || { from: "/adverts" };
         history.replace(from);
       })
-      //gestionar el 401 y resto de errores, crear el estado de error
+      //gestionar el 401 y resto de errores
       //crear estado isLoading y gestionar su renderizado
       .catch((error) => {
         setLoader(false);

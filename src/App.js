@@ -14,6 +14,7 @@ import { AuthProvider, AuthConsumer } from "./components/auth/context";
 import PrivateRoute from "./components/auth/PrivateRoute";
 import { logout } from "./components/auth/service";
 import { getAdverts } from "./components/adverts/service";
+import client from "./api/client";
 
 function App({ isAlreadyLogged }) {
   const [isLogged, setIsLogged] = useState(isAlreadyLogged);
@@ -21,6 +22,7 @@ function App({ isAlreadyLogged }) {
   const [list, setList] = useState([]);
 
   useEffect(() => {
+        
     if (isLogged){
     getAdverts()
       .then((adverts) => setList(adverts))

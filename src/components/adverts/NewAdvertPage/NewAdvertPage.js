@@ -14,7 +14,7 @@ import "../../layout/Header.css";
 
 //TODO: TESTING del filtro: de momento deshabilitación del botón funciona con tag: undefined, price='"" y sale: true
 
-export default function NewAdvertPage({ ...props }) {
+export default function NewAdvertPage({ tagvalues, ...props }) {
   const [fields, setFields] = useState({
     name: "",
     price: "",

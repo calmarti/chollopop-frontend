@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
 import Button from "../../shared/Button";
 import Slider, { Range } from "rc-slider";
+import { getAdvertTags } from "../service";
 import "rc-slider/assets/index.css";
 import "./FilterArea.css";
 
 
-export default function FilterArea({ filters, setFilters }) {
+
+export default function FilterArea({ filters, setFilters, tagvalues }) {
+
 
 
   //el input adverts debe inicializarse a 'TODOS' tras cada filtrado
@@ -145,11 +148,14 @@ export default function FilterArea({ filters, setFilters }) {
               onChange={handleOnChange}
               multiple={true}
             >
-              <option value={[""]}>All</option>
-              <option value="lifestyle">Lifestyle</option>
+              <option value={[""]}>all</option>
+              {tagvalues.map((tagvalue) => <option value={tagvalue}> {tagvalue} </option>)}
+
+
+             {/*  <option value="lifestyle">Lifestyle</option>
               <option value="mobile">Mobile</option>
               <option value="motor">Motor</option>
-              <option value="work">Work</option>
+              <option value="work">Work</option> */}
             </select>
           </label>
         </div>

@@ -1,22 +1,21 @@
 import { useEffect, useState, useRef, useContext, Fragment } from "react";
 import Layout from "../../layout/Layout";
-import { getAdverts } from "../service";
+import { getAdverts, getAdvertTags } from "../service";
 import AuthContext from "../../auth/context";
 import { Link, Redirect } from "react-router-dom";
 import types, { func } from "prop-types";
 import FilterArea from "./FilterArea";
 import Empty from "../../shared/Empty";
-import './FilterArea.css'
-import './AdvertsPage.css';
+import "./FilterArea.css";
+import "./AdvertsPage.css";
 import Error from "../../shared/Error";
-
 
 //TODO: Bajar el mensaje de confirmación tanto del Header como del AdvertPage (borrar anuncio)
 //TODO: loader y gestor de errores al hacer llamada al api
 //TODO: Falta implementar los filtros 'name' (regex) y price
 //TODO: asegurarme de que se renderiza Empty cuando la combinación de filtros no existe
 //TODO: estilos del error en LoginPage NO se activan
-//TODO: Problemilla: al crear anuncio hay que hacer refresh para actualizar la lista; busca un workaround!
+//TODO: Problemilla: al crear o borrar un anuncio hay que hacer refresh para actualizar la lista; busca un workaround!
 //TODO: arreglar error de cannot read properties of undefined (reading 'data') que lanza cuando no hay backend
 //TODO: no olvidar los propTypes
 //TODO: poner algo más decente en la página 404
@@ -24,7 +23,6 @@ import Error from "../../shared/Error";
 //TODO: pasar mensaje diferenciado a Empty según su causa: lista del backend vacía o por filtrado
 
 export default function AdvertsPage({ list, requestError, ...props }) {
-
   const [adverts, setAdverts] = useState([]);
   const [error, setError] = useState(null);
   const [filters, setFilters] = useState({
@@ -34,25 +32,29 @@ export default function AdvertsPage({ list, requestError, ...props }) {
     sale: "",
     tags: [""],
   });
+  const [tagvalues, setTagValues] = useState([]);
+
+  useEffect(async() => {
+    const result = await getAdvertTags();
+    setTagValues(result);
+  }, []);
 
   useEffect(() => {
     setAdverts(list);
     console.log(adverts, adverts.length);
-  },[list, filters]);
+  }, [list, filters]);
 
   useEffect(() => {
     setError(requestError);
   });
 
   useEffect(() => {
-
-     if (filters.name) {
-          console.log("name", filters.name);
-            setAdverts((adverts) =>
-            adverts.filter((advert) => advert.name === filters.name)
-          );
-        }
-
+    if (filters.name) {
+      console.log("name", filters.name);
+      setAdverts((adverts) =>
+        adverts.filter((advert) => advert.name === filters.name)
+      );
+    }
 
     if (filters.sale !== "") {
       //setAdverts(list);
@@ -77,20 +79,21 @@ export default function AdvertsPage({ list, requestError, ...props }) {
       <FilterArea
         /*  adverts={adverts}
         setAdverts={setAdverts} */
+        tagvalues={tagvalues}
         filters={filters}
         setFilters={setFilters}
       />
 
-      {error && error.response.status==404 ? <Redirect to="/404"/> :""}
-      {error && error.response.status!=404 ? <Error className="adverts-page-error" error={error}/> : ""}
-       
-      
-     
+      {error && error.response.status == 404 ? <Redirect to="/404" /> : ""}
+      {error && error.response.status != 404 ? (
+        <Error className="adverts-page-error" error={error} />
+      ) : (
+        ""
+      )}
 
       <Layout {...props}>
-        
-          {adverts.length ? (
-            <div>
+        {adverts.length ? (
+          <div>
             <ul className="card-list">
               {adverts
                 /*                 .filter(
@@ -98,12 +101,16 @@ export default function AdvertsPage({ list, requestError, ...props }) {
                     advert.sale === filters.sale && advert.tags === filters.tags
                 ) */
                 .map((advert) => (
-                  <li className="card-list-item"
+                  <li
+                    className="card-list-item"
                     key={
                       advert.id
                     } /* onClick={() => history.push(`/adverts/${id}`)} */
                   >
-                    <Link className="card-list-item-link" to={`/adverts/${advert.id}`}>
+                    <Link
+                      className="card-list-item-link"
+                      to={`/adverts/${advert.id}`}
+                    >
                       <div className="card">
                         <h2>{advert.name}</h2>
                         <p>{advert.price}€</p>
@@ -114,11 +121,10 @@ export default function AdvertsPage({ list, requestError, ...props }) {
                   </li>
                 ))}
             </ul>
-            </div>
-          ) : (
-            <Empty {...props} />
-          )}
-        
+          </div>
+        ) : (
+          <Empty {...props} />
+        )}
       </Layout>
     </>
   );
