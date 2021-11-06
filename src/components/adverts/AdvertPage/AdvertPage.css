@@ -1,0 +1,28 @@
+.card-container {
+  position: relative;
+  left: 24rem;
+  top: 5rem;
+  width: 50%;
+  background-color: #E6E7E8;
+}
+
+.card-image {
+}
+
+.card-info {
+    padding-left: 2rem;
+    font-size: 1.3rem;
+}
+.card-title {
+  font-size: 1.5rem;
+}
+
+.card-tags {
+    font-weight: bold;
+}
+
+.card-delete-button {
+    position:relative;
+    bottom:4rem;
+    left:50rem;
+}

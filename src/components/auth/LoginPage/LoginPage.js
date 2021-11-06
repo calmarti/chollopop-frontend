@@ -2,7 +2,8 @@ import { useState } from "react";
 import Button from "../../shared/Button";
 import { login } from "../service";
 import types, { func, object } from "prop-types";
-
+import Header from "../../layout/Header";
+import './LoginPage.css';
 
 //TODO: implementar funcionalidad de 'recordar contraseña'
 
@@ -40,48 +41,56 @@ export default function LoginPage({ onLogin, history, location }) {
   }
 
   return (
-    <div>
-      <h2>Inicia sesión</h2>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="email">
-          Usuario
-          <input
-            id="email"
-            onChange={handleInputChange}
-            type="text" //considerar cambiar a 'email'
-            name="email"
-            value={credentials.email}
-            autoFocus
-          ></input>
-        </label>
-        <label htmlFor="password">
-          Contraseña
-          <input
-            id="password"
-            onChange={handleInputChange}
-            type="password"
-            name="password"
-            value={credentials.password}
-          ></input>
-        </label>
+    <>
+      <Header history={history} />
+      
+        <h2 className="login-title">Inicia sesión</h2>
 
-        <Button
-          disabled={!credentials.email || !credentials.password}
-          variant="primary"
-          type="submit"
-        >
-          Iniciar Sesión
-        </Button>
-      </form>
-      {error ? <div className="error">{error.message}</div> : null}
-      {loader ? "Loading..." : null}
-    </div>
+          <form onSubmit={handleSubmit}>
+        <div className="login-form-container">
+            <label className="login-form-label" htmlFor="email">
+              Usuario
+              <input
+              className="login-form-input username-input"
+                id="email"
+                onChange={handleInputChange}
+                type="text" //considerar cambiar a 'email'
+                name="email"
+                value={credentials.email}
+                autoFocus
+              ></input>
+            </label>
+            <label className="login-form-label" htmlFor="password">
+              Contraseña
+              <input
+              className="login-form-input"
+                id="password"
+                onChange={handleInputChange}
+                type="password"
+                name="password"
+                value={credentials.password}
+              ></input>
+            </label>
+
+            <Button
+              className="login-form-button"
+              disabled={!credentials.email || !credentials.password}
+              variant="primary"
+              type="submit"
+            >
+              Iniciar Sesión
+            </Button>
+        </div>
+          </form>
+        {error ? <div className="error">{error.message}</div> : null}
+        {loader ? "Loading..." : null}
+      
+    </>
   );
-  
 }
 
 LoginPage.propTypes = {
   onLogin: types.func.isRequired,
   history: types.object.isRequired,
-  location: types.object.isRequired
+  location: types.object.isRequired,
 };

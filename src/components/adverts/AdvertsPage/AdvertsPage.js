@@ -9,13 +9,14 @@ import './FilterArea.css'
 import './AdvertsPage.css';
 
 //TODO: Prioridad: acabar maquetación: login y AdvertPage
-
 //TODO: loader y gestor de errores al hacer llamada al api
 //TODO: Falta implementar los filtros 'name' (regex) y price
 //TODO: Falta crear componente Empty (se renderiza cuando (a) no hay anuncios del todo o (b) los filtros no corresponden a ningun artículo)
 //el componente Empty debe ten un botón que redirija a 'crear anuncio'
 //TODO: Crear componente de Error y reutilizar en NewAdvertsPage, AdvertPage y Login
 //TODO: Problemilla: al crear anuncio hay que hacer refresh para actualizar la lista; busca un workaround!
+//TODO: arreglar error de cannot read properties of undefined (reading 'data') que lanza cuando no hay backend
+//TODO: no olvidar los propTypes
 
 export default function AdvertsPage({ list, requestError, ...props }) {
   function Empty(props) {
@@ -107,9 +108,9 @@ export default function AdvertsPage({ list, requestError, ...props }) {
                     <Link className="card-list-item-link" to={`/adverts/${advert.id}`}>
                       <div className="card">
                         <h2>{advert.name}</h2>
-                        <p>{advert.price}</p>
-                        <p>{advert.sale ? "Venta" : "Compra"}</p>
-                        <p>{advert.tags.join(" ")}</p>
+                        <p>{advert.price}€</p>
+                        <p>{advert.sale ? "Vendo" : "Compro"}</p>
+                        <p>{advert.tags.join(", ")}</p>
                       </div>
                     </Link>
                   </li>

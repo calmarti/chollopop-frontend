@@ -5,9 +5,10 @@ import Layout from "../../layout/Layout";
 import { deleteAdvert, getAdvert } from "../service";
 import Button from "../../shared/Button";
 import Modal from "../../shared/Modal";
-
+import placeholder from '../../../assets/default_photo.jpg';
+import './AdvertPage.css';
+//TODO: IMPORTANTE: Corregir error 401 (inexistente?) al ir al home tras login > new en ciertos casos (el problema está en la redireccion desde App)
 //TODO: Falta la cancelación de la petición (getAdvert) en el useEffect (ver clase 5 a partir de min 2:37)
-
 
 export default function AdvertPage({ match, history, ...props }) {
   const [advert, setAdvert] = useState([]); // null en vez de [] para que renderice la 1º vez pero debería ser null!
@@ -53,19 +54,24 @@ export default function AdvertPage({ match, history, ...props }) {
 
   return (
     <Layout history={history} {...props}>
-      <div className="item-card">
-        {advert.photo ? (
-          <img src={`http://localhost:3001${advert.photo}`} alt={advert.name} />
-        ) : (
-          <div>"No hay foto"</div>
-        )}
-        <h2>{advert.name}</h2>
-        <p>{advert.price}</p>
-        <p>{advert.sale ? "Venta" : "Compra"}</p>
-        <p>{advert.tags /* .join(" ") */}</p> {/*arreglar esto*/}
+      <div className="card-container">
+        <img className="card-image"
+          src={
+            advert.photo
+              ? `http://localhost:3001${advert.photo}`
+              : placeholder
+          }
+          alt={advert.name}
+        />
+        <div className="card-info">
+        <h2 className="card-title">{advert.name}</h2>
+        <p>{advert.price}€</p>
+        <p>{advert.sale ? "Vendo" : "Compro"}</p>
+        <p className="card-tags">Categorías:&nbsp; {advert.tags ? advert.tags.join(", ") :advert.tags}</p> 
+        </div>
+      <Button className="card-delete-button" onClick={modalProps.showModal}>Borrar</Button>
       </div>
-      <div>{match.params.id}</div>
-      <Button onClick={modalProps.showModal}>Borrar</Button>
+      <span>{match.params.id}</span>
       <Modal handleClick={handleDelete} {...modalProps} />
     </Layout>
   );
