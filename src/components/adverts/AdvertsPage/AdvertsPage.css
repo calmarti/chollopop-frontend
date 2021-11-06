@@ -20,3 +20,13 @@
   padding: 1.5rem;
   width: 20rem;
 }
+
+.adverts-page-error {
+  position: relative;
+  top:-5.5em;
+  left:40rem;
+  background-color: #eec0c8;
+  width:30%;
+  text-align: center;
+  padding: 0.5rem;
+}

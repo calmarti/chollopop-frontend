@@ -17,13 +17,13 @@ import { getAdverts } from "./components/adverts/service";
 
 function App({ isAlreadyLogged }) {
   const [isLogged, setIsLogged] = useState(isAlreadyLogged);
-  const [error, setError] = useState(null); 
+  const [appError, setAppError] = useState(null); 
   const [list, setList] = useState([]);
 
   useEffect(() => {
     getAdverts()
       .then((adverts) => setList(adverts))
-      .catch((error) => setError(error.response.data));
+      .catch((error) => setAppError(error));
   }, []);
 
   function handleIsLogged() {
@@ -54,7 +54,7 @@ function App({ isAlreadyLogged }) {
           <PrivateRoute path="/adverts/new" component={NewAdvertPage} />
           <PrivateRoute path="/adverts/:id" component={AdvertPage} />
           <PrivateRoute path="/adverts">
-              {(props) => <AdvertsPage list={list} requestError={error} {...props} />}
+              {(props) => <AdvertsPage list={list} requestError={appError} {...props} />}
               </PrivateRoute>       
           <Route exact path="/">
             <Redirect to="/adverts" />

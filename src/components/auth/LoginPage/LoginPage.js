@@ -4,6 +4,9 @@ import { login } from "../service";
 import types, { func, object } from "prop-types";
 import Header from "../../layout/Header";
 import './LoginPage.css';
+import Error from '../../shared/Error';
+
+
 
 //TODO: implementar funcionalidad de 'recordar contraseña'
 
@@ -39,10 +42,14 @@ export default function LoginPage({ onLogin, history, location }) {
         setError(error);
       });
   }
-
+  
+  
   return (
+        
     <>
       <Header history={history} />
+
+    {error ? <Error className="login-error" error={error} /> : ""}
       
         <h2 className="login-title">Inicia sesión</h2>
 

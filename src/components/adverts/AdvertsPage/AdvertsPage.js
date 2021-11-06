@@ -2,25 +2,26 @@ import { useEffect, useState, useRef, useContext, Fragment } from "react";
 import Layout from "../../layout/Layout";
 import { getAdverts } from "../service";
 import AuthContext from "../../auth/context";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import types, { func } from "prop-types";
 import FilterArea from "./FilterArea";
 import Empty from "../../shared/Empty";
 import './FilterArea.css'
 import './AdvertsPage.css';
-
+import Error from "../../shared/Error";
 
 //TODO: loader y gestor de errores al hacer llamada al api
 //TODO: Falta implementar los filtros 'name' (regex) y price
-//TODO: Falta crear componente Empty (se renderiza cuando (a) no hay anuncios del todo o (b) los filtros no corresponden a ningun artículo)
-//el componente Empty debe ten un botón que redirija a 'crear anuncio'
-//TODO: Crear componente de Error y reutilizar en NewAdvertsPage, AdvertPage y Login
+//TODO: asegurarme de que se renderiza Empty cuando la combinación de filtros no existe
+//TODO: estilos del error en LoginPage NO se activan
 //TODO: Problemilla: al crear anuncio hay que hacer refresh para actualizar la lista; busca un workaround!
 //TODO: arreglar error de cannot read properties of undefined (reading 'data') que lanza cuando no hay backend
 //TODO: no olvidar los propTypes
 //TODO: poner algo más decente en la página 404
+//TODO: poner index en carpetas AdvertsPage, AdvertPage y NewAdvertPage
 
 export default function AdvertsPage({ list, requestError, ...props }) {
+
 
   const [adverts, setAdverts] = useState([]);
   const [error, setError] = useState(null);
@@ -33,9 +34,9 @@ export default function AdvertsPage({ list, requestError, ...props }) {
   });
 
   useEffect(() => {
-    setAdverts([]);
+    setAdverts(list);
     console.log(adverts, adverts.length);
-  }, [list]);
+  },[list]);
 
   useEffect(() => {
     setError(requestError);
@@ -78,14 +79,13 @@ export default function AdvertsPage({ list, requestError, ...props }) {
         filters={filters}
         setFilters={setFilters}
       />
-      {error ? (
-        <div className="error">
-          {" "}
-          Error {error.statusCode}: {error.message}{" "}
-        </div>
-      ) : (
-        ""
-      )}
+
+      {error && error.response.status==404 ? <Redirect to="/404"/> :""}
+      {error && error.response.status!=404 ? <Error className="adverts-page-error" error={error}/> : ""}
+       
+      
+ 
+     
 
       <Layout {...props}>
         
