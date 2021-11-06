@@ -1,14 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "../../shared/Button";
 import { login } from "../service";
 import types, { func, object } from "prop-types";
 import Header from "../../layout/Header";
-import './LoginPage.css';
-import Error from '../../shared/Error';
-
-
+import "./LoginPage.css";
+import Error from "../../shared/Error";
+import storage from "../../../utils/storage";
 
 //TODO: implementar funcionalidad de 'recordar contraseña'
+//TODO: borrar boton de iniciar sesión de la navbar
 
 export default function LoginPage({ onLogin, history, location }) {
   const [credentials, setCredentials] = useState({
@@ -17,6 +17,21 @@ export default function LoginPage({ onLogin, history, location }) {
   });
   const [error, setError] = useState(null);
   const [loader, setLoader] = useState(false);
+  const [reminder, setReminder] = useState(false);
+
+  useEffect(() => {
+    if (reminder){
+    const remindedEmail = storage.get("email");
+    const remindedPassword = storage.get("password");
+    if (remindedEmail || remindedPassword){
+      setCredentials({ email: remindedEmail, password: remindedPassword });
+    }
+  }
+
+ /*    else{
+    setCredentials(( {email:'', password:''}))
+    } */
+  }, [reminder]);
 
   function handleInputChange(event) {
     setCredentials((prevState) => ({
@@ -32,6 +47,10 @@ export default function LoginPage({ onLogin, history, location }) {
       .then(() => {
         setLoader(false);
         onLogin();
+        if (reminder) {
+          storage.set("email", credentials.email);
+          storage.set("password", credentials.password);
+        }
         const { from } = location.state || { from: "/adverts" };
         history.replace(from);
       })
@@ -42,56 +61,69 @@ export default function LoginPage({ onLogin, history, location }) {
         setError(error);
       });
   }
-  
-  
+
+  function switchReminder() {
+    reminder ? setReminder(false) : setReminder(true);
+  }
+
   return (
-        
     <>
       <Header history={history} />
 
-    {error ? <Error className="login-error" error={error} /> : ""}
-      
-        <h2 className="login-title">Inicia sesión</h2>
+      {error ? <Error className="login-error" error={error} /> : ""}
 
-          <form onSubmit={handleSubmit}>
+      <h2 className="login-title">Inicia sesión</h2>
+
+      <form onSubmit={handleSubmit}>
         <div className="login-form-container">
-            <label className="login-form-label" htmlFor="email">
-              Usuario
-              <input
+          <label className="login-form-label" htmlFor="email">
+            Usuario
+            <input
               className="login-form-input username-input"
-                id="email"
-                onChange={handleInputChange}
-                type="text" //considerar cambiar a 'email'
-                name="email"
-                value={credentials.email}
-                autoFocus
-              ></input>
-            </label>
-            <label className="login-form-label" htmlFor="password">
-              Contraseña
-              <input
+              id="email"
+              onChange={handleInputChange}
+              type="email" //considerar cambiar a 'email'
+              name="email"
+              value={credentials.email}
+              autoFocus
+            ></input>
+          </label>
+          <label className="login-form-label" htmlFor="password">
+            Contraseña
+            <input
               className="login-form-input"
-                id="password"
-                onChange={handleInputChange}
-                type="password"
-                name="password"
-                value={credentials.password}
-              ></input>
-            </label>
+              id="password"
+              onChange={handleInputChange}
+              type="password"
+              name="password"
+              value={credentials.password}
+            ></input>
+          </label>
 
-            <Button
-              className="login-form-button"
-              disabled={!credentials.email || !credentials.password}
-              variant="primary"
-              type="submit"
-            >
-              Iniciar Sesión
-            </Button>
+          <label className="reminder-label" htmlFor="reminder">
+            Recordar mis datos
+            <input
+              className="reminder-input"
+              checked={reminder}
+              onChange={switchReminder}
+              type="checkbox"
+              name="reminder"
+              id="reminder"
+            />
+          </label>
+
+          <Button
+            className="login-form-button"
+            disabled={ !credentials.email || !credentials.password }
+            variant="primary"
+            type="submit"
+          >
+            Iniciar Sesión
+          </Button>
         </div>
-          </form>
-        {error ? <div className="error">{error.message}</div> : null}
-        {loader ? "Loading..." : null}
-      
+      </form>
+      {error ? <div className="error">{error.message}</div> : null}
+      {loader ? "Loading..." : null}
     </>
   );
 }

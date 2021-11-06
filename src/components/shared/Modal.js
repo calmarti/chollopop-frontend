@@ -8,8 +8,8 @@ export default function Modal({ isModalOn, modalMessage, hideModal, handleClick 
     <div className={classNames("modal", { "show-modal": isModalOn })}>
       <section className="modal-section">
         {modalMessage}
-        <button onClick={hideModal}>Cancelar</button>
-        <button onClick={handleClick}>Ok</button>
+        <button className="modal-button" onClick={hideModal}>Cancelar</button>
+        <button className="modal-button" onClick={handleClick}>Ok</button>
       </section>
     </div>
   );

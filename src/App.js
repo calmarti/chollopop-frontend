@@ -21,10 +21,12 @@ function App({ isAlreadyLogged }) {
   const [list, setList] = useState([]);
 
   useEffect(() => {
+    if (isLogged){
     getAdverts()
       .then((adverts) => setList(adverts))
       .catch((error) => setAppError(error));
-  }, []);
+    }
+  }, [isLogged]);
 
   function handleIsLogged() {
     setIsLogged(true);

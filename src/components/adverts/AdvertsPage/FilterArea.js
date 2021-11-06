@@ -5,28 +5,10 @@ import "rc-slider/assets/index.css";
 import "./FilterArea.css";
 
 
-//OJO: Es un filtro en el front, hay que traerse todos los anuncios en la llamada al backend
-//y filtrar con un array.filter()
-
 export default function FilterArea({ filters, setFilters }) {
-  /*   useEffect(() => {
-    //Implementar los filtros como cambios del estado filters
-    setAdverts((adverts) =>
-      adverts.filter((advert) => advert.sale === filters.sale)
-    );
-  }, [filters]); */
+
 
   //el input adverts debe inicializarse a 'TODOS' tras cada filtrado
-
-  /*    const filterAdverts = (event) => {
-    console.log('entra')
-    event.preventDefault()
-    setAdverts((adverts) => adverts.filter((advert) => (
-      //advert.name === filters.name &&
-      advert.sale === filters.sale 
-      //advert.tags === filters.tags
-      )));
-  }; */
 
 
   const handleOnChange = (event) => {
@@ -163,7 +145,7 @@ export default function FilterArea({ filters, setFilters }) {
               onChange={handleOnChange}
               multiple={true}
             >
-              <option value={[]}>All</option>
+              <option value={[""]}>All</option>
               <option value="lifestyle">Lifestyle</option>
               <option value="mobile">Mobile</option>
               <option value="motor">Motor</option>

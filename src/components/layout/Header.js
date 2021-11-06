@@ -6,10 +6,6 @@ import AuthContext from "../auth/context";
 import Modal from "../shared/Modal";
 
 //TODO: LEER SIEMPRE LA PARTE RELEVANTE DEL ENUNCIADO ANTES DE CREAR ALGO NUEVO!!!!!!!!!!!!!!!!
-//TODO: Estilos a header y navbar minimamente funcionales (botones dentro y barra fija)
-//por último: botón 'crear anuncio' sólo en AdvertsPage y AdvertPage (fuera de NewAdvertPage)
-
-//TODO: Un componente Card reutilizable para AdvertsPage (flexbox con Cards) y AdvertPage 
 
 //TODO: en el enunciado dice que los enlaces deben ser con Link, revisar video a ver si tambien le vale history.push
 
@@ -61,9 +57,7 @@ export default function Header({ history, ...props }) {
             </Button>
           </>
         ) : (
-          <Button className="header-button" to="/login" as={Link}>
-            Iniciar sesión
-          </Button>
+         ''
         )}
       </nav>
     </header>

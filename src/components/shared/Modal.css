@@ -10,11 +10,12 @@
 
  
   .modal-section {
+    padding:1.5rem 1rem;
     position:fixed;
-    background: white;
+    background:#e6e7e8;
     width: auto;
     height: auto;
-    top:7%;
+    top:15%;
     left:50%;
     transform: translate(-50%,-50%);
   }
@@ -23,4 +24,7 @@
     display: block;
   }
   
+  .modal-button{
+    margin-left:0.75rem;
+  }
   

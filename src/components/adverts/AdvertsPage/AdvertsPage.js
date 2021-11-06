@@ -10,6 +10,8 @@ import './FilterArea.css'
 import './AdvertsPage.css';
 import Error from "../../shared/Error";
 
+
+//TODO: Bajar el mensaje de confirmación tanto del Header como del AdvertPage (borrar anuncio)
 //TODO: loader y gestor de errores al hacer llamada al api
 //TODO: Falta implementar los filtros 'name' (regex) y price
 //TODO: asegurarme de que se renderiza Empty cuando la combinación de filtros no existe
