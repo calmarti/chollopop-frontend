@@ -5,10 +5,11 @@ import AuthContext from "../../auth/context";
 import { Link } from "react-router-dom";
 import types, { func } from "prop-types";
 import FilterArea from "./FilterArea";
+import Empty from "../../shared/Empty";
 import './FilterArea.css'
 import './AdvertsPage.css';
 
-//TODO: Prioridad: acabar maquetación: login y AdvertPage
+
 //TODO: loader y gestor de errores al hacer llamada al api
 //TODO: Falta implementar los filtros 'name' (regex) y price
 //TODO: Falta crear componente Empty (se renderiza cuando (a) no hay anuncios del todo o (b) los filtros no corresponden a ningun artículo)
@@ -17,12 +18,9 @@ import './AdvertsPage.css';
 //TODO: Problemilla: al crear anuncio hay que hacer refresh para actualizar la lista; busca un workaround!
 //TODO: arreglar error de cannot read properties of undefined (reading 'data') que lanza cuando no hay backend
 //TODO: no olvidar los propTypes
+//TODO: poner algo más decente en la página 404
 
 export default function AdvertsPage({ list, requestError, ...props }) {
-  function Empty(props) {
-    return "Empty";
-    //TODO: call to action para crear el primer anuncio
-  }
 
   const [adverts, setAdverts] = useState([]);
   const [error, setError] = useState(null);
@@ -35,7 +33,7 @@ export default function AdvertsPage({ list, requestError, ...props }) {
   });
 
   useEffect(() => {
-    setAdverts(list);
+    setAdverts([]);
     console.log(adverts, adverts.length);
   }, [list]);
 
@@ -118,7 +116,7 @@ export default function AdvertsPage({ list, requestError, ...props }) {
             </ul>
             </div>
           ) : (
-            <Empty />
+            <Empty {...props} />
           )}
         
       </Layout>

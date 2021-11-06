@@ -10,6 +10,7 @@ import './AdvertPage.css';
 //TODO: IMPORTANTE: Corregir error 401 (inexistente?) al ir al home tras login > new en ciertos casos (el problema está en la redireccion desde App)
 //TODO: Falta la cancelación de la petición (getAdvert) en el useEffect (ver clase 5 a partir de min 2:37)
 
+
 export default function AdvertPage({ match, history, ...props }) {
   const [advert, setAdvert] = useState([]); // null en vez de [] para que renderice la 1º vez pero debería ser null!
   const [error, setError] = useState(null);

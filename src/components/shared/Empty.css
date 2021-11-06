@@ -1,0 +1,22 @@
+.empty-container {
+    position:relative;
+    top:1rem;
+    left:12rem;
+    width:60%;
+    height: 100%;
+    border: solid 1px black;
+    padding:5rem 10rem 5rem 10rem;
+    background-color: #E6E7E8;
+}
+
+.empty-main-message {
+    font-size: 1.5rem;;
+    text-align: center;
+}
+
+.empty-call-to-action {
+    padding-top:1.5rem;
+    position:relative;
+    left:24rem;
+    font-size: 1.25rem;
+}
