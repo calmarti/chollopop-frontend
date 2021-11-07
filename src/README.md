@@ -67,7 +67,7 @@ La aplicación tiene las siguientes funcionalidades básicas:
 -Visualizar el detalle de un anuncio
 
 -Buscar anuncios según los criterios: nombre, compra/venta y categorías
-(la búsqueda por rango de precios será añadida en la próxima versión) 
+(la búsqueda por rango de precios está aún en desarrollo)
 
 -Borrar un anuncio (previa confirmación)
 
@@ -80,6 +80,8 @@ La aplicación tiene las siguientes funcionalidades básicas:
 - **Bug**: Al crear o borrar un anuncio, la lista total no se actualiza de inmediato (debido justamente al punto anterior). Por tanto, para ver reflejado el cambio en el listado de anuncios es necesario refrescar la página. 
 
 - **Bug**: Si bien la petición de una ruta no existente redirige a la página 404, la llamada al API para traer el listado de anuncios muestra a veces un error 404, *en lugar de redirigir* a la página 404.
+
+- La incorporación de algunos **warnings de React** rompían  funcionalidades de la aplicación. Por tanto, se optó por ignorarlos de momento.  
 
 - El **componente Empty** muestra el estado de ausencia de anuncios. Su renderizado es condicional según la causa de dicha ausencia
 (base de datos vacía o una combinación de filtros que arroja un listado vacío) 

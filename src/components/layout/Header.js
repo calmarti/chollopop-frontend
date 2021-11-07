@@ -5,7 +5,6 @@ import { useContext, useState } from "react";
 import AuthContext from "../auth/context";
 import Modal from "../shared/Modal";
 
-
 export default function Header({ history, ...props }) {
   const [isModalOn, setIsModalOn] = useState(false);
 
