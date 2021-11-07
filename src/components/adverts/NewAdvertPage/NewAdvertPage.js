@@ -8,7 +8,6 @@ import Header from "../../layout/Header.js";
 import Error from "../../shared/Error";
 import "../../layout/Header.css";
 
-
 export default function NewAdvertPage({ ...props }) {
   const [fields, setFields] = useState({
     name: "",
@@ -47,7 +46,6 @@ export default function NewAdvertPage({ ...props }) {
       }));
     } else if (event.target.type === "select-multiple") {
       const selected = event.target.selectedOptions;
-      console.log(selected);
       const tagsValues = [];
 
       Array.from(selected).forEach((tag) => {
@@ -76,13 +74,9 @@ export default function NewAdvertPage({ ...props }) {
     try {
       const data = new FormData(event.target);
       data.set["photo"] = photoRef.current.value;
-
       const response = await postNewAdvert(data);
-      console.log(response);
       setNewAdvertId(response.id);
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 
   if (newAdvertId) {
@@ -165,11 +159,6 @@ export default function NewAdvertPage({ ...props }) {
                       {tagvalue}{" "}
                     </option>
                   ))}
-
-                  {/*                   <option value="lifestyle">Lifestyle</option>
-                  <option value="mobile">Mobile</option>
-                  <option value="motor">Motor</option>
-                  <option value="work">Work</option> */}
                 </select>
               </label>
 

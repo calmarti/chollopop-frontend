@@ -3,7 +3,6 @@ import "./FilterArea.css";
 import Types from "prop-types";
 
 export default function FilterArea({ filters, setFilters, tagvalues }) {
-
   const handleOnChange = (event) => {
     if (event.target.type === "text" || event.target.type === "number") {
       setFilters((prevState) => ({
@@ -25,7 +24,6 @@ export default function FilterArea({ filters, setFilters, tagvalues }) {
   };
 
   const handleRadio = (event) => {
-    console.log(event.target.type, event.target.name, event.target.value);
     setFilters((prevState) =>
       event.target.checked
         ? { ...prevState, sale: event.target.value === "true" ? true : false }

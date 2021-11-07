@@ -6,34 +6,31 @@ import { deleteAdvert, getAdvert } from "../service";
 import Button from "../../shared/Button";
 import Modal from "../../shared/Modal";
 import placeholder from "../../../assets/default_photo.jpg";
-import Error from '../../shared/Error';
+import Error from "../../shared/Error";
 import "./AdvertPage.css";
 
-
 export default function AdvertPage({ match, history, ...props }) {
-  const [advert, setAdvert] = useState([]); 
+  const [advert, setAdvert] = useState([]);
   const [error, setError] = useState(null);
   const [isModalOn, setIsModalOn] = useState(false);
 
-  useEffect(async() => {
+  useEffect(async () => {
     try {
       const id = match.params.id;
       const advert = await getAdvert(id);
       setAdvert(advert);
     } catch (error) {
       setError(error);
-          }
+    }
   }, [match.params.id]);
-
 
   if (error && error.response.data.statusCode == 404) {
     return <Redirect to="/404" />;
   }
 
   if (error && error.response.data.statusCode != 404) {
-    <Error error={error} />
+    <Error error={error} />;
   }
-
 
   const modalProps = {
     isModalOn: isModalOn,

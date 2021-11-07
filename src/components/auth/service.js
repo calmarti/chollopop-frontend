@@ -12,17 +12,13 @@ export function login(credentials) {
       storage.set("AUTH_TOKEN", accessToken);
     })
     .catch((error) => {
-      //console.log(error)
       throw error;
-      //gestionar todos los posibles errores
     });
 }
 
 export const logout = () => {
-  return new Promise (function(resolve){
-    //valorar si en este caso también falta quitar el token de los headers (supongo que sí ya que David lo hace!)
+  return new Promise(function (resolve) {
     storage.remove("AUTH_TOKEN");
     resolve();
-  })
-}
-
+  });
+};

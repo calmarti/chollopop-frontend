@@ -9,11 +9,6 @@ import "./FilterArea.css";
 import "./AdvertsPage.css";
 import Error from "../../shared/Error";
 
-//TODO: meter en el README aquello que sé que debería funcionar y no funciona
-
-//TODO: poner index en carpetas AdvertsPage, AdvertPage y NewAdvertPage
-
-
 export default function AdvertsPage({ list, requestError, ...props }) {
   const [adverts, setAdverts] = useState([]);
   const [error, setError] = useState(null);
@@ -37,11 +32,9 @@ export default function AdvertsPage({ list, requestError, ...props }) {
     setAdverts(list);
   }, [list, filters]);
 
-    useEffect(() => {
+  useEffect(() => {
     setError(requestError);
-  },[]);
-
-  //[]
+  }, []);
 
   useEffect(() => {
     if (filters.name) {

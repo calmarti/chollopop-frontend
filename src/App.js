@@ -41,7 +41,6 @@ function App({ isAlreadyLogged }) {
 
   return appError && appError !== 404 ? (
     <Error className="app-error" error={appError} />
-
   ) : (
     <Router>
       <AuthProvider value={{ isLogged, handleIsLogged, handleLogout }}>

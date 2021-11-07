@@ -3,7 +3,6 @@
   flex-flow: row wrap;
   gap: 4rem;
   list-style-type: none;
- 
 }
 
 .card-list-item {
@@ -23,10 +22,10 @@
 
 .adverts-page-error {
   position: relative;
-  top:-5.5em;
-  left:40rem;
+  top: -5.5em;
+  left: 40rem;
   background-color: #eec0c8;
-  width:30%;
+  width: 30%;
   text-align: center;
   padding: 0.5rem;
 }
