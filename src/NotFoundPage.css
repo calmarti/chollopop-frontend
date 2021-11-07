@@ -1,0 +1,16 @@
+.not-found-container {
+  position: relative;
+  top: 10rem;
+  left: 40rem;
+  background-color: #e6e7e8;
+  width: 30%;
+  padding: 2rem;
+}
+
+.not-found-status {
+  font-size: 2rem;
+}
+
+.not-found-message {
+  font-weight: bold;
+}

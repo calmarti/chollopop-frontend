@@ -9,16 +9,9 @@ import "./FilterArea.css";
 import "./AdvertsPage.css";
 import Error from "../../shared/Error";
 
-
-
 //TODO: meter en el README aquello que sé que debería funcionar y no funciona
 
-//TODO: probar a ver si coge la .ENV en el client
-
 //TODO: poner index en carpetas AdvertsPage, AdvertPage y NewAdvertPage
-
-//TODO: hacer el componente 404
-
 
 
 export default function AdvertsPage({ list, requestError, ...props }) {
@@ -44,9 +37,9 @@ export default function AdvertsPage({ list, requestError, ...props }) {
     setAdverts(list);
   }, [list, filters]);
 
-  useEffect(() => {
+    useEffect(() => {
     setError(requestError);
-  }, [requestError]);
+  },[]);
 
   //[]
 
@@ -86,8 +79,9 @@ export default function AdvertsPage({ list, requestError, ...props }) {
         setFilters={setFilters}
       />
 
-      {error && error.response.status === 404 ? <Redirect to="/404" /> : ""}
-      {error && error.response.status !== 404 ? (
+      {error && error.status === 404 ? <Redirect to="/404" /> : ""}
+
+      {error && error.status !== 404 ? (
         <Error className="adverts-page-error" error={error} />
       ) : (
         ""
@@ -97,27 +91,21 @@ export default function AdvertsPage({ list, requestError, ...props }) {
         {adverts.length ? (
           <div>
             <ul className="card-list">
-              {adverts
-                .map((advert) => (
-                  <li
-                    className="card-list-item"
-                    key={
-                      advert.id
-                    } 
+              {adverts.map((advert) => (
+                <li className="card-list-item" key={advert.id}>
+                  <Link
+                    className="card-list-item-link"
+                    to={`/adverts/${advert.id}`}
                   >
-                    <Link
-                      className="card-list-item-link"
-                      to={`/adverts/${advert.id}`}
-                    >
-                      <div className="card">
-                        <h2>{advert.name}</h2>
-                        <p>{advert.price}€</p>
-                        <p>{advert.sale ? "Vendo" : "Compro"}</p>
-                        <p>{advert.tags.join(", ")}</p>
-                      </div>
-                    </Link>
-                  </li>
-                ))}
+                    <div className="card">
+                      <h2>{advert.name}</h2>
+                      <p>{advert.price}€</p>
+                      <p>{advert.sale ? "Vendo" : "Compro"}</p>
+                      <p>{advert.tags.join(", ")}</p>
+                    </div>
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
         ) : (

@@ -16,7 +16,7 @@ import { logout } from "./components/auth/service";
 import { getAdverts } from "./components/adverts/service";
 import Error from "./components/shared/Error";
 import Types from "prop-types";
-
+import NotFoundPage from "./NotFoundPage";
 
 function App({ isAlreadyLogged }) {
   const [isLogged, setIsLogged] = useState(isAlreadyLogged);
@@ -29,7 +29,7 @@ function App({ isAlreadyLogged }) {
         .then((adverts) => setList(adverts))
         .catch((error) => setAppError(error));
     }
-  }, [isLogged]); 
+  }, [isLogged]);
 
   function handleIsLogged() {
     setIsLogged(true);
@@ -39,15 +39,10 @@ function App({ isAlreadyLogged }) {
     logout().then(() => setIsLogged(false));
   }
 
+  return appError && appError !== 404 ? (
+    <Error className="app-error" error={appError} />
 
-    
-  return ( 
-
-   appError && appError.statusCode!==404) ? (
-    <Error className="app-error" error={appError} />  
-  ) : ( 
-
-
+  ) : (
     <Router>
       <AuthProvider value={{ isLogged, handleIsLogged, handleLogout }}>
         <Switch>
@@ -74,7 +69,9 @@ function App({ isAlreadyLogged }) {
           <Route exact path="/">
             <Redirect to="/adverts" />
           </Route>
-          <Route path="/404">Not Found</Route>
+          <Route path="/404">
+            <NotFoundPage />
+          </Route>
           <Route>
             <Redirect to="/404" />
           </Route>
@@ -85,10 +82,7 @@ function App({ isAlreadyLogged }) {
 }
 
 App.propTypes = {
-  isAlreadyLogged: Types.bool.isRequired
+  isAlreadyLogged: Types.bool.isRequired,
 };
 
 export default App;
-
-
-
