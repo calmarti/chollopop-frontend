@@ -25,12 +25,12 @@ import Error from "../../shared/Error";
 //TODO: no olvidar los propTypes
 //TODO: poner algo más decente en la página 404
 //TODO: poner index en carpetas AdvertsPage, AdvertPage y NewAdvertPage
-//TODO: Falta implementar los filtros 'name' (regex)
+
 
 
 export default function AdvertsPage({ list, requestError, ...props }) {
   const [adverts, setAdverts] = useState([]);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState(null); 
   const [filters, setFilters] = useState({
     name: "",
     price: "",
@@ -41,22 +41,23 @@ export default function AdvertsPage({ list, requestError, ...props }) {
   const [tagvalues, setTagValues] = useState([]);
 
   useEffect(() => {
-    const getTags = async() => {
+    const getTagsWrapper = async() => {
     const result = await getAdvertTags();
     setTagValues(result);
     }
-    getTags();
+    getTagsWrapper();
   }, []);
 
   useEffect(() => {
     setAdverts(list);
     console.log(adverts, adverts.length);
-  }, [list, filters]);
-
+  },[list, filters]);
 
   useEffect(() => {
     setError(requestError);
-  });
+  }, [requestError]);
+
+  //[]
 
   useEffect(() => {
     if (filters.name) {
@@ -67,15 +68,13 @@ export default function AdvertsPage({ list, requestError, ...props }) {
     }
 
     if (filters.sale !== "") {
-      //setAdverts(list);
-      setAdverts((adverts) =>
+        setAdverts((adverts) =>
         adverts.filter((advert) => advert.sale === filters.sale)
       );
     }
 
     if (JSON.stringify(filters.tags) !== '[""]') {
-      //console.log("tags", filters.tags);
-      setAdverts((adverts) =>
+        setAdverts((adverts) =>
         adverts.filter(
           (advert) =>
             JSON.stringify(advert.tags) === JSON.stringify(filters.tags)
@@ -94,8 +93,8 @@ export default function AdvertsPage({ list, requestError, ...props }) {
         setFilters={setFilters}
       />
 
-      {error && error.response.status == 404 ? <Redirect to="/404" /> : ""}
-      {error && error.response.status != 404 ? (
+      {error && error.response.status === 404 ? <Redirect to="/404" /> : ""}
+      {error && error.response.status !== 404 ? (
         <Error className="adverts-page-error" error={error} />
       ) : (
         ""

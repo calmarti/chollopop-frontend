@@ -1,12 +1,9 @@
 import React from "react";
 import "./FilterArea.css";
-
-
+import Types from "prop-types";
 
 export default function FilterArea({ filters, setFilters, tagvalues }) {
-
   //el input adverts debe inicializarse a 'TODOS' tras cada filtrado
-
 
   const handleOnChange = (event) => {
     if (event.target.type === "text" || event.target.type === "number") {
@@ -45,7 +42,7 @@ export default function FilterArea({ filters, setFilters, tagvalues }) {
         <div className="form-container">
           <label className="filter-label" htmlFor="name">
             Artículo
-            <input 
+            <input
               type="text"
               id="name"
               name="name"
@@ -55,12 +52,10 @@ export default function FilterArea({ filters, setFilters, tagvalues }) {
             />
           </label>
 
-          <label htmlFor="price">Precio
-          <input type="range" id="price" name="price" min="0" max="1000000" />
+          <label htmlFor="price">
+            Precio
+            <input type="range" id="price" name="price" min="0" max="1000000" />
           </label>
-
-
-
 
           <label className="filter-label" htmlFor="sale">
             Venta
@@ -79,7 +74,6 @@ export default function FilterArea({ filters, setFilters, tagvalues }) {
               name="sale"
               type="radio"
               value={false}
-              //onChange={(prevState) => setfilters({...prevState, sale:false})}
               checked={filters.sale === false}
               onChange={handleRadio}
             />
@@ -89,9 +83,8 @@ export default function FilterArea({ filters, setFilters, tagvalues }) {
             Todos
             <input
               name="sale"
-              type="radio" /* name="sale"  */
+              type="radio"
               value=""
-              //onChange={(prevState) => setfilters({...prevState, sale:false})}
               checked={filters.sale === ""}
               onChange={(event) =>
                 setFilters((prevState) =>
@@ -114,13 +107,12 @@ export default function FilterArea({ filters, setFilters, tagvalues }) {
               multiple={true}
             >
               <option value={[""]}>all</option>
-              {tagvalues.map((tagvalue, index) => <option key={index} value={tagvalue}> {tagvalue} </option>)}
-
-
-             {/*  <option value="lifestyle">Lifestyle</option>
-              <option value="mobile">Mobile</option>
-              <option value="motor">Motor</option>
-              <option value="work">Work</option> */}
+              {tagvalues.map((tagvalue, index) => (
+                <option key={index} value={tagvalue}>
+                  {" "}
+                  {tagvalue}{" "}
+                </option>
+              ))}
             </select>
           </label>
         </div>
@@ -128,3 +120,9 @@ export default function FilterArea({ filters, setFilters, tagvalues }) {
     </div>
   );
 }
+
+FilterArea.propTypes = {
+  filters: Types.object.isRequired,
+  setFilters: Types.func.isRequired,
+  tagvalues: Types.array.isRequired,
+};

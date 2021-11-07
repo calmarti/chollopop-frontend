@@ -1,9 +1,9 @@
 
 
-export default function Error({ className, error , errorStyle}) {
+export default function Error({ className, error}) {
   return (
-    <p className={className} /* style={errorStyle} */>
-      Error {error.response.status}: {error.message}
+    <p className={className} >
+      {error.statusCode}  {error.message}
     </p>
   );
 }

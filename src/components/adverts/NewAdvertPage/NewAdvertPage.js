@@ -9,10 +9,9 @@ import "../../layout/Header.css";
 
 //TODO: en navbar no debe aparecer botón 'Crear Anuncio' (condicional en Header.js)
 
-//TODO: eliminar botón 'crear anuncio' en el Header cuando estoy en esta página
-
 
 export default function NewAdvertPage({ ...props }) {
+
   const [fields, setFields] = useState({
     name: "",
     price: "",
@@ -21,11 +20,14 @@ export default function NewAdvertPage({ ...props }) {
     photo: null,
   });
 
+  const [isHere, setIsHere] = useState(true)
   const [tagvalues, setTagValues] = useState([]);
+  
   const [newAdvertId, setNewAdvertId] = useState("");
+  
   const photoRef = useRef(null);
 
-  useEffect(async() => {
+  useEffect(()=> async() => {
     const result = await getAdvertTags();
     setTagValues(result);
   }, []);
@@ -94,7 +96,7 @@ export default function NewAdvertPage({ ...props }) {
 
   return (
     <>
-    <Header {...props} />
+    <Header isHere={isHere} {...props} />
      
       <div className="new-advert-container">
       <h2 className="new-advert-title">Crea tu anuncio</h2>
@@ -198,9 +200,5 @@ export default function NewAdvertPage({ ...props }) {
 
 
 
-
-
-//tal vez conviene aquí un type de tipo shape (clase 5, min 0:30)
-//si necesito que algo tenga la propiedad length lo debo definir de tipo
 
 

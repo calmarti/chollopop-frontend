@@ -14,21 +14,22 @@ import { AuthProvider, AuthConsumer } from "./components/auth/context";
 import PrivateRoute from "./components/auth/PrivateRoute";
 import { logout } from "./components/auth/service";
 import { getAdverts } from "./components/adverts/service";
+import Error from "./components/shared/Error";
+import Types from "prop-types";
 
 
 function App({ isAlreadyLogged }) {
   const [isLogged, setIsLogged] = useState(isAlreadyLogged);
-  const [appError, setAppError] = useState(null); 
+  const [appError, setAppError] = useState(null);
   const [list, setList] = useState([]);
 
   useEffect(() => {
-        
-    if (isLogged){
-    getAdverts()
-      .then((adverts) => setList(adverts))
-      .catch((error) => setAppError(error));
+    if (isLogged) {
+      getAdverts()
+        .then((adverts) => setList(adverts))
+        .catch((error) => setAppError(error));
     }
-  }, [isLogged]);
+  }, [isLogged]); 
 
   function handleIsLogged() {
     setIsLogged(true);
@@ -38,7 +39,15 @@ function App({ isAlreadyLogged }) {
     logout().then(() => setIsLogged(false));
   }
 
-  return (
+
+    
+  return ( 
+
+   appError && appError.statusCode!==404) ? (
+    <Error className="app-error" error={appError} />  
+  ) : ( 
+
+
     <Router>
       <AuthProvider value={{ isLogged, handleIsLogged, handleLogout }}>
         <Switch>
@@ -58,8 +67,10 @@ function App({ isAlreadyLogged }) {
           <PrivateRoute path="/adverts/new" component={NewAdvertPage} />
           <PrivateRoute path="/adverts/:id" component={AdvertPage} />
           <PrivateRoute path="/adverts">
-              {(props) => <AdvertsPage list={list} requestError={appError} {...props} />}
-              </PrivateRoute>       
+            {(props) => (
+              <AdvertsPage list={list} requestError={appError} {...props} />
+            )}
+          </PrivateRoute>
           <Route exact path="/">
             <Redirect to="/adverts" />
           </Route>
@@ -73,6 +84,11 @@ function App({ isAlreadyLogged }) {
   );
 }
 
-App.propTypes = {};
+App.propTypes = {
+  isAlreadyLogged: Types.bool.isRequired
+};
 
 export default App;
+
+
+

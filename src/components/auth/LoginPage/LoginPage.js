@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Button from "../../shared/Button";
 import { login } from "../service";
-import types from "prop-types";
+import Types from "prop-types";
 import Header from "../../layout/Header";
 import "./LoginPage.css";
 import Error from "../../shared/Error";
@@ -125,7 +125,7 @@ export default function LoginPage({ onLogin, history, location }) {
 }
 
 LoginPage.propTypes = {
-  onLogin: types.func.isRequired,
-  history: types.object.isRequired,
-  location: types.object.isRequired,
+  onLogin: Types.func.isRequired,
+  history: Types.object.isRequired,
+  location: Types.object.isRequired,
 };

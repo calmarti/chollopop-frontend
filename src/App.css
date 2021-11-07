@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -26,13 +26,25 @@
 
 .App-link {
   color: #61dafb;
-}
+} */
 
-@keyframes App-logo-spin {
+/* @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }
   to {
     transform: rotate(360deg);
   }
+} */
+
+.app-error {
+  position: relative;
+  top:3rem;
+  left:48rem;
+  background-color:#eec0c8;
+  z-index: 1;
+  text-align:center;
+  padding:1rem;
+  display:inline;
+
 }
