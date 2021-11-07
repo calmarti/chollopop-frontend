@@ -9,49 +9,42 @@ import "./FilterArea.css";
 import "./AdvertsPage.css";
 import Error from "../../shared/Error";
 
-//TODO: revisar las reglas del bootcamp para lo de las reentregas de no aptos, etc. 
+//TODO: revisar las reglas del bootcamp para lo de las reentregas de no aptos, etc.
 //TODO: Volver a leer el enunciado de principio a fin!!!!!!!!!!!!!!!!
 
+//TODO: meter en el README aquello que sé que debería funcionar y no funciona
 //TODO: Bug más importante: al crear o borrar un anuncio hay que hacer refresh para actualizar la lista; busca un workaround!
-//TODO: arreglar el error del login (¿con inline styles?), crear estados de errores en NewAdvertPage y AdvertPage (pero con inline styles!)
-//TODO: pasar mensaje diferenciado a Empty según su causa: lista del backend vacía o por filtrado
-//TODO: asegurarme de que se renderiza Empty cuando la combinación de filtros no existe
+
 
 //TODO: probar a ver si coge la .ENV en el client
 //TODO: loader y gestor de errores al hacer llamadas al api en donde las haya
 
-//TODO: arreglar error de cannot read properties of undefined (reading 'data') que lanza cuando no hay backend
-
-//TODO: no olvidar los propTypes
-//TODO: poner algo más decente en la página 404
 //TODO: poner index en carpetas AdvertsPage, AdvertPage y NewAdvertPage
 
-
+//TODO: hacer una 404 más decente
 
 export default function AdvertsPage({ list, requestError, ...props }) {
   const [adverts, setAdverts] = useState([]);
-  const [error, setError] = useState(null); 
+  const [error, setError] = useState(null);
   const [filters, setFilters] = useState({
     name: "",
     price: "",
-    //price: "",
     sale: "",
     tags: [""],
   });
   const [tagvalues, setTagValues] = useState([]);
 
   useEffect(() => {
-    const getTagsWrapper = async() => {
-    const result = await getAdvertTags();
-    setTagValues(result);
-    }
+    const getTagsWrapper = async () => {
+      const result = await getAdvertTags();
+      setTagValues(result);
+    };
     getTagsWrapper();
   }, []);
 
   useEffect(() => {
     setAdverts(list);
-    console.log(adverts, adverts.length);
-  },[list, filters]);
+  }, [list, filters]);
 
   useEffect(() => {
     setError(requestError);
@@ -61,20 +54,19 @@ export default function AdvertsPage({ list, requestError, ...props }) {
 
   useEffect(() => {
     if (filters.name) {
-      console.log("name", filters.name);
       setAdverts((adverts) =>
         adverts.filter((advert) => advert.name === filters.name)
       );
     }
 
     if (filters.sale !== "") {
-        setAdverts((adverts) =>
+      setAdverts((adverts) =>
         adverts.filter((advert) => advert.sale === filters.sale)
       );
     }
 
     if (JSON.stringify(filters.tags) !== '[""]') {
-        setAdverts((adverts) =>
+      setAdverts((adverts) =>
         adverts.filter(
           (advert) =>
             JSON.stringify(advert.tags) === JSON.stringify(filters.tags)
@@ -83,11 +75,14 @@ export default function AdvertsPage({ list, requestError, ...props }) {
     }
   }, [filters]);
 
+  let emptyMessage = "No hay anuncios con esas características";
+  if (!list.length) {
+    emptyMessage = "No hay nada para vender o comprar";
+  }
+
   return (
     <>
       <FilterArea
-        /*  adverts={adverts}
-        setAdverts={setAdverts} */
         tagvalues={tagvalues}
         filters={filters}
         setFilters={setFilters}
@@ -105,16 +100,12 @@ export default function AdvertsPage({ list, requestError, ...props }) {
           <div>
             <ul className="card-list">
               {adverts
-                /*                 .filter(
-                  (advert) =>
-                    advert.sale === filters.sale && advert.tags === filters.tags
-                ) */
                 .map((advert) => (
                   <li
                     className="card-list-item"
                     key={
                       advert.id
-                    } /* onClick={() => history.push(`/adverts/${id}`)} */
+                    } 
                   >
                     <Link
                       className="card-list-item-link"
@@ -132,7 +123,7 @@ export default function AdvertsPage({ list, requestError, ...props }) {
             </ul>
           </div>
         ) : (
-          <Empty {...props} />
+          <Empty message={emptyMessage} {...props} />
         )}
       </Layout>
     </>
@@ -140,8 +131,6 @@ export default function AdvertsPage({ list, requestError, ...props }) {
 }
 
 AdvertsPage.propTypes = {
-list: Types.array.isRequired,
-requestError: Types.object
-
+  list: Types.array.isRequired,
+  requestError: Types.object,
 };
-

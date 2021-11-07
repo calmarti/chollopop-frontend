@@ -6,12 +6,10 @@ import { Redirect } from "react-router-dom";
 import "./NewAdvertPage.css";
 import Header from "../../layout/Header.js";
 import "../../layout/Header.css";
-
-//TODO: en navbar no debe aparecer botón 'Crear Anuncio' (condicional en Header.js)
+import Error from "../../shared/Error";
 
 
 export default function NewAdvertPage({ ...props }) {
-
   const [fields, setFields] = useState({
     name: "",
     price: "",
@@ -20,18 +18,22 @@ export default function NewAdvertPage({ ...props }) {
     photo: null,
   });
 
-  const [isHere, setIsHere] = useState(true)
   const [tagvalues, setTagValues] = useState([]);
-  
   const [newAdvertId, setNewAdvertId] = useState("");
-  
+  const [error, setError] = useState(null);
   const photoRef = useRef(null);
 
-  useEffect(()=> async() => {
-    const result = await getAdvertTags();
-    setTagValues(result);
+  useEffect(() => {
+    const getTagsWrapper = async () => {
+      try {
+        const result = await getAdvertTags();
+        setTagValues(result);
+      } catch (error) {
+        setError(error);
+      }
+    };
+    getTagsWrapper();
   }, []);
-
 
   const handleOnChange = (event) => {
     if (
@@ -47,7 +49,7 @@ export default function NewAdvertPage({ ...props }) {
       const selected = event.target.selectedOptions;
       console.log(selected);
       const tagsValues = [];
-     
+
       Array.from(selected).forEach((tag) => {
         tagsValues.push(tag.value);
         setFields((prevState) => ({
@@ -59,15 +61,11 @@ export default function NewAdvertPage({ ...props }) {
   };
 
   const handleRadio = (event) => {
-
     setFields((prevState) =>
       event.target.checked
         ? {
             ...prevState,
-            sale:
-              event.target.value === "true"
-                ? true
-                : false /*JSON.parse(event.target.value)*/,
+            sale: event.target.value === "true" ? true : false,
           }
         : { ...prevState }
     );
@@ -82,13 +80,10 @@ export default function NewAdvertPage({ ...props }) {
       const response = await postNewAdvert(data);
       console.log(response);
       setNewAdvertId(response.id);
-
- 
     } catch (error) {
       console.log(error);
     }
   };
-
 
   if (newAdvertId) {
     return <Redirect to={`/adverts/${newAdvertId}`} />;
@@ -96,13 +91,15 @@ export default function NewAdvertPage({ ...props }) {
 
   return (
     <>
-    <Header isHere={isHere} {...props} />
-     
-      <div className="new-advert-container">
-      <h2 className="new-advert-title">Crea tu anuncio</h2>
+      <Header {...props} />
+
+      {error ? (
+        <Error />
+      ) : (
+        <div className="new-advert-container">
+          <h2 className="new-advert-title">Crea tu anuncio</h2>
           <form encType="multipart/form-data" onSubmit={handleSubmit}>
             <div className="new-advert-form-container">
-
               <label className="new-advert-form-label" htmlFor="name">
                 Artículo &nbsp;
                 <input
@@ -120,7 +117,7 @@ export default function NewAdvertPage({ ...props }) {
                 Precio &nbsp;
                 <input
                   className="new-advert-form-field"
-                  type="number" 
+                  type="number"
                   id="price"
                   name="price"
                   onChange={handleOnChange}
@@ -151,10 +148,10 @@ export default function NewAdvertPage({ ...props }) {
                   onChange={handleRadio}
                 />
               </label>
-              
+
               <label className="new-advert-form-label">
                 <span className="new-advert-form-select-span">Categoría</span>
-                
+
                 <select
                   className="new-advert-form-field"
                   name="tags"
@@ -162,20 +159,26 @@ export default function NewAdvertPage({ ...props }) {
                   onChange={handleOnChange}
                   multiple={true}
                 >
-               
-               {tagvalues.map((tagvalue, index) => <option key={index} value={tagvalue}> {tagvalue} </option>)}
+                  {tagvalues.map((tagvalue, index) => (
+                    <option key={index} value={tagvalue}>
+                      {" "}
+                      {tagvalue}{" "}
+                    </option>
+                  ))}
 
-{/*                   <option value="lifestyle">Lifestyle</option>
+                  {/*                   <option value="lifestyle">Lifestyle</option>
                   <option value="mobile">Mobile</option>
                   <option value="motor">Motor</option>
                   <option value="work">Work</option> */}
                 </select>
               </label>
 
-              <label className="new-advert-form-label file-field" htmlFor="photo">
+              <label
+                className="new-advert-form-label file-field"
+                htmlFor="photo"
+              >
                 {" "}
-              
-                Foto  &nbsp;
+                Foto &nbsp;
                 <input
                   className="new-advert-form-field"
                   type="file"
@@ -193,12 +196,7 @@ export default function NewAdvertPage({ ...props }) {
             </div>
           </form>
         </div>
-    
+      )}
     </>
   );
 }
-
-
-
-
-

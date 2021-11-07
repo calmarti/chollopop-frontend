@@ -7,11 +7,11 @@ import Button from "../../shared/Button";
 import Modal from "../../shared/Modal";
 import placeholder from "../../../assets/default_photo.jpg";
 import "./AdvertPage.css";
-//TODO: IMPORTANTE: Corregir error 401 (inexistente?) al ir al home tras login > new en ciertos casos (el problema está en la redireccion desde App)
-//TODO: Falta la cancelación de la petición (getAdvert) en el useEffect (ver clase 5 a partir de min 2:37)
+import Error from '../../shared/Error';
+
 
 export default function AdvertPage({ match, history, ...props }) {
-  const [advert, setAdvert] = useState([]); // null en vez de [] para que renderice la 1º vez pero debería ser null!
+  const [advert, setAdvert] = useState([]); 
   const [error, setError] = useState(null);
   const [isModalOn, setIsModalOn] = useState(false);
 
@@ -22,13 +22,18 @@ export default function AdvertPage({ match, history, ...props }) {
       setAdvert(advert);
     } catch (error) {
       setError(error);
-      console.log(error);
-    }
+          }
   }, [match.params.id]);
 
-  if (error && error.response.data.statusCode === 404) {
+
+  if (error && error.response.data.statusCode == 404) {
     return <Redirect to="/404" />;
   }
+
+  if (error && error.response.data.statusCode != 404) {
+    <Error error={error} />
+  }
+
 
   const modalProps = {
     isModalOn: isModalOn,

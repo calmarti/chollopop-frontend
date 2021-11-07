@@ -1,11 +1,10 @@
 import "./Header.css";
 import Button from "../shared/Button";
 import { Link } from "react-router-dom";
-import { useContext, useState} from "react";
+import { useContext, useState } from "react";
 import AuthContext from "../auth/context";
 import Modal from "../shared/Modal";
 
-//TODO: LEER SIEMPRE LA PARTE RELEVANTE DEL ENUNCIADO ANTES DE CREAR ALGO NUEVO!!!!!!!!!!!!!!!!
 
 //TODO: en el enunciado dice que los enlaces deben ser con Link, revisar video a ver si tambien le vale history.push
 
@@ -45,7 +44,7 @@ export default function Header({ history, ...props }) {
         <Link className="header-link" to="/">
           Home
         </Link>
-        {isLogged ? ( 
+        {isLogged ? (
           <>
             <Button className="header-button" onClick={logoutConfirmation}>
               Salir
@@ -57,7 +56,7 @@ export default function Header({ history, ...props }) {
             </Button>
           </>
         ) : (
-         ''
+          ""
         )}
       </nav>
     </header>

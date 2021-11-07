@@ -3,7 +3,6 @@ import "./FilterArea.css";
 import Types from "prop-types";
 
 export default function FilterArea({ filters, setFilters, tagvalues }) {
-  //el input adverts debe inicializarse a 'TODOS' tras cada filtrado
 
   const handleOnChange = (event) => {
     if (event.target.type === "text" || event.target.type === "number") {
