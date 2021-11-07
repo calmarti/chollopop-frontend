@@ -10,7 +10,7 @@
   padding: 4rem 6rem 4rem 3rem;
   position: relative;
   top: 10rem;
-  left: 39rem;
+  left: 40rem;
   background-color: #e6e7e8;
   display: flex;
   flex-flow: column;
@@ -57,7 +57,10 @@
 
 .login-error {
   position: relative;
-  bottom: 20rem;
-  background-color: red;
+  left:44rem;
+  background-color:#eec0c8;
   z-index: 1;
+  text-align:center;
+  padding:1rem;
+  display:inline;
 }

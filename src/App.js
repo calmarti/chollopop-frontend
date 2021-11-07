@@ -9,12 +9,12 @@ import LoginPage from "./components/auth/LoginPage";
 import AdvertsPage from "./components/adverts/AdvertsPage";
 import AdvertPage from "./components/adverts/AdvertPage";
 import NewAdvertPage from "./components/adverts/NewAdvertPage";
-import { useState, useContext, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { AuthProvider, AuthConsumer } from "./components/auth/context";
 import PrivateRoute from "./components/auth/PrivateRoute";
 import { logout } from "./components/auth/service";
 import { getAdverts } from "./components/adverts/service";
-import client from "./api/client";
+
 
 function App({ isAlreadyLogged }) {
   const [isLogged, setIsLogged] = useState(isAlreadyLogged);

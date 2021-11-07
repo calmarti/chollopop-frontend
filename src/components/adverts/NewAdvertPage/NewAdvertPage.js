@@ -1,20 +1,18 @@
-import { useState, useRef } from "react";
-import types, { func } from "prop-types";
-import Layout from "../../layout/Layout.js";
+import { useState, useEffect, useRef } from "react";
 import React from "react";
 import Button from "../../shared/Button";
-import { postNewAdvert } from "../service";
+import { postNewAdvert, getAdvertTags } from "../service";
 import { Redirect } from "react-router-dom";
 import "./NewAdvertPage.css";
 import Header from "../../layout/Header.js";
 import "../../layout/Header.css";
 
 //TODO: en navbar no debe aparecer botón 'Crear Anuncio' (condicional en Header.js)
-//tampoco coge el valor 'compra' (sale:false)
 
-//TODO: TESTING del filtro: de momento deshabilitación del botón funciona con tag: undefined, price='"" y sale: true
+//TODO: eliminar botón 'crear anuncio' en el Header cuando estoy en esta página
 
-export default function NewAdvertPage({ tagvalues, ...props }) {
+
+export default function NewAdvertPage({ ...props }) {
   const [fields, setFields] = useState({
     name: "",
     price: "",
@@ -23,10 +21,15 @@ export default function NewAdvertPage({ tagvalues, ...props }) {
     photo: null,
   });
 
+  const [tagvalues, setTagValues] = useState([]);
   const [newAdvertId, setNewAdvertId] = useState("");
-
   const photoRef = useRef(null);
-  //photoRef.current.value
+
+  useEffect(async() => {
+    const result = await getAdvertTags();
+    setTagValues(result);
+  }, []);
+
 
   const handleOnChange = (event) => {
     if (
@@ -42,8 +45,7 @@ export default function NewAdvertPage({ tagvalues, ...props }) {
       const selected = event.target.selectedOptions;
       console.log(selected);
       const tagsValues = [];
-
-      /* for (let i = 0; i < selected.length; i++)  */
+     
       Array.from(selected).forEach((tag) => {
         tagsValues.push(tag.value);
         setFields((prevState) => ({
@@ -55,12 +57,6 @@ export default function NewAdvertPage({ tagvalues, ...props }) {
   };
 
   const handleRadio = (event) => {
-    /*     console.log(
-      event.target.type,
-      event.target.name,
-      typeof event.target.value,
-      event.target.value
-    ); */
 
     setFields((prevState) =>
       event.target.checked
@@ -85,19 +81,12 @@ export default function NewAdvertPage({ tagvalues, ...props }) {
       console.log(response);
       setNewAdvertId(response.id);
 
-      /*setFields({
-        name: "",
-        price: "",
-        sale: true,
-        tags: [],
-        photo: "",
-      }); */
+ 
     } catch (error) {
       console.log(error);
     }
   };
 
-  //useEffect(() => {}, []);
 
   if (newAdvertId) {
     return <Redirect to={`/adverts/${newAdvertId}`} />;
@@ -129,7 +118,7 @@ export default function NewAdvertPage({ tagvalues, ...props }) {
                 Precio &nbsp;
                 <input
                   className="new-advert-form-field"
-                  type="number" //poner de nuevo type=text si esto no sirve para cambiar el tipado de 'price'
+                  type="number" 
                   id="price"
                   name="price"
                   onChange={handleOnChange}
@@ -156,7 +145,6 @@ export default function NewAdvertPage({ tagvalues, ...props }) {
                   name="sale"
                   type="radio"
                   value={false}
-                  //onChange={(prevState) => setFields({...prevState, sale:false})}
                   checked={fields.sale === false}
                   onChange={handleRadio}
                 />
@@ -172,16 +160,19 @@ export default function NewAdvertPage({ tagvalues, ...props }) {
                   onChange={handleOnChange}
                   multiple={true}
                 >
-                  <option value="lifestyle">Lifestyle</option>
+               
+               {tagvalues.map((tagvalue, index) => <option key={index} value={tagvalue}> {tagvalue} </option>)}
+
+{/*                   <option value="lifestyle">Lifestyle</option>
                   <option value="mobile">Mobile</option>
                   <option value="motor">Motor</option>
-                  <option value="work">Work</option>
+                  <option value="work">Work</option> */}
                 </select>
               </label>
 
               <label className="new-advert-form-label file-field" htmlFor="photo">
                 {" "}
-                {/*OJO: ESTO ES PASARLE UN FICHERO,  NO UNA URL*/}
+              
                 Foto  &nbsp;
                 <input
                   className="new-advert-form-field"
@@ -189,8 +180,6 @@ export default function NewAdvertPage({ tagvalues, ...props }) {
                   id="photo"
                   name="photo"
                   ref={photoRef}
-
-                  /* value={fields.photo} */
                 ></input>
               </label>
               <Button
@@ -207,18 +196,11 @@ export default function NewAdvertPage({ tagvalues, ...props }) {
   );
 }
 
-//TODO: desactivar el botón si falta algún campo requerido
-//TODO: eliminar botón 'crear anuncio' en el Header cuando estoy en esta página
+
+
+
 
 //tal vez conviene aquí un type de tipo shape (clase 5, min 0:30)
 //si necesito que algo tenga la propiedad length lo debo definir de tipo
 
-/*
-         
-                try {
-                    const data = new FormData(this)
-                    const username = data.get('username')  // valor del input[name="username"]
-                    const password = data.get('password')  // valor del input[name="password"]
-                    const result = await DataService.registerUser(username, password)
 
-                    */

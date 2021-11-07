@@ -1,4 +1,4 @@
-import types, { func } from "prop-types";
+import types from "prop-types";
 import { useState, useEffect } from "react";
 import { Redirect } from "react-router-dom";
 import Layout from "../../layout/Layout";
@@ -78,4 +78,7 @@ export default function AdvertPage({ match, history, ...props }) {
   );
 }
 
-AdvertPage.propTypes = {};
+AdvertPage.propTypes = {
+  match: types.object.isRequired,
+  history: types.object.isRequired
+};

@@ -1,26 +1,32 @@
-import { useEffect, useState, useRef, useContext, Fragment } from "react";
+import { useEffect, useState } from "react";
 import Layout from "../../layout/Layout";
-import { getAdverts, getAdvertTags } from "../service";
-import AuthContext from "../../auth/context";
+import { getAdvertTags } from "../service";
 import { Link, Redirect } from "react-router-dom";
-import types, { func } from "prop-types";
+import Types from "prop-types";
 import FilterArea from "./FilterArea";
 import Empty from "../../shared/Empty";
 import "./FilterArea.css";
 import "./AdvertsPage.css";
 import Error from "../../shared/Error";
 
-//TODO: Bajar el mensaje de confirmación tanto del Header como del AdvertPage (borrar anuncio)
-//TODO: loader y gestor de errores al hacer llamada al api
-//TODO: Falta implementar los filtros 'name' (regex) y price
+//TODO: revisar las reglas del bootcamp para lo de las reentregas de no aptos, etc. 
+//TODO: Volver a leer el enunciado de principio a fin!!!!!!!!!!!!!!!!
+
+//TODO: Bug más importante: al crear o borrar un anuncio hay que hacer refresh para actualizar la lista; busca un workaround!
+//TODO: arreglar el error del login (¿con inline styles?), crear estados de errores en NewAdvertPage y AdvertPage (pero con inline styles!)
+//TODO: pasar mensaje diferenciado a Empty según su causa: lista del backend vacía o por filtrado
 //TODO: asegurarme de que se renderiza Empty cuando la combinación de filtros no existe
-//TODO: estilos del error en LoginPage NO se activan
-//TODO: Problemilla: al crear o borrar un anuncio hay que hacer refresh para actualizar la lista; busca un workaround!
+
+//TODO: probar a ver si coge la .ENV en el client
+//TODO: loader y gestor de errores al hacer llamadas al api en donde las haya
+
 //TODO: arreglar error de cannot read properties of undefined (reading 'data') que lanza cuando no hay backend
+
 //TODO: no olvidar los propTypes
 //TODO: poner algo más decente en la página 404
 //TODO: poner index en carpetas AdvertsPage, AdvertPage y NewAdvertPage
-//TODO: pasar mensaje diferenciado a Empty según su causa: lista del backend vacía o por filtrado
+//TODO: Falta implementar los filtros 'name' (regex)
+
 
 export default function AdvertsPage({ list, requestError, ...props }) {
   const [adverts, setAdverts] = useState([]);
@@ -34,15 +40,19 @@ export default function AdvertsPage({ list, requestError, ...props }) {
   });
   const [tagvalues, setTagValues] = useState([]);
 
-  useEffect(async() => {
+  useEffect(() => {
+    const getTags = async() => {
     const result = await getAdvertTags();
     setTagValues(result);
+    }
+    getTags();
   }, []);
 
   useEffect(() => {
     setAdverts(list);
     console.log(adverts, adverts.length);
   }, [list, filters]);
+
 
   useEffect(() => {
     setError(requestError);
@@ -130,6 +140,9 @@ export default function AdvertsPage({ list, requestError, ...props }) {
   );
 }
 
-AdvertsPage.propTypes = {};
+AdvertsPage.propTypes = {
+list: Types.array.isRequired,
+requestError: Types.object
 
-//export default AdvertsPage;
+};
+

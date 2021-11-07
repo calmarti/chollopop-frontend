@@ -1,7 +1,7 @@
 import "./Header.css";
 import Button from "../shared/Button";
-import { Link, Redirect } from "react-router-dom";
-import { useContext, useState, Fragment } from "react";
+import { Link } from "react-router-dom";
+import { useContext, useState} from "react";
 import AuthContext from "../auth/context";
 import Modal from "../shared/Modal";
 
@@ -45,7 +45,7 @@ export default function Header({ history, ...props }) {
         <Link className="header-link" to="/">
           Home
         </Link>
-        {isLogged ? ( //OJO: al ser login la única ruta NO protegida y no tener login barra de menú no tiene mucho sentido el último botón..
+        {isLogged ? ( 
           <>
             <Button className="header-button" onClick={logoutConfirmation}>
               Salir

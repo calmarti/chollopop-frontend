@@ -1,4 +1,4 @@
-import client , { setContentType } from "../../api/client";
+import client from "../../api/client";
 //import { getToken } from '../../utils/storage'; 
 
 const advertsBaseUrl = '/api/v1';

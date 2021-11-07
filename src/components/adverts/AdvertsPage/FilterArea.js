@@ -1,15 +1,9 @@
-import React, { useState, useEffect } from "react";
-import Button from "../../shared/Button";
-import Slider, { Range } from "rc-slider";
-import { getAdvertTags } from "../service";
-import "rc-slider/assets/index.css";
+import React from "react";
 import "./FilterArea.css";
 
 
 
 export default function FilterArea({ filters, setFilters, tagvalues }) {
-
-
 
   //el input adverts debe inicializarse a 'TODOS' tras cada filtrado
 
@@ -65,37 +59,8 @@ export default function FilterArea({ filters, setFilters, tagvalues }) {
           <input type="range" id="price" name="price" min="0" max="1000000" />
           </label>
 
-{/*           <Range
-            name="price"
-            defaultValue={[0, 10000]}
-            max={10000}
-            allowCross={false}
-            handle={(props) => (
-              <span key={props.value}> {props.value} &emsp; </span>
-            )}
-          /> */}
 
-          {/* <label className="form-filter" htmlFor="price">
-            Precio mínimo
-            <input
-              type="number" //poner de nuevo type=text si esto no sirve para cambiar el tipado de 'price'
-              //id="price"
-              name="price"
-              onChange={handleOnChange}
-              value={filters.price}
-            />
-          </label>
 
-          <label className="form-filter" htmlFor="price">
-            Precio máximo
-            <input
-              type="number" //poner de nuevo type=text si esto no sirve para cambiar el tipado de 'price'
-              //id="price" 
-              name="price"
-              onChange={handleOnChange}
-              value={filters.price}
-            />
-          </label> */}
 
           <label className="filter-label" htmlFor="sale">
             Venta
@@ -149,7 +114,7 @@ export default function FilterArea({ filters, setFilters, tagvalues }) {
               multiple={true}
             >
               <option value={[""]}>all</option>
-              {tagvalues.map((tagvalue) => <option value={tagvalue}> {tagvalue} </option>)}
+              {tagvalues.map((tagvalue, index) => <option key={index} value={tagvalue}> {tagvalue} </option>)}
 
 
              {/*  <option value="lifestyle">Lifestyle</option>

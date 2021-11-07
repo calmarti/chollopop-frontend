@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Button from "../../shared/Button";
 import { login } from "../service";
-import types, { func, object } from "prop-types";
+import types from "prop-types";
 import Header from "../../layout/Header";
 import "./LoginPage.css";
 import Error from "../../shared/Error";
@@ -25,10 +25,6 @@ export default function LoginPage({ onLogin, history, location }) {
       setCredentials({ email: remindedEmail, password: remindedPassword });
     }
   }
-
- /*    else{
-    setCredentials(( {email:'', password:''}))
-    } */
   }, [reminder]);
 
   function handleInputChange(event) {
@@ -63,14 +59,17 @@ export default function LoginPage({ onLogin, history, location }) {
   function switchReminder() {
     reminder ? setReminder(false) : setReminder(true);
   }
-
+  
+  //{const errorStyle ={backgroundColor: '#eec0c8'}
+  
   return (
     <>
       <Header history={history} />
 
-      {error ? <Error className="login-error" error={error} /> : ""}
-
       <h2 className="login-title">Inicia sesión</h2>
+
+      {error ? <Error className="login-error" /* style={errorStyle} */ error={error} /> : ""}
+         
 
       <form onSubmit={handleSubmit}>
         <div className="login-form-container">
@@ -120,7 +119,6 @@ export default function LoginPage({ onLogin, history, location }) {
           </Button>
         </div>
       </form>
-      {error ? <div className="error">{error.message}</div> : null}
       {loader ? "Loading..." : null}
     </>
   );
