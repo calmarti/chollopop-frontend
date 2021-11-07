@@ -75,11 +75,11 @@ La aplicación tiene las siguientes funcionalidades básicas:
 
 ## Notas de interés 
 
-- **El filtrado de anuncios se realiza en el frontend**, con lo cual las búsquedas por filtros no suponen una peticiones adicionales al backend. 
+- **El filtrado de anuncios se realiza en el frontend**, con lo cual las búsquedas por filtros no suponen peticiones adicionales al backend. 
 
 - **Bug**: Al crear o borrar un anuncio, la lista total no se actualiza de inmediato (debido justamente al punto anterior). Por tanto, para ver reflejado el cambio en el listado de anuncios es necesario refrescar la página. 
 
-- **Bug**: Si bien la petición de una ruta no existente redirige a la página 404, la llamada al API para traer el listado de anuncios muestra a veces un error 404, *en lugar de redirigir* a la página 404.
+- **Bug**: Si bien la petición de una ruta inexistente redirige a la página 404, la llamada al API para traer el listado de anuncios muestra a veces un error 404, *en lugar de redirigir* a la página 404.
 
 - La incorporación de algunos **warnings de React** rompían  funcionalidades de la aplicación. Por tanto, se optó por ignorarlos de momento.  
 
