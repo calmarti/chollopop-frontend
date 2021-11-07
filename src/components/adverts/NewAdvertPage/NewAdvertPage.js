@@ -5,8 +5,8 @@ import { postNewAdvert, getAdvertTags } from "../service";
 import { Redirect } from "react-router-dom";
 import "./NewAdvertPage.css";
 import Header from "../../layout/Header.js";
-import "../../layout/Header.css";
 import Error from "../../shared/Error";
+import "../../layout/Header.css";
 
 
 export default function NewAdvertPage({ ...props }) {

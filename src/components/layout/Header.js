@@ -6,8 +6,6 @@ import AuthContext from "../auth/context";
 import Modal from "../shared/Modal";
 
 
-//TODO: en el enunciado dice que los enlaces deben ser con Link, revisar video a ver si tambien le vale history.push
-
 export default function Header({ history, ...props }) {
   const [isModalOn, setIsModalOn] = useState(false);
 

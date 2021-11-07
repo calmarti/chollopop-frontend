@@ -79,7 +79,6 @@ export default function AdvertPage({ match, history, ...props }) {
           Borrar
         </Button>
       </div>
-      <span>{match.params.id}</span>
       <Modal handleClick={handleDelete} {...modalProps} />
     </Layout>
   );

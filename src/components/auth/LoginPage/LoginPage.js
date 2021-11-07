@@ -7,24 +7,22 @@ import "./LoginPage.css";
 import Error from "../../shared/Error";
 import storage from "../../../utils/storage";
 
-
 export default function LoginPage({ onLogin, history, location }) {
   const [credentials, setCredentials] = useState({
     email: "",
     password: "",
   });
   const [error, setError] = useState(null);
-  const [loader, setLoader] = useState(false);
   const [reminder, setReminder] = useState(false);
 
   useEffect(() => {
-    if (reminder){
-    const remindedEmail = storage.get("email");
-    const remindedPassword = storage.get("password");
-    if (remindedEmail || remindedPassword){
-      setCredentials({ email: remindedEmail, password: remindedPassword });
+    if (reminder) {
+      const remindedEmail = storage.get("email");
+      const remindedPassword = storage.get("password");
+      if (remindedEmail || remindedPassword) {
+        setCredentials({ email: remindedEmail, password: remindedPassword });
+      }
     }
-  }
   }, [reminder]);
 
   function handleInputChange(event) {
@@ -36,10 +34,8 @@ export default function LoginPage({ onLogin, history, location }) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    setLoader(true);
     login(credentials)
       .then(() => {
-        setLoader(false);
         onLogin();
         if (reminder) {
           storage.set("email", credentials.email);
@@ -48,10 +44,7 @@ export default function LoginPage({ onLogin, history, location }) {
         const { from } = location.state || { from: "/adverts" };
         history.replace(from);
       })
-      //gestionar el 401 y resto de errores
-      //crear estado isLoading y gestionar su renderizado
       .catch((error) => {
-        setLoader(false);
         setError(error);
       });
   }
@@ -59,17 +52,14 @@ export default function LoginPage({ onLogin, history, location }) {
   function switchReminder() {
     reminder ? setReminder(false) : setReminder(true);
   }
-  
-  //{const errorStyle ={backgroundColor: '#eec0c8'}
-  
+
   return (
     <>
       <Header history={history} />
 
       <h2 className="login-title">Inicia sesión</h2>
 
-      {error ? <Error className="login-error" /* style={errorStyle} */ error={error} /> : ""}
-         
+      {error ? <Error className="login-error" error={error} /> : ""}
 
       <form onSubmit={handleSubmit}>
         <div className="login-form-container">
@@ -79,7 +69,7 @@ export default function LoginPage({ onLogin, history, location }) {
               className="login-form-input username-input"
               id="email"
               onChange={handleInputChange}
-              type="email" //considerar cambiar a 'email'
+              type="email"
               name="email"
               value={credentials.email}
               autoFocus
@@ -111,7 +101,7 @@ export default function LoginPage({ onLogin, history, location }) {
 
           <Button
             className="login-form-button"
-            disabled={ !credentials.email || !credentials.password }
+            disabled={!credentials.email || !credentials.password}
             variant="primary"
             type="submit"
           >
@@ -119,7 +109,6 @@ export default function LoginPage({ onLogin, history, location }) {
           </Button>
         </div>
       </form>
-      {loader ? "Loading..." : null}
     </>
   );
 }

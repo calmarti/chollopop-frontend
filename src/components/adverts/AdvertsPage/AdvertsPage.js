@@ -9,19 +9,17 @@ import "./FilterArea.css";
 import "./AdvertsPage.css";
 import Error from "../../shared/Error";
 
-//TODO: revisar las reglas del bootcamp para lo de las reentregas de no aptos, etc.
-//TODO: Volver a leer el enunciado de principio a fin!!!!!!!!!!!!!!!!
+
 
 //TODO: meter en el README aquello que sé que debería funcionar y no funciona
-//TODO: Bug más importante: al crear o borrar un anuncio hay que hacer refresh para actualizar la lista; busca un workaround!
-
 
 //TODO: probar a ver si coge la .ENV en el client
-//TODO: loader y gestor de errores al hacer llamadas al api en donde las haya
 
 //TODO: poner index en carpetas AdvertsPage, AdvertPage y NewAdvertPage
 
-//TODO: hacer una 404 más decente
+//TODO: hacer el componente 404
+
+
 
 export default function AdvertsPage({ list, requestError, ...props }) {
   const [adverts, setAdverts] = useState([]);
@@ -75,7 +73,7 @@ export default function AdvertsPage({ list, requestError, ...props }) {
     }
   }, [filters]);
 
-  let emptyMessage = "No hay anuncios con esas características";
+  let emptyMessage = "Los filtros usados no corresponden a ningún anuncio";
   if (!list.length) {
     emptyMessage = "No hay nada para vender o comprar";
   }
