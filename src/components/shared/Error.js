@@ -3,7 +3,7 @@ export default function Error({ className, error }) {
     <p className={className}>
       {error.status ===401
         ? "Nombre de usuario ó contraseña no válida"
-        : error.message}
+        : error.message }
     </p>
   );
 }

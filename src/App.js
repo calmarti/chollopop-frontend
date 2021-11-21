@@ -13,23 +13,14 @@ import { useState, useEffect } from "react";
 import { AuthProvider, AuthConsumer } from "./components/auth/context";
 import PrivateRoute from "./components/auth/PrivateRoute";
 import { logout } from "./components/auth/service";
-import { getAdverts } from "./components/adverts/service";
+
 import Error from "./components/shared/Error";
 import Types from "prop-types";
 import NotFoundPage from "./NotFoundPage";
 
 function App({ isAlreadyLogged }) {
   const [isLogged, setIsLogged] = useState(isAlreadyLogged);
-  const [appError, setAppError] = useState(null);
-  const [list, setList] = useState([]);
 
-  useEffect(() => {
-    if (isLogged) {
-      getAdverts()
-        .then((adverts) => setList(adverts))
-        .catch((error) => setAppError(error));
-    }
-  }, [isLogged]);
 
   function handleIsLogged() {
     setIsLogged(true);
@@ -39,9 +30,12 @@ function App({ isAlreadyLogged }) {
     logout().then(() => setIsLogged(false));
   }
 
-  return appError && appError !== 404 ? (
-    <Error className="app-error" error={appError} />
-  ) : (
+  
+  // appError && appError !== 404 ? (
+    // <Error className="app-error" error={appError} />
+    
+    // ) : (
+    return (
     <Router>
       <AuthProvider value={{ isLogged, handleIsLogged, handleLogout }}>
         <Switch>
@@ -62,7 +56,7 @@ function App({ isAlreadyLogged }) {
           <PrivateRoute path="/adverts/:id" component={AdvertPage} />
           <PrivateRoute path="/adverts">
             {(props) => (
-              <AdvertsPage list={list} requestError={appError} {...props} />
+              <AdvertsPage {...props} />
             )}
           </PrivateRoute>
           <Route exact path="/">

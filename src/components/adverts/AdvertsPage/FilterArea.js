@@ -1,8 +1,34 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./FilterArea.css";
 import Types from "prop-types";
+import { getAdvertTags } from "../service";
+import Button from "../../shared/Button";
 
-export default function FilterArea({ filters, setFilters, tagvalues }) {
+//TODO: refactorizar formulario de filtros y handlers de eventos
+
+export default function FilterArea({
+  adverts,
+  filters,
+  setFilters,
+  setAdverts,
+  //setError,
+  ...props
+}) {
+  const [tagvalues, setTagValues] = useState([]);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const getTagsWrapper = async () => {
+      try {
+        const result = await getAdvertTags();
+        setTagValues(result);
+      } catch (error) {
+        setError(error);
+      }
+    };
+    getTagsWrapper();
+  }, []);
+
   const handleOnChange = (event) => {
     if (event.target.type === "text" || event.target.type === "number") {
       setFilters((prevState) => ({
@@ -12,7 +38,6 @@ export default function FilterArea({ filters, setFilters, tagvalues }) {
     } else if (event.target.type === "select-multiple") {
       const selected = event.target.selectedOptions;
       const tagsValues = [];
-
       Array.from(selected).forEach((tag) => {
         tagsValues.push(tag.value);
         setFilters((prevState) => ({
@@ -23,10 +48,10 @@ export default function FilterArea({ filters, setFilters, tagvalues }) {
     }
   };
 
-  const handleRadio = (event) => {
+  const handleOnChangeRadio = (event) => {
     setFilters((prevState) =>
       event.target.checked
-        ? { ...prevState, sale: event.target.value === "true" ? true : false }
+        ? { ...prevState, sale: JSON.parse(event.target.value) }
         : { ...prevState }
     );
   };
@@ -61,7 +86,7 @@ export default function FilterArea({ filters, setFilters, tagvalues }) {
               type="radio"
               value={true}
               checked={filters.sale === true}
-              onChange={handleRadio}
+              onChange={handleOnChangeRadio}
             />
           </label>
 
@@ -72,7 +97,7 @@ export default function FilterArea({ filters, setFilters, tagvalues }) {
               type="radio"
               value={false}
               checked={filters.sale === false}
-              onChange={handleRadio}
+              onChange={handleOnChangeRadio}
             />
           </label>
 
@@ -113,6 +138,9 @@ export default function FilterArea({ filters, setFilters, tagvalues }) {
             </select>
           </label>
         </div>
+        <Button className="filter-button" type="submit">
+          Buscar
+        </Button>
       </form>
     </div>
   );
@@ -121,5 +149,5 @@ export default function FilterArea({ filters, setFilters, tagvalues }) {
 FilterArea.propTypes = {
   filters: Types.object.isRequired,
   setFilters: Types.func.isRequired,
-  tagvalues: Types.array.isRequired,
+  //tagvalues: Types.array.isRequired,
 };

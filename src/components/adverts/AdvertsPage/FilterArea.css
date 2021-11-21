@@ -24,3 +24,8 @@ width: 5rem;
 flex: 0 1 auto;
 
 }
+
+.filter-button {
+position:relative;
+left:50rem;
+}

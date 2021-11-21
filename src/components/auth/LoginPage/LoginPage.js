@@ -60,8 +60,8 @@ export default function LoginPage({ onLogin, history, location }) {
 
       <h2 className="login-title">Inicia sesión</h2>
 
-      {error && error.response.data.status == 404 ? <Redirect to="/404" /> : ""}
-      {error && error.response.data.status != 404 ? <Error className="login-error" error={error} /> : ""}
+      {error && error.status == 404 ? <Redirect to="/404" /> : ""}
+      {error && error.status != 404 ? <Error className="login-error" error={error} /> : ""}
 
       <form onSubmit={handleSubmit}>
         <div className="login-form-container">
