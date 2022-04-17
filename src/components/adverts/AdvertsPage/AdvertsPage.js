@@ -4,10 +4,9 @@ import AdvertsList from "../AdvertsPage/AdvertsList";
 import { Link, Redirect } from "react-router-dom";
 import Types from "prop-types";
 import FilterArea from "./FilterArea";
-import Empty from "../../shared/Empty";
+import { Error, Empty } from "../../shared";
 import "./FilterArea.css";
 import "./AdvertsPage.css";
-import Error from "../../shared/Error";
 import { getAdverts } from "../service";
 import {
   filterName,
@@ -15,22 +14,11 @@ import {
   filterTags,
   filterAdverts,
 } from "../../../utils/filters";
+import useQuery from "../../hooks/useQuery";
 
 export default function AdvertsPage({ ...props }) {
-  const [error, setError] = useState(null);
 
-  const useQuery = () => {
-    const [state, setState] = useState({ data: [], isLoading: true });
-
-    useEffect(() => {
-      getAdverts()
-        .then((adverts) => setState({ data: adverts, isLoading: false }))
-        .catch((error) => setError(error));
-    }, []);
-    return state;
-  };
-
-  const { data: adverts, isLoading } = useQuery();
+const { data: adverts, isLoading, error } = useQuery(getAdverts);
 
   const [filters, setFilters] = useState({
     name: "",
@@ -38,9 +26,9 @@ export default function AdvertsPage({ ...props }) {
     sale: "",
     tags: [""],
   });
- 
-  
-  if (error && error.statusCode===404) {   //No evalua esto a 'true' cuando la url no existe sino que renderiza directamente al componente Error
+
+  if (error && error.statusCode === 404) {
+    //No evalua esto a 'true' cuando la url no existe sino que renderiza directamente al componente Error
     return <Redirect to="/404" />;
   }
 
@@ -56,10 +44,9 @@ export default function AdvertsPage({ ...props }) {
     }
   }
 
-
   return (
     <>
-      {error && error.statusCode!== 404 ? (
+      {error && error.statusCode !== 404 ? (
         <Error className="adverts-page-error" error={error} />
       ) : (
         <>
