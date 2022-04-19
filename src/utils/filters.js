@@ -1,6 +1,6 @@
-export const filterName = (advert, filters) => {
-  if (filters.name) {
-    if (advert.name === filters.name) {
+const filterName = (advert, filter) => {
+  if (filter) {
+    if (advert.name === filter) {
       return true;
     } else {
       return false;
@@ -10,9 +10,9 @@ export const filterName = (advert, filters) => {
   }
 };
 
-export const filterSale = (advert, filters) => {
-  if (filters.sale !== "") {
-    if (advert.sale === filters.sale) {
+const filterSale = (advert, filter) => {
+  if (filter !== "all") {
+    if (advert.sale === Boolean(filter)) {
       return true;
     } else {
       return false;
@@ -22,9 +22,9 @@ export const filterSale = (advert, filters) => {
   }
 };
 
-export const filterTags = (advert, filters) => {
-  if (JSON.stringify(filters.tags) !== '[""]') {
-    if (JSON.stringify(advert.tags) === JSON.stringify(filters.tags)) {
+const filterTags = (advert, filter) => {
+  if (JSON.stringify(filter) !== '[""]') {
+    if (JSON.stringify(advert.tags) === JSON.stringify(filter)) {
       return true;
     } else {
       return false;
@@ -34,11 +34,11 @@ export const filterTags = (advert, filters) => {
   }
 };
 
-export const filterAdverts = (adverts, filters) => {
+const filterAdverts = (adverts, filters) => {
   return adverts
-    .filter((advert) => filterSale(advert, filters))
-    .filter((advert) => filterName(advert, filters))
-    .filter((advert) => filterTags(advert, filters));
+    .filter((advert) => filterSale(advert, filters.sale))
+    .filter((advert) => filterName(advert, filters.name))
+    .filter((advert) => filterTags(advert, filters.tags));
 };
 
-//export default filterAdverts;
+export default filterAdverts;

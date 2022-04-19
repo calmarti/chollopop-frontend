@@ -1,32 +1,39 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Layout from "../../layout/Layout";
 import AdvertsList from "../AdvertsPage/AdvertsList";
 import { Link, Redirect } from "react-router-dom";
-import Types from "prop-types";
 import FilterArea from "./FilterArea";
 import { Error, Empty } from "../../shared";
+import { getAdverts } from "../service";
+import filterAdverts from "../../../utils/filters";
+import useQuery from "../../hooks/useQuery";
 import "./FilterArea.css";
 import "./AdvertsPage.css";
-import { getAdverts } from "../service";
-import {
-  filterName,
-  filterSale,
-  filterTags,
-  filterAdverts,
-} from "../../../utils/filters";
-import useQuery from "../../hooks/useQuery";
+import Types from "prop-types";
+import useForm from "../../hooks/useForm";
+
+
+//TODO: crear un useForm y usarlo en FilterArea (y luego en login) para controlar el formulario de filtros
+//TODO: corregir filters.js
+//TODO: refactorizar  (¿usando useQuery?) llamada al api de getTags
 
 export default function AdvertsPage({ ...props }) {
+  const { data: adverts, isLoading, error } = useQuery(getAdverts);
 
-const { data: adverts, isLoading, error } = useQuery(getAdverts);
+  // const [filters, setFilters] = useState({
+  //   name: "",
+  //   price: "",
+  //   sale: "",
+  //   tags: [""],
+  // });npm star
 
-  const [filters, setFilters] = useState({
+  const { formValue:filters, setFormValue, handleChange } = useForm({
     name: "",
     price: "",
-    sale: "",
+    sale: "all",
     tags: [""],
   });
-
+  
   if (error && error.statusCode === 404) {
     //No evalua esto a 'true' cuando la url no existe sino que renderiza directamente al componente Error
     return <Redirect to="/404" />;
@@ -50,13 +57,14 @@ const { data: adverts, isLoading, error } = useQuery(getAdverts);
         <Error className="adverts-page-error" error={error} />
       ) : (
         <>
+          <Layout /* filteredAdverts ={filteredAdverts} */ {...props}>
           <FilterArea
             filters={filters}
-            setFilters={setFilters}
+            // setFilters={setFilters}
+            setFormValue={setFormValue}
+            handleChange={handleChange}
             /* setError={setError}  */ {...props}
           />
-
-          <Layout /* filteredAdverts ={filteredAdverts} */ {...props}>
             {filteredAdverts.length ? (
               <AdvertsList filteredAdverts={filteredAdverts} />
             ) : (
