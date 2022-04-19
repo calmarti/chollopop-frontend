@@ -12,37 +12,21 @@ import "./AdvertsPage.css";
 import Types from "prop-types";
 import useForm from "../../hooks/useForm";
 
-//TODO: crear un useForm y usarlo en FilterArea (y luego en login) para controlar el formulario de filtros
-//TODO: corregir filters.js
-
 export default function AdvertsPage({ ...props }) {
   const { data: adverts, isLoading, error } = useQuery(getAdverts);
-  const {
-    formValue: filters,
-    setFormValue,
-    handleChange,
-  } = useForm({
+  const { formValue: filters, handleChange } = useForm({
     name: "",
     price: "",
     sale: "all",
     tags: [""],
   });
 
-  if (error && error.statusCode === 404) {
-    //No evalua esto a 'true' cuando la url no existe sino que renderiza directamente al componente Error
-    return <Redirect to="/404" />;
-  }
-
+  const advertsCount = adverts.length;
   const filteredAdverts = filterAdverts(adverts, filters);
   console.log(adverts, filteredAdverts);
 
-  let emptyMessage = "";
-  if (!adverts.length) {
-    emptyMessage = "No hay nada para vender o comprar";
-  } else {
-    if (!filteredAdverts.length) {
-      emptyMessage = "Los filtros usados no corresponden a ningún anuncio";
-    }
+  if (error && error.statusCode === 404) {
+    return <Redirect to="/404" />;
   }
 
   return (
@@ -60,7 +44,7 @@ export default function AdvertsPage({ ...props }) {
             {filteredAdverts.length ? (
               <AdvertsList filteredAdverts={filteredAdverts} />
             ) : (
-              <Empty message={emptyMessage} {...props} />
+              <Empty advertsCount={advertsCount} {...props} />
             )}
           </Layout>
         </>
