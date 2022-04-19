@@ -3,7 +3,6 @@ import "./FilterArea.css";
 import Types from "prop-types";
 import { getAdvertTags } from "../service";
 import Button from "../../shared/Button";
-import useForm from "../../hooks/useForm";
 import useQuery from "../../hooks/useQuery";
 
 
@@ -12,7 +11,6 @@ import useQuery from "../../hooks/useQuery";
 export default function FilterArea({ filters, handleChange }) {
 
   const { data:tags, isLoading, error } = useQuery(getAdvertTags);
-
 
   return (
     <div className="filter-container">

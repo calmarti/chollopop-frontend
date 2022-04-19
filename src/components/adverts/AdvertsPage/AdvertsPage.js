@@ -14,7 +14,6 @@ import useForm from "../../hooks/useForm";
 
 //TODO: crear un useForm y usarlo en FilterArea (y luego en login) para controlar el formulario de filtros
 //TODO: corregir filters.js
-//TODO: refactorizar  (¿usando useQuery?) llamada al api de getTags
 
 export default function AdvertsPage({ ...props }) {
   const { data: adverts, isLoading, error } = useQuery(getAdverts);
@@ -55,9 +54,8 @@ export default function AdvertsPage({ ...props }) {
           <Layout {...props}>
             <FilterArea
               filters={filters}
-              setFormValue={setFormValue}
               handleChange={handleChange}
-              /* setError={setError}  */ {...props}
+              {...props}
             />
             {filteredAdverts.length ? (
               <AdvertsList filteredAdverts={filteredAdverts} />

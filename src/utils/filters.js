@@ -1,18 +1,20 @@
-const filterName = (advert, filter) => {
-  if (filter) {
-    if (advert.name === filter) {
+const filterName = (advert, name) => {
+  if (name) {
+    const cleanFilter = name.trim();
+    const re = new RegExp(cleanFilter, "gi").test(advert.name);
+    console.log(re)
+    if (re) {
       return true;
     } else {
       return false;
     }
-  } else {
-    return true;
   }
+  return true;
 };
 
-const filterSale = (advert, filter) => {
-  if (filter !== "all") {
-    if (advert.sale === Boolean(filter)) {
+const filterSale = (advert, sale) => {
+  if (sale !== "all") {
+    if (advert.sale === Boolean(sale)) {
       return true;
     } else {
       return false;
@@ -36,8 +38,8 @@ const filterTags = (advert, filter) => {
 
 const filterAdverts = (adverts, filters) => {
   return adverts
-    .filter((advert) => filterSale(advert, filters.sale))
     .filter((advert) => filterName(advert, filters.name))
+    .filter((advert) => filterSale(advert, filters.sale))
     .filter((advert) => filterTags(advert, filters.tags));
 };
 
