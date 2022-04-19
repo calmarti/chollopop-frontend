@@ -4,31 +4,15 @@ import Types from "prop-types";
 import { getAdvertTags } from "../service";
 import Button from "../../shared/Button";
 import useForm from "../../hooks/useForm";
+import useQuery from "../../hooks/useQuery";
+
 
 //TODO: refactorizar formulario de filtros y handlers de eventos
 
-export default function FilterArea({
-  filters,
-  // setFilters,
-  handleChange,
-  setFormValue,
-  //setError,
-  ...props
-}) {
-  const [tagvalues, setTagValues] = useState([]);
-  const [error, setError] = useState(null);
+export default function FilterArea({ filters, handleChange }) {
 
-  useEffect(() => {
-    const getTagsWrapper = async () => {
-      try {
-        const result = await getAdvertTags();
-        setTagValues(result);
-      } catch (error) {
-        setError(error);
-      }
-    };
-    getTagsWrapper();
-  }, []);
+  const { data:tags, isLoading, error } = useQuery(getAdvertTags);
+
 
   return (
     <div className="filter-container">
@@ -97,10 +81,10 @@ export default function FilterArea({
               multiple={true}
             >
               <option value={[""]}>all</option>
-              {tagvalues.map((tagvalue, index) => (
-                <option key={index} value={tagvalue}>
+              {tags.map((tag, index) => (
+                <option key={index} value={tag}>
                   {" "}
-                  {tagvalue}{" "}
+                  {tag}{" "}
                 </option>
               ))}
             </select>

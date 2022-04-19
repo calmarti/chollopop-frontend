@@ -12,28 +12,23 @@ import "./AdvertsPage.css";
 import Types from "prop-types";
 import useForm from "../../hooks/useForm";
 
-
 //TODO: crear un useForm y usarlo en FilterArea (y luego en login) para controlar el formulario de filtros
 //TODO: corregir filters.js
 //TODO: refactorizar  (¿usando useQuery?) llamada al api de getTags
 
 export default function AdvertsPage({ ...props }) {
   const { data: adverts, isLoading, error } = useQuery(getAdverts);
-
-  // const [filters, setFilters] = useState({
-  //   name: "",
-  //   price: "",
-  //   sale: "",
-  //   tags: [""],
-  // });npm star
-
-  const { formValue:filters, setFormValue, handleChange } = useForm({
+  const {
+    formValue: filters,
+    setFormValue,
+    handleChange,
+  } = useForm({
     name: "",
     price: "",
     sale: "all",
     tags: [""],
   });
-  
+
   if (error && error.statusCode === 404) {
     //No evalua esto a 'true' cuando la url no existe sino que renderiza directamente al componente Error
     return <Redirect to="/404" />;
@@ -57,14 +52,13 @@ export default function AdvertsPage({ ...props }) {
         <Error className="adverts-page-error" error={error} />
       ) : (
         <>
-          <Layout /* filteredAdverts ={filteredAdverts} */ {...props}>
-          <FilterArea
-            filters={filters}
-            // setFilters={setFilters}
-            setFormValue={setFormValue}
-            handleChange={handleChange}
-            /* setError={setError}  */ {...props}
-          />
+          <Layout {...props}>
+            <FilterArea
+              filters={filters}
+              setFormValue={setFormValue}
+              handleChange={handleChange}
+              /* setError={setError}  */ {...props}
+            />
             {filteredAdverts.length ? (
               <AdvertsList filteredAdverts={filteredAdverts} />
             ) : (
