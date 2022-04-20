@@ -1,7 +1,6 @@
-import { useState } from "react";
+import { Redirect } from "react-router-dom";
 import Layout from "../../layout/Layout";
 import AdvertsList from "../AdvertsPage/AdvertsList";
-import { Link, Redirect } from "react-router-dom";
 import FilterArea from "./FilterArea";
 import { Error, Empty } from "../../shared";
 import { getAdverts } from "../service";

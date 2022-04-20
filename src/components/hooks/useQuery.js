@@ -7,6 +7,8 @@ export default function useQuery(query) {
     error: null,
   });
 
+  const { data, isLoading, error } = state;
+
   useEffect(() => {
     if (query) {
       query()
@@ -42,5 +44,5 @@ export default function useQuery(query) {
     }
   }, [query]);
 
-  return state;
+  return { data, isLoading, error, setState };
 }

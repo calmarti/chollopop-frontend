@@ -7,6 +7,7 @@ export default function useForm(initialValue) {
     const type = ev.target.type;
     switch (type) {
       case "text":
+      case "number":
       case "textarea":
       case "select":
       case "file":

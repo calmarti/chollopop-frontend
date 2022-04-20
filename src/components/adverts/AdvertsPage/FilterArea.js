@@ -5,12 +5,10 @@ import { getAdvertTags } from "../service";
 import Button from "../../shared/Button";
 import useQuery from "../../hooks/useQuery";
 
-
 //TODO: refactorizar formulario de filtros y handlers de eventos
 
 export default function FilterArea({ filters, handleChange }) {
-
-  const { data:tags, isLoading, error } = useQuery(getAdvertTags);
+  const { data: tags, isLoading, error } = useQuery(getAdvertTags);
 
   return (
     <div className="filter-container">
@@ -88,9 +86,6 @@ export default function FilterArea({ filters, handleChange }) {
             </select>
           </label>
         </div>
-        <Button className="filter-button" type="submit">
-          Buscar
-        </Button>
       </form>
     </div>
   );

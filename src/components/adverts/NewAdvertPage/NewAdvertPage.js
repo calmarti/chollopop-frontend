@@ -7,9 +7,19 @@ import "./NewAdvertPage.css";
 import Header from "../../layout/Header.js";
 import Error from "../../shared/Error";
 import "../../layout/Header.css";
+import useForm from "../../hooks/useForm";
+import useQuery from "../../hooks/useQuery";
 
 export default function NewAdvertPage({ ...props }) {
-  const [fields, setFields] = useState({
+  // const [fields, setFields] = useState({
+  //   name: "",
+  //   price: "",
+  //   sale: true,
+  //   tags: undefined,
+  //   photo: null,
+  // });
+
+  const { formValue: fields, handleChange } = useForm({
     name: "",
     price: "",
     sale: true,
@@ -17,57 +27,9 @@ export default function NewAdvertPage({ ...props }) {
     photo: null,
   });
 
-  const [tagvalues, setTagValues] = useState([]);
+  const { data: tags, isLoading, error, setState } = useQuery(getAdvertTags);
   const [newAdvertId, setNewAdvertId] = useState("");
-  const [error, setError] = useState(null);
   const photoRef = useRef(null);
-
-  useEffect(() => {
-    const getTagsWrapper = async () => {
-      try {
-        const result = await getAdvertTags();
-        setTagValues(result);
-      } catch (error) {
-        setError(error);
-      }
-    };
-    getTagsWrapper();
-  }, []);
-
-  const handleOnChange = (event) => {
-    if (
-      event.target.type === "text" ||
-      event.target.type === "number" ||
-      event.target.type === "file"
-    ) {
-      setFields((prevState) => ({
-        ...prevState,
-        [event.target.name]: event.target.value,
-      }));
-    } else if (event.target.type === "select-multiple") {
-      const selected = event.target.selectedOptions;
-      const tagsValues = [];
-
-      Array.from(selected).forEach((tag) => {
-        tagsValues.push(tag.value);
-        setFields((prevState) => ({
-          ...prevState,
-          [event.target.name]: tagsValues,
-        }));
-      });
-    }
-  };
-
-  const handleRadio = (event) => {
-    setFields((prevState) =>
-      event.target.checked
-        ? {
-            ...prevState,
-            sale: event.target.value === "true" ? true : false,
-          }
-        : { ...prevState }
-    );
-  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -76,7 +38,9 @@ export default function NewAdvertPage({ ...props }) {
       data.set["photo"] = photoRef.current.value;
       const response = await postNewAdvert(data);
       setNewAdvertId(response.id);
-    } catch (error) {}
+    } catch (e) {
+      setState((prevState) => ({ ...prevState, error: e.message }));
+    }
   };
 
   if (newAdvertId) {
@@ -101,7 +65,7 @@ export default function NewAdvertPage({ ...props }) {
                   type="text"
                   id="name"
                   name="name"
-                  onChange={handleOnChange}
+                  onChange={handleChange}
                   value={fields.name}
                   autoFocus
                 />
@@ -114,7 +78,7 @@ export default function NewAdvertPage({ ...props }) {
                   type="number"
                   id="price"
                   name="price"
-                  onChange={handleOnChange}
+                  onChange={handleChange}
                   value={fields.price}
                 />
               </label>
@@ -127,7 +91,7 @@ export default function NewAdvertPage({ ...props }) {
                   type="radio"
                   value={true}
                   checked={fields.sale === true}
-                  onChange={handleRadio}
+                  onChange={handleChange}
                 />
               </label>
 
@@ -139,7 +103,7 @@ export default function NewAdvertPage({ ...props }) {
                   type="radio"
                   value={false}
                   checked={fields.sale === false}
-                  onChange={handleRadio}
+                  onChange={handleChange}
                 />
               </label>
 
@@ -150,10 +114,10 @@ export default function NewAdvertPage({ ...props }) {
                   className="new-advert-form-field"
                   name="tags"
                   value={fields.tags}
-                  onChange={handleOnChange}
+                  onChange={handleChange}
                   multiple={true}
                 >
-                  {tagvalues.map((tagvalue, index) => (
+                  {tags.map((tagvalue, index) => (
                     <option key={index} value={tagvalue}>
                       {" "}
                       {tagvalue}{" "}
