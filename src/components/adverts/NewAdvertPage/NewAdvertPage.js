@@ -1,8 +1,7 @@
-import { useState, useEffect, useRef } from "react";
-import React from "react";
+import { useState, useRef } from "react";
+import { Redirect } from "react-router-dom";
 import Button from "../../shared/Button";
 import { postNewAdvert, getAdvertTags } from "../service";
-import { Redirect } from "react-router-dom";
 import "./NewAdvertPage.css";
 import Header from "../../layout/Header.js";
 import Error from "../../shared/Error";
@@ -11,14 +10,6 @@ import useForm from "../../hooks/useForm";
 import useQuery from "../../hooks/useQuery";
 
 export default function NewAdvertPage({ ...props }) {
-  // const [fields, setFields] = useState({
-  //   name: "",
-  //   price: "",
-  //   sale: true,
-  //   tags: undefined,
-  //   photo: null,
-  // });
-
   const { formValue: fields, handleChange } = useForm({
     name: "",
     price: "",
@@ -31,10 +22,10 @@ export default function NewAdvertPage({ ...props }) {
   const [newAdvertId, setNewAdvertId] = useState("");
   const photoRef = useRef(null);
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  const handleSubmit = async (ev) => {
+    ev.preventDefault();
     try {
-      const data = new FormData(event.target);
+      const data = new FormData(ev.target);
       data.set["photo"] = photoRef.current.value;
       const response = await postNewAdvert(data);
       setNewAdvertId(response.id);

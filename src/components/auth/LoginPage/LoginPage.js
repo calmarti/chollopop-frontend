@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Redirect } from "react-router-dom";
 import Button from "../../shared/Button";
 import { login } from "../service";
@@ -6,42 +6,24 @@ import Types from "prop-types";
 import Header from "../../layout/Header";
 import "./LoginPage.css";
 import Error from "../../shared/Error";
-import storage from "../../../utils/storage";
+import useForm from "../../hooks/useForm";
 
 export default function LoginPage({ onLogin, history, location }) {
-  const [credentials, setCredentials] = useState({
+
+  const { formValue: credentials, handleChange } = useForm({
     email: "",
     password: "",
+    remember:false
   });
+
   const [error, setError] = useState(null);
-  const [reminder, setReminder] = useState(false);
 
-  useEffect(() => {
-    if (reminder) {
-      const remindedEmail = storage.get("email");
-      const remindedPassword = storage.get("password");
-      if (remindedEmail || remindedPassword) {
-        setCredentials({ email: remindedEmail, password: remindedPassword });
-      }
-    }
-  }, [reminder]);
-
-  function handleInputChange(event) {
-    setCredentials((prevState) => ({
-      ...prevState,
-      [event.target.name]: event.target.value,
-    }));
-  }
 
   function handleSubmit(event) {
     event.preventDefault();
     login(credentials)
       .then(() => {
         onLogin();
-        if (reminder) {
-          storage.set("email", credentials.email);
-          storage.set("password", credentials.password);
-        }
         const { from } = location.state || { from: "/adverts" };
         history.replace(from);
       })
@@ -50,9 +32,6 @@ export default function LoginPage({ onLogin, history, location }) {
       });
   }
 
-  function switchReminder() {
-    reminder ? setReminder(false) : setReminder(true);
-  }
 
   return (
     <>
@@ -61,7 +40,11 @@ export default function LoginPage({ onLogin, history, location }) {
       <h2 className="login-title">Inicia sesión</h2>
 
       {error && error.status == 404 ? <Redirect to="/404" /> : ""}
-      {error && error.status != 404 ? <Error className="login-error" error={error} /> : ""}
+      {error && error.status != 404 ? (
+        <Error className="login-error" error={error} />
+      ) : (
+        ""
+      )}
 
       <form onSubmit={handleSubmit}>
         <div className="login-form-container">
@@ -70,7 +53,7 @@ export default function LoginPage({ onLogin, history, location }) {
             <input
               className="login-form-input username-input"
               id="email"
-              onChange={handleInputChange}
+              onChange={handleChange}
               type="email"
               name="email"
               value={credentials.email}
@@ -82,7 +65,7 @@ export default function LoginPage({ onLogin, history, location }) {
             <input
               className="login-form-input"
               id="password"
-              onChange={handleInputChange}
+              onChange={handleChange}
               type="password"
               name="password"
               value={credentials.password}
@@ -90,14 +73,14 @@ export default function LoginPage({ onLogin, history, location }) {
           </label>
 
           <label className="reminder-label" htmlFor="reminder">
-            Recordar mis datos
+            Recordarme en este equipo
             <input
               className="reminder-input"
-              checked={reminder}
-              onChange={switchReminder}
+              checked={credentials.remember}
+              onChange={handleChange}
               type="checkbox"
-              name="reminder"
-              id="reminder"
+              name="remember"
+              id="remember"
             />
           </label>
 

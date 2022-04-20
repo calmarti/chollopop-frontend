@@ -14,21 +14,20 @@ export default function AdvertPage({ match, history, ...props }) {
   const [error, setError] = useState(null);
   const [isModalOn, setIsModalOn] = useState(false);
 
-  useEffect(async () => {
-    try {
-      const id = match.params.id;
-      const advert = await getAdvert(id);
-      setAdvert(advert);
-    } catch (error) {
-      setError(error);
-    }
+  useEffect(() => {
+    const id = match.params.id;
+    getAdvert(id)
+      .then((advert) => setAdvert(advert))
+      .catch((error) => setError(error));
   }, [match.params.id]);
 
-  if (error && error.response.data.statusCode == 404) {
+
+
+  if (error && error.response.data.statusCode === 404) {
     return <Redirect to="/404" />;
   }
 
-  if (error && error.response.data.statusCode != 404) {
+  if (error && error.response.data.statusCode !== 404) {
     <Error error={error} />;
   }
 

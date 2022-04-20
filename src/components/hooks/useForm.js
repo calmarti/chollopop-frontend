@@ -38,6 +38,11 @@ export default function useForm(initialValue) {
           }));
         }
         break;
+      case "checkbox":
+        setFormValue((currentValue) => ({
+          ...currentValue,
+          [ev.target.name]: ev.target.value ? false : true,
+        }));
       default:
         setFormValue((currentValue) => ({
           ...currentValue,

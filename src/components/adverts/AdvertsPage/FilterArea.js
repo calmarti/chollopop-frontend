@@ -1,11 +1,8 @@
-import React, { useState, useEffect } from "react";
 import "./FilterArea.css";
 import Types from "prop-types";
 import { getAdvertTags } from "../service";
-import Button from "../../shared/Button";
 import useQuery from "../../hooks/useQuery";
 
-//TODO: refactorizar formulario de filtros y handlers de eventos
 
 export default function FilterArea({ filters, handleChange }) {
   const { data: tags, isLoading, error } = useQuery(getAdvertTags);
