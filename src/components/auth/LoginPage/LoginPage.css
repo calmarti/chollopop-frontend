@@ -1,46 +1,48 @@
 .login-title {
-  position: relative;
-  top: 10rem;
+  /* position: relative; */
+  /* top: 2rem; */
+  /* margin-bottom: 3.5rem; */
+  margin: 4rem auto 5rem auto;
   text-align: center;
-  margin-bottom: 3.5rem;
-  margin-right:3rem;
 }
 
 .login-form-container {
+  border: solid 1px black;
   padding: 4rem 6rem 4rem 3rem;
+  margin: 0 auto;
   position: relative;
-  top: 10rem;
-  left: 40rem;
+  /*   top: 10rem;
+  left: 40rem; */
   background-color: #e6e7e8;
   display: flex;
   flex-flow: column;
   gap: 3rem;
   align-items: center;
-  width: 20%;
+  width: 30%;
 }
 
-.login-form-label {
+/* .login-form-label {
   display: block;
   margin-top: 1rem;
   flex: 1;
   font-size: 1.2rem;
   font-weight: bold;
   line-height: 2rem;
-}
+} */
 
-.login-form-input {
+/* .login-form-input {
   margin-left: 2rem;
   width: 12rem;
   height: 2rem;
   border-radius: 2rem;
   border-style: solid;
   font-size: 1.2rem;
-}
+} */
 
-.username-input {
+/* .username-input {
   position: relative;
   left: 1rem;
-}
+} */
 
 .login-form-button {
   position: relative;
@@ -49,19 +51,16 @@
   height: 3rem;
 }
 
-
-.reminder-label{
-  padding-left:8rem;  
-}
-
+/* .reminder-label {
+  padding-left: 8rem;
+} */
 
 .login-error {
   position: relative;
-  left:48rem;
-  background-color:#eec0c8;
+  left: 48rem;
+  background-color: #eec0c8;
   z-index: 1;
-  text-align:center;
-  padding:1rem;
-  display:inline;
-
+  text-align: center;
+  padding: 1rem;
+  display: inline;
 }

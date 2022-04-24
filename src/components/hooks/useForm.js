@@ -41,8 +41,9 @@ export default function useForm(initialValue) {
       case "checkbox":
         setFormValue((currentValue) => ({
           ...currentValue,
-          [ev.target.name]: ev.target.value ? false : true,
+          [ev.target.name]: ev.target.value === "false" ? true : false,
         }));
+        break;
       default:
         setFormValue((currentValue) => ({
           ...currentValue,

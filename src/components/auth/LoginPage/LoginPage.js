@@ -9,15 +9,15 @@ import Error from "../../shared/Error";
 import useForm from "../../hooks/useForm";
 
 export default function LoginPage({ onLogin, history, location }) {
-
   const { formValue: credentials, handleChange } = useForm({
     email: "",
     password: "",
-    remember:false
+    remember: false,
   });
 
-  const [error, setError] = useState(null);
+  console.log(credentials.remember);
 
+  const [error, setError] = useState(null);
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -31,7 +31,6 @@ export default function LoginPage({ onLogin, history, location }) {
         setError(error);
       });
   }
-
 
   return (
     <>
@@ -48,10 +47,10 @@ export default function LoginPage({ onLogin, history, location }) {
 
       <form onSubmit={handleSubmit}>
         <div className="login-form-container">
-          <label className="login-form-label" htmlFor="email">
+          <label className="form-label" htmlFor="email">
             Usuario
             <input
-              className="login-form-input username-input"
+              className="form-control form-control-lg"
               id="email"
               onChange={handleChange}
               type="email"
@@ -60,10 +59,10 @@ export default function LoginPage({ onLogin, history, location }) {
               autoFocus
             ></input>
           </label>
-          <label className="login-form-label" htmlFor="password">
+          <label className="form-label" htmlFor="password">
             Contraseña
             <input
-              className="login-form-input"
+              className="form-control form-control-lg"
               id="password"
               onChange={handleChange}
               type="password"
@@ -72,26 +71,26 @@ export default function LoginPage({ onLogin, history, location }) {
             ></input>
           </label>
 
-          <label className="reminder-label" htmlFor="reminder">
+          <label className="form-check-label" htmlFor="remember">
             Recordarme en este equipo
             <input
-              className="reminder-input"
+              className="form-check-input"
               checked={credentials.remember}
               onChange={handleChange}
               type="checkbox"
               name="remember"
               id="remember"
+              value={credentials.remember}
             />
           </label>
 
-          <Button
-            className="login-form-button"
+          <button
+            className="btn btn-lg btn-outline-dark"
             disabled={!credentials.email || !credentials.password}
-            variant="primary"
             type="submit"
           >
-            Iniciar Sesión
-          </Button>
+            Continuar
+          </button>
         </div>
       </form>
     </>
