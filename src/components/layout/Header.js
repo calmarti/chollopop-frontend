@@ -33,29 +33,35 @@ export default function Header({ history, ...props }) {
   };
 
   return (
-    <header className="header">
-      <nav className="header-nav">
-        <Link className="header-link" to="/">
-          <div className="logo">Logo</div>
+    <nav
+      className="navbar navbar-expand-lg navbar-light bg-light" /* "header" */
+    >
+      <div className="container-fluid" /* "header-nav" */>
+        <Link className="navbar-brand" /* "nav-link"  *//* "header-link"  */to="/">
+        Logo
         </Link>
-        <Link className="header-link" to="/">
-          Home
-        </Link>
+        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+          <li className="nav-item">
+            <Link className="nav-link" /* "header-link" */ to="/">
+              Home
+            </Link>
+          </li>
+        </ul>
         {isLogged ? (
-          <>
-            <Button className="header-button" onClick={logoutConfirmation}>
+          <div>
+            <button type="button" className= "btn btn-outline-dark mx-2"/* "header-button" */ onClick={logoutConfirmation}>
               Salir
-            </Button>
+            </button>
             <Modal handleClick={handleLogout} {...modalProps} />
 
-            <Button className="header-button" onClick={handleRedirect}>
+            <button type="button" className="btn btn-outline-dark mx-2"/* "header-button"  */onClick={handleRedirect}>
               Crear anuncio
-            </Button>
-          </>
+            </button>
+          </div>
         ) : (
           ""
         )}
-      </nav>
-    </header>
+      </div>
+    </nav>
   );
 }

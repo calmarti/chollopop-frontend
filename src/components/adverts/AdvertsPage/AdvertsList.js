@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import "./AdvertsPage.css";
+import placeholder from "../../../assets/default_photo.jpg";
 
 const AdvertsList = ({ filteredAdverts }) => {
   return (
@@ -12,6 +13,15 @@ const AdvertsList = ({ filteredAdverts }) => {
               to={`/adverts/${advert.id}`}
             >
               <div className="card">
+                <img
+                  className="card-image"
+                  src={
+                    advert.photo
+                      ? `http://localhost:3001${advert.photo}`
+                      : placeholder
+                  }
+                  alt={advert.name}
+                />
                 <h2>{advert.name}</h2>
                 <p>{advert.price}€</p>
                 <p>{advert.sale ? "Vendo" : "Compro"}</p>

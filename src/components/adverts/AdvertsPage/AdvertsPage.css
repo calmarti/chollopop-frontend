@@ -1,3 +1,8 @@
+img{
+  width:200px;
+  height:200px;
+}
+
 .card-adverts {
   display: flex;
   flex-flow: row wrap;
@@ -14,11 +19,23 @@
 }
 
 .card {
+  display:flex;
+  flex-flow: column nowrap;
   background-color: aquamarine;
   border: solid black, 1px;
   padding: 1.5rem;
   width: 20rem;
+  /* max-width: 360px;
+  max-height:360px; */
 }
+
+.card-image{
+width:40%;
+height: 40%;
+max-width:200px;
+max-height: 200px;  
+} 
+
 
 .adverts-page-error {
   position: relative;
@@ -29,3 +46,4 @@
   text-align: center;
   padding: 0.5rem;
 }
+
