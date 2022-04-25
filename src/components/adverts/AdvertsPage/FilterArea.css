@@ -6,7 +6,8 @@ margin-bottom:6rem;
 } */
 
 .filter-area{
-    border:1px black solid;
+    /* border:1px black solid; */
+    margin:3rem auto;
 }
 
 .filter-title {
