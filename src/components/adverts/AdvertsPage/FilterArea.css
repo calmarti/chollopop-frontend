@@ -1,8 +1,12 @@
-.filter-container {
+/* .filter-container {
 position:relative;
 top:5rem;
 margin-bottom:6rem;
 
+} */
+
+.filter-area{
+    border:1px black solid;
 }
 
 .filter-title {
@@ -10,23 +14,22 @@ margin-bottom:6rem;
     margin-bottom: 3.5rem; 
 }
 
-.form-container {
+/* .form-container {
 display: flex;
 flex-flow: row nowrap;
 gap: 3rem;
 justify-content: space-around;
 width: 100%;
 
-
-}
+} */
 
 .filter-label {
-width: 5rem;
+width: 6rem;
 flex: 0 1 auto;
 
 }
 
-.filter-button {
+/* .filter-button {
 position:relative;
 left:50rem;
-}
+} */

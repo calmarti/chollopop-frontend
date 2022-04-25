@@ -1,4 +1,17 @@
-.layout-main {
+
+
+/* .layout-main {
   position: relative;
-  top: 6rem;
+  top: 1rem;
+} */
+
+
+.footer{
+  display:flex;
+  justify-content: center;
+  gap:3rem;
+  padding:1rem 1rem;
+  margin-top:10rem;
+  border:1px solid black;
+
 }
