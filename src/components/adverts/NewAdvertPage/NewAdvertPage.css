@@ -1,12 +1,19 @@
-.new-advert-container {
+/* .new-advert-container {
   position: relative;
   top: 6rem;
-}
+} */
 
 .new-advert-title {
-  text-align: center;
+  margin-left:47rem;
+  margin-top:4rem;
+  
 }
 
+.file-field {
+  position: relative;
+  left: 4rem;
+}
+/* 
 .new-advert-form-container {
   position: relative;
   top: 3rem;
@@ -39,9 +46,5 @@
   position: relative;
   right: 2rem;
   bottom: 1.5rem;
-}
+} */
 
-.file-field {
-  position: relative;
-  left: 4rem;
-}

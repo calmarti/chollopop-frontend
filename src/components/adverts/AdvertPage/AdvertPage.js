@@ -9,6 +9,8 @@ import placeholder from "../../../assets/default_photo.jpg";
 import Error from "../../shared/Error";
 import "./AdvertPage.css";
 
+//TODO: terminar de dar forma al detalle
+
 export default function AdvertPage({ match, history, ...props }) {
   const [advert, setAdvert] = useState([]);
   const [error, setError] = useState(null);
@@ -21,8 +23,6 @@ export default function AdvertPage({ match, history, ...props }) {
       .catch((error) => setError(error));
   }, [match.params.id]);
 
-
-
   if (error && error.response.data.statusCode === 404) {
     return <Redirect to="/404" />;
   }
@@ -34,7 +34,7 @@ export default function AdvertPage({ match, history, ...props }) {
   const modalProps = {
     isModalOn: isModalOn,
 
-    modalMessage: "¿Realmente quieres borrar el anuncio?",
+    modalMessage: "¿Realmente quieres borrar este anuncio?",
 
     showModal: () => {
       setIsModalOn(true);
@@ -67,13 +67,18 @@ export default function AdvertPage({ match, history, ...props }) {
           <p>{advert.price}€</p>
           <p>{advert.sale ? "Vendo" : "Compro"}</p>
           <p className="card-tags">
-            Categorías:&nbsp;{" "}
-            {advert.tags ? advert.tags.join(", ") : advert.tags}
+            {/* &nbsp;{" "} */}
+            {advert.tags ? advert.tags.join("  ") : advert.tags}
           </p>
         </div>
-        <Button className="card-delete-button" onClick={modalProps.showModal}>
+
+        <button
+          className="btn btn-md btn-outline-dark card-delete-button"
+          onClick={modalProps.showModal}
+        >
           Borrar
-        </Button>
+        </button>
+        <div class="modal" tabindex="-1"></div>
       </div>
       <Modal handleClick={handleDelete} {...modalProps} />
     </Layout>

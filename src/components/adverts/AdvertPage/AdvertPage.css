@@ -1,9 +1,17 @@
 .card-container {
-  position: relative;
-  left: 24rem;
-  top: 5rem;
+  margin:0 auto;
   width: 50%;
   background-color: #E6E7E8;
+  display:flex;
+  gap:5rem;
+  justify-content: flex-start;
+  align-items: center;
+  padding:10rem;
+  
+}
+
+.card-image{
+
 }
 
 .card-info {
@@ -14,12 +22,13 @@
   font-size: 1.5rem;
 }
 
-.card-tags {
+/* .card-tags {
     font-weight: bold;
-}
+} */
 
 .card-delete-button {
-    position:relative;
+    /* position:relative;
     bottom:4rem;
-    left:50rem;
+    left:50rem; */
+    align-self: flex-end;
 }
