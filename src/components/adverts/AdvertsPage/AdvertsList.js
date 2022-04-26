@@ -17,7 +17,7 @@ const AdvertsList = ({ filteredAdverts }) => {
       <ul className="row">
         {filteredAdverts.map((advert, index) => (
           <div key={index} className="col-sm-3 my-5">
-            <li className="card" style={{ width: "18rem" }} key={advert.id}>
+            <li className="card" style={{ width: "18rem", backgroundColor: "var(--third-color)" /* , padding:"2.5rem" */ }} key={advert.id}>
               <Link className="card-link" to={`/adverts/${advert.id}`}>
                 <img
                   className="card-img-top"
@@ -28,7 +28,7 @@ const AdvertsList = ({ filteredAdverts }) => {
                   }
                   alt={advert.name}
                 />
-                <div className="card-body">
+                <div className="card-body card-styles">
                   <h2 className="card-title">{advert.name}</h2>
                   <div className="card-text">
                     <p>{advert.price}€</p>

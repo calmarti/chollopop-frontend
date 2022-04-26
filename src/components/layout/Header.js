@@ -34,27 +34,26 @@ export default function Header({ history, ...props }) {
 
   return (
     <nav
-      className="navbar navbar-expand-lg navbar-light bg-light" /* "header" */
+      className="navbar navbar-expand-lg" /* navbar-light bg-light  *//* "header" */
     >
-      <div className="container-fluid" /* "header-nav" */>
-        <Link className="navbar-brand" /* "nav-link"  *//* "header-link"  */to="/">
+      <div className="container-fluid" >
+        <Link className="navbar-brand logo" to="/">
         Logo
         </Link>
         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
           <li className="nav-item">
-            <Link className="nav-link" /* "header-link" */ to="/">
-              Home
+            <Link className="nav-link" to="/">
             </Link>
           </li>
         </ul>
         {isLogged ? (
           <div>
-            <button type="button" className= "btn btn-outline-dark mx-2"/* "header-button" */ onClick={logoutConfirmation}>
+            <button type="button" className= "btn btn-info mx-2"/* "header-button" */ onClick={logoutConfirmation}>
               Salir
             </button>
             <Modal handleClick={handleLogout} {...modalProps} />
 
-            <button type="button" className="btn btn-outline-dark mx-2"/* "header-button"  */onClick={handleRedirect}>
+            <button type="button" className="btn btn-info mx-2"/* "header-button"  */onClick={handleRedirect}>
               Crear anuncio
             </button>
           </div>

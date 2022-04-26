@@ -3,13 +3,11 @@ import { useState, useEffect } from "react";
 import { Redirect } from "react-router-dom";
 import Layout from "../../layout/Layout";
 import { deleteAdvert, getAdvert } from "../service";
-import Button from "../../shared/Button";
 import Modal from "../../shared/Modal";
 import placeholder from "../../../assets/default_photo.jpg";
 import Error from "../../shared/Error";
 import "./AdvertPage.css";
 
-//TODO: terminar de dar forma al detalle
 
 export default function AdvertPage({ match, history, ...props }) {
   const [advert, setAdvert] = useState([]);

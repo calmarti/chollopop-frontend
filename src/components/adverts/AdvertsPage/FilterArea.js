@@ -84,7 +84,7 @@ export default function FilterArea({ filters, handleChange }) {
           </div>
         </div>
 
-        <div className="col">
+        <div className="col tags">
           <label htmlFor="tags" className="filter-label">
             Categoría
             <select

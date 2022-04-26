@@ -7,6 +7,7 @@ import Header from "../../layout/Header";
 import "./LoginPage.css";
 import Error from "../../shared/Error";
 import useForm from "../../hooks/useForm";
+import Footer from "../../layout/Footer";
 
 export default function LoginPage({ onLogin, history, location }) {
   const { formValue: credentials, handleChange } = useForm({
@@ -72,7 +73,7 @@ export default function LoginPage({ onLogin, history, location }) {
           </label>
 
           <label className="form-check-label" htmlFor="remember">
-            Recordarme en este equipo
+            <span style={{padding:"1rem"}}>Recordarme en este equipo</span>
             <input
               className="form-check-input"
               checked={credentials.remember}
@@ -85,7 +86,7 @@ export default function LoginPage({ onLogin, history, location }) {
           </label>
 
           <button
-            className="btn btn-lg btn-outline-dark"
+            className="btn btn-lg btn-info"
             disabled={!credentials.email || !credentials.password}
             type="submit"
           >
@@ -93,6 +94,7 @@ export default function LoginPage({ onLogin, history, location }) {
           </button>
         </div>
       </form>
+      <Footer/>
     </>
   );
 }

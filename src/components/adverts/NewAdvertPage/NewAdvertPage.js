@@ -4,10 +4,12 @@ import Button from "../../shared/Button";
 import { postNewAdvert, getAdvertTags } from "../service";
 import "./NewAdvertPage.css";
 import Header from "../../layout/Header.js";
+import Footer from "../../layout/Footer.js";
 import Error from "../../shared/Error";
 import "../../layout/Header.css";
 import useForm from "../../hooks/useForm";
 import useQuery from "../../hooks/useQuery";
+
 
 export default function NewAdvertPage({ ...props }) {
   const { formValue: fields, handleChange } = useForm({
@@ -49,7 +51,7 @@ export default function NewAdvertPage({ ...props }) {
           <h2 className="new-advert-title">Crea tu anuncio</h2>
 
           <form
-            className="d-flex flex-column align-items-center my-5 p-5"
+            className="d-flex flex-column align-items-center my-4 p-1 form-wrapper"
             encType="multipart/form-data"
             onSubmit={handleSubmit}
           >
@@ -155,7 +157,7 @@ export default function NewAdvertPage({ ...props }) {
 
 
                 <button
-                  className="btn btn-outline-dark"
+                  className="btn btn-info"
                   disabled={!fields.name || !fields.price || !fields.tags}
                   type="submit"
                 >
@@ -166,6 +168,7 @@ export default function NewAdvertPage({ ...props }) {
           </form>
         </div>
       )}
+      <Footer/>
     </>
   );
 }

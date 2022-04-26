@@ -5,14 +5,14 @@ margin-bottom:6rem;
 
 } */
 
-.filter-area{
-    /* border:1px black solid; */
-    margin:3rem auto;
+.filter-area {
+  /* border:1px black solid; */
+  margin: 3rem auto;
 }
 
 .filter-title {
-    margin-left: 4rem;
-    margin-bottom: 3.5rem; 
+  margin-left: 4rem;
+  margin-bottom: 3.5rem;
 }
 
 /* .form-container {
@@ -25,11 +25,14 @@ width: 100%;
 } */
 
 .filter-label {
-width: 6rem;
-flex: 0 1 auto;
-
+  width: 6rem;
+  flex: 0 1 auto;
 }
 
+.tags {
+  position: relative;
+  right: -10rem;
+}
 /* .filter-button {
 position:relative;
 left:50rem;

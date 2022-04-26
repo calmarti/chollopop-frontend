@@ -1,17 +1,24 @@
-
-
 .layout-main {
-  margin-top:10rem;
-  margin-bottom:11rem;
+  margin-top: 10rem;
+  margin-bottom: 16rem;
 }
 
-
-.footer{
-  display:flex;
+.footer {
+  display: flex;
   justify-content: center;
-  gap:3rem;
-  padding:1rem 1rem;
-  margin-top:10rem;
-  border:1px solid black;
+  gap: 3rem;
+  padding: 1rem 1rem;
+  margin-top: 10rem;
+  background-color: var(--first-color);
+  box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px,
+    rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
+    rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+}
 
+.footer a {
+  color: var(--color-text);
+}
+
+.footer  svg:hover {
+  transform: scale(1.3);
 }
