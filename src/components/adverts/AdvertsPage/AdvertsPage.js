@@ -8,7 +8,6 @@ import filterAdverts from "../../../utils/filters";
 import useQuery from "../../hooks/useQuery";
 import "./FilterArea.css";
 import "./AdvertsPage.css";
-import Types from "prop-types";
 import useForm from "../../hooks/useForm";
 
 export default function AdvertsPage({ ...props }) {

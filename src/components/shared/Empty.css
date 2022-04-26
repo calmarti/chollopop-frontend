@@ -6,7 +6,7 @@
   height: 100%;
   border: solid 1px black;
   padding: 5rem 10rem 5rem 10rem;
-  background-color: #e6e7e8;
+  background-color: var(--first-color);
 }
 
 .empty-main-message {

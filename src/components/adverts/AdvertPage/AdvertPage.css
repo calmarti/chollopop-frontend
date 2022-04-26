@@ -24,8 +24,5 @@
 }
 
 .card-delete-button {
-    /* position:relative;
-    bottom:4rem;
-    left:50rem; */
     align-self: flex-end;
 }

@@ -1,5 +1,4 @@
 import "./Header.css";
-import Button from "../shared/Button";
 import { Link } from "react-router-dom";
 import { useContext, useState } from "react";
 import AuthContext from "../auth/context";
@@ -48,12 +47,12 @@ export default function Header({ history, ...props }) {
         </ul>
         {isLogged ? (
           <div>
-            <button type="button" className= "btn btn-info mx-2"/* "header-button" */ onClick={logoutConfirmation}>
+            <button type="button" className= "btn btn-info mx-2" onClick={logoutConfirmation}>
               Salir
             </button>
             <Modal handleClick={handleLogout} {...modalProps} />
 
-            <button type="button" className="btn btn-info mx-2"/* "header-button"  */onClick={handleRedirect}>
+            <button type="button" className="btn btn-info mx-2" onClick={handleRedirect}>
               Crear anuncio
             </button>
           </div>

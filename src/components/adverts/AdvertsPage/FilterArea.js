@@ -1,5 +1,4 @@
 import "./FilterArea.css";
-import Types from "prop-types";
 import { getAdvertTags } from "../service";
 import useQuery from "../../hooks/useQuery";
 
@@ -112,8 +111,3 @@ export default function FilterArea({ filters, handleChange }) {
   );
 }
 
-FilterArea.propTypes = {
-  // filters: Types.object.isRequired,
-  // setFilters: Types.func.isRequired,
-  //tagvalues: Types.array.isRequired,
-};

@@ -51,7 +51,7 @@ export default function NewAdvertPage({ ...props }) {
           <h2 className="new-advert-title">Crea tu anuncio</h2>
 
           <form
-            className="d-flex flex-column align-items-center my-4 p-1 form-wrapper"
+            className="d-flex flex-column align-items-center my-0 p-3 form-wrapper"
             encType="multipart/form-data"
             onSubmit={handleSubmit}
           >
