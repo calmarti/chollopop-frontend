@@ -1,11 +1,11 @@
-# Aplicación de venta de segunda mano 'Chollopop' 
+# Aplicación de tienda de segunda mano 'Chollopop' 
 
 ### Proyecto de frontend de una tienda online en React
  
 ---
-
-### Desplegado en: ........
-
+```sh
+http://chollopopreact.calmartiportfolio.com
+```
 ---
 ## Instalación y ejecución en entorno local
 
