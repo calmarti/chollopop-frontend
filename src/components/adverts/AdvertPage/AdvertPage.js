@@ -8,7 +8,6 @@ import placeholder from "../../../assets/default_photo.jpg";
 import Error from "../../shared/Error";
 import "./AdvertPage.css";
 
-
 export default function AdvertPage({ match, history, ...props }) {
   const [advert, setAdvert] = useState([]);
   const [error, setError] = useState(null);
@@ -56,7 +55,9 @@ export default function AdvertPage({ match, history, ...props }) {
         <img
           className="card-image"
           src={
-            advert.photo ? `http://localhost:3001${advert.photo}` : placeholder
+            advert.photo
+              ? `http://chollopopreact.calmartiportfolio.com:3001${advert.photo}`
+              : placeholder
           }
           alt={advert.name}
         />
