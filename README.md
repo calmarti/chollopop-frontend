@@ -1,92 +1,69 @@
 # Aplicación de venta de segunda mano 'Chollopop' 
 
-Proyecto de frontend de una tienda online en React
+### Proyecto de frontend de una tienda online en React
+ 
 ---
 
+### Desplegado en: ........
 
-- nodepop-api (simulador de backend):
-https://github.com/davidjj76/nodepop-api
-
-
+---
 ## Instalación y ejecución en entorno local
 
 ### Requisitos
-Se asume la instalación previa de Node
+- node y npm
 
 ## Instalación
 
 ### Clonar el repo
 ```sh
-git clone xxxxxxxxxxxxxxxx
+git clone https://github.com/calmarti/chollopop-react
 ```
-### Instalar dependencias
+### Instalar dependencias listadas en package.json
 ```sh
 npm install
 ```
-Arrancar **nodepop-api** en el puerto deseado (3001 por defecto), ejecutando desde la consola de comandos: 
 
-```
+### Ejecución de la aplicación (puerto 3000 por defecto)
+```sh
 npm start
- ```
+```
+## Arranque del dummy backend 
+- El proyecto utiliza el backend implementado en Nestjs y desarrollado por David Jiménez:
+https://github.com/davidjj76/nodepop-api
 
-Clonar el repo: 
-
-```
-git clone https://github.com/calmarti/ReactNodepop.git
-``` 
-Instalar las dependencias listadas en el **package.json**:
-```
-npm install
-```
-
-Iniciar la applicación (una instancia de **create-react-app**) en el puerto 3000 del navegador: 
-```
+- Una vez clonado e instaladas sus dependencias, ejecutar:
+```sh
 npm start
-``` 
-Autenticar un usuario en la página de inicio:
+```
+- El backend corre por defecto en el puerto 3001
+
+
+## Autenticar un usuario en la página de inicio:
 
 - Usuario predefinido: 
 ```
-user@user.com, constraseña: 123
+username: user@user.com, password: 123
 ``` 
-- O bien crear un usuario nuevo en el endpoint de nodepop-api (a través de Swagger) 
-```
-/api/auth/signup
-```
----
 
-## Funcionalidades
 
-La aplicación tiene las siguientes funcionalidades básicas:
+## Funcionalidades básicas
 
--Autenticar las credenciales de un usuario contra el backend
+- Autenticar las credenciales de un usuario contra el backend
 
--Recordar las credenciales para sesiones futuras
+- Recordar las credenciales en el equipo del usuario
 
--Crear anuncios de cinco campos (name, price, sale, tags, photo) que son persistidos en nodepop-api 
+- Crear anuncios de cinco campos (name, price, sale, tags, photo) que son persistidos en el backend 
 
--Visualizar el listado de anuncios existentes 
+- Visualizar el listado de anuncios existentes 
 
--Visualizar el detalle de un anuncio
+- Visualizar el detalle de un anuncio
 
--Buscar anuncios según los criterios: nombre, compra/venta y categorías
-(la búsqueda por rango de precios está aún en desarrollo)
+- Buscar y encontrar anuncios según los criterios: nombre, compra/venta y categorías
 
--Borrar un anuncio (previa confirmación)
+- Borrar un anuncio (previa confirmación)
 
--Cerrar la sesión (previa confirmación)
+- Cerrar la sesión (previa confirmación)
 
-## Notas de interés 
+## Notas
 
 - **El filtrado de anuncios se realiza en el frontend**, con lo cual las búsquedas por filtros no suponen peticiones adicionales al backend. 
-
-- **Bug**: Al crear o borrar un anuncio, la lista total no se actualiza de inmediato (debido justamente al punto anterior). Por tanto, para ver reflejado el cambio en el listado de anuncios es necesario refrescar la página. 
-
-- **Bug**: Si bien la petición de una ruta inexistente redirige a la página 404, la llamada al API para traer el listado de anuncios muestra a veces un error 404, *en lugar de redirigir* a la página 404.
-
-- La incorporación de algunos **warnings de React** rompían  funcionalidades de la aplicación. Por tanto, se optó por ignorarlos de momento.  
-
-- El **componente Empty** muestra el estado de ausencia de anuncios. Su renderizado es condicional según la causa de dicha ausencia
-(base de datos vacía o una combinación de filtros que arroja un listado vacío) 
-
-- El **componente Modal** muestra un mensaje pidiendo la confirmación de una acción. Es consumido por la barra de navegación (componente Header) y por el detalle del anuncio (componente AdvertPage)
