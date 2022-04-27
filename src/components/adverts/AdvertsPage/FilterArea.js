@@ -2,6 +2,7 @@ import "./FilterArea.css";
 import { getAdvertTags } from "../service";
 import useQuery from "../../hooks/useQuery";
 
+
 export default function FilterArea({ filters, handleChange }) {
   const { data: tags, isLoading, error } = useQuery(getAdvertTags);
 
@@ -36,6 +37,8 @@ export default function FilterArea({ filters, handleChange }) {
             <input type="range" id="price" name="price" min="0" max="1000000" />
           </label>
         </div>
+
+
 
         <div class="form-check col container">
           <div className="row">
@@ -110,4 +113,3 @@ export default function FilterArea({ filters, handleChange }) {
     </div>
   );
 }
-

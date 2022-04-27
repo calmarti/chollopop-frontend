@@ -9,18 +9,15 @@ import LoginPage from "./components/auth/LoginPage";
 import AdvertsPage from "./components/adverts/AdvertsPage";
 import AdvertPage from "./components/adverts/AdvertPage";
 import NewAdvertPage from "./components/adverts/NewAdvertPage";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { AuthProvider, AuthConsumer } from "./components/auth/context";
 import PrivateRoute from "./components/auth/PrivateRoute";
 import { logout } from "./components/auth/service";
-
-import Error from "./components/shared/Error";
-import Types from "prop-types";
 import NotFoundPage from "./NotFoundPage";
+import Types from "prop-types";
 
 function App({ isAlreadyLogged }) {
   const [isLogged, setIsLogged] = useState(isAlreadyLogged);
-
 
   function handleIsLogged() {
     setIsLogged(true);
@@ -30,12 +27,7 @@ function App({ isAlreadyLogged }) {
     logout().then(() => setIsLogged(false));
   }
 
-  
-  // appError && appError !== 404 ? (
-    // <Error className="app-error" error={appError} />
-    
-    // ) : (
-    return (
+  return (
     <Router>
       <AuthProvider value={{ isLogged, handleIsLogged, handleLogout }}>
         <Switch>
@@ -55,9 +47,7 @@ function App({ isAlreadyLogged }) {
           <PrivateRoute path="/adverts/new" component={NewAdvertPage} />
           <PrivateRoute path="/adverts/:id" component={AdvertPage} />
           <PrivateRoute path="/adverts">
-            {(props) => (
-              <AdvertsPage {...props} />
-            )}
+            {(props) => <AdvertsPage {...props} />}
           </PrivateRoute>
           <Route exact path="/">
             <Redirect to="/adverts" />

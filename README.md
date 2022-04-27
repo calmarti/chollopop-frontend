@@ -1,25 +1,28 @@
-# Frontend de tienda de artículos de segunda mano 'Nodepop' 
+# Aplicación de venta de segunda mano 'Chollopop' 
 
-Este proyecto simula el frontend de una tienda online utilizando **React** 
+Proyecto de frontend de una tienda online en React
 ---
-### Librerías principales
-- react 
-- react-dom
-- create-react-app
-- react-router-dom
-- axios
-- styled-components
-- classnames
 
----
-## Requisitos
-Se asume la instalación previa de:
-- Node 
+
 - nodepop-api (simulador de backend):
 https://github.com/davidjj76/nodepop-api
 
 
-## Iniciar la aplicación
+## Instalación y ejecución en entorno local
+
+### Requisitos
+Se asume la instalación previa de Node
+
+## Instalación
+
+### Clonar el repo
+```sh
+git clone xxxxxxxxxxxxxxxx
+```
+### Instalar dependencias
+```sh
+npm install
+```
 Arrancar **nodepop-api** en el puerto deseado (3001 por defecto), ejecutando desde la consola de comandos: 
 
 ```

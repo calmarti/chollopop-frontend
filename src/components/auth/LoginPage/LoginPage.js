@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Redirect } from "react-router-dom";
-import Button from "../../shared/Button";
 import { login } from "../service";
 import Types from "prop-types";
 import Header from "../../layout/Header";

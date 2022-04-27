@@ -33,11 +33,11 @@ export default function Header({ history, ...props }) {
 
   return (
     <nav
-      className="navbar navbar-expand-lg" /* navbar-light bg-light  *//* "header" */
+      className="navbar navbar-expand-lg" 
     >
       <div className="container-fluid" >
         <Link className="navbar-brand logo" to="/">
-        Logo
+        Chollopop
         </Link>
         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
           <li className="nav-item">

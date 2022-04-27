@@ -6,15 +6,15 @@ import { Error, Empty } from "../../shared";
 import { getAdverts } from "../service";
 import filterAdverts from "../../../utils/filters";
 import useQuery from "../../hooks/useQuery";
+import useForm from "../../hooks/useForm";
 import "./FilterArea.css";
 import "./AdvertsPage.css";
-import useForm from "../../hooks/useForm";
 
 export default function AdvertsPage({ ...props }) {
   const { data: adverts, isLoading, error } = useQuery(getAdverts);
   const { formValue: filters, handleChange } = useForm({
     name: "",
-    price: "",
+    price: { min: 0, max: 1000000 },
     sale: "all",
     tags: [""],
   });
