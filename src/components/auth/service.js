@@ -3,8 +3,7 @@ import client, { addTokenToHeaders } from "../../api/client";
 
 const loginBaseUrl = "/api/auth";
 
-export function login({remember, ...credentials}) {
-  console.log('dentro de login', credentials)
+export function login({ remember, ...credentials }) {
   const url = `${loginBaseUrl}/login`;
   return client
     .post(url, credentials)
@@ -12,7 +11,7 @@ export function login({remember, ...credentials}) {
       addTokenToHeaders(accessToken);
       return accessToken;
     })
-    .then(( accessToken ) => {
+    .then((accessToken) => {
       if (remember) {
         storage.set("AUTH_TOKEN", accessToken);
       }

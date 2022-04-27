@@ -76,7 +76,7 @@ export default function AdvertPage({ match, history, ...props }) {
         >
           Borrar
         </button>
-        <div class="modal" tabindex="-1"></div>
+        <div className="modal" tabIndex="-1"></div>
       </div>
       <Modal handleClick={handleDelete} {...modalProps} />
     </Layout>

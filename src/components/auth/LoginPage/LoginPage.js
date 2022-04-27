@@ -15,8 +15,6 @@ export default function LoginPage({ onLogin, history, location }) {
     remember: false,
   });
 
-  console.log(credentials.remember);
-
   const [error, setError] = useState(null);
 
   function handleSubmit(event) {
@@ -38,8 +36,8 @@ export default function LoginPage({ onLogin, history, location }) {
 
       <h2 className="login-title">Inicia sesión</h2>
 
-      {error && error.status == 404 ? <Redirect to="/404" /> : ""}
-      {error && error.status != 404 ? (
+      {error && error.status === 404 ? <Redirect to="/404" /> : ""}
+      {error && error.status !== 404 ? (
         <Error className="login-error" error={error} />
       ) : (
         ""
@@ -72,7 +70,7 @@ export default function LoginPage({ onLogin, history, location }) {
           </label>
 
           <label className="form-check-label" htmlFor="remember">
-            <span style={{padding:"1rem"}}>Recordarme en este equipo</span>
+            <span style={{ padding: "1rem" }}>Recordarme en este equipo</span>
             <input
               className="form-check-input"
               checked={credentials.remember}
@@ -93,7 +91,7 @@ export default function LoginPage({ onLogin, history, location }) {
           </button>
         </div>
       </form>
-      <Footer/>
+      <Footer />
     </>
   );
 }

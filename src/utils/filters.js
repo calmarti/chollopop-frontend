@@ -2,7 +2,6 @@ const filterName = (advert, name) => {
   if (name) {
     const cleanFilter = name.trim();
     const re = new RegExp(cleanFilter, "gi").test(advert.name);
-    console.log(re)
     if (re) {
       return true;
     } else {

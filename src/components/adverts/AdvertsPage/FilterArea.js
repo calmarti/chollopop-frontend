@@ -2,9 +2,8 @@ import "./FilterArea.css";
 import { getAdvertTags } from "../service";
 import useQuery from "../../hooks/useQuery";
 
-
 export default function FilterArea({ filters, handleChange }) {
-  const { data: tags, isLoading, error } = useQuery(getAdvertTags);
+  const { data: tags, error } = useQuery(getAdvertTags);
 
   return (
     <div className="container filter-area">
@@ -38,9 +37,7 @@ export default function FilterArea({ filters, handleChange }) {
           </label>
         </div>
 
-
-
-        <div class="form-check col container">
+        <div className="form-check col container">
           <div className="row">
             <div className="col">
               <label className="form-check-label" htmlFor="sale">
@@ -97,9 +94,7 @@ export default function FilterArea({ filters, handleChange }) {
               onChange={handleChange}
               multiple={true}
             >
-              <option selected value={[""]}>
-                all
-              </option>
+              <option value={[""]}>all</option>
               {tags.map((tag, index) => (
                 <option key={index} value={tag}>
                   {" "}

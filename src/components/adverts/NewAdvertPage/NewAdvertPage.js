@@ -38,6 +38,10 @@ export default function NewAdvertPage({ ...props }) {
     return <Redirect to={`/adverts/${newAdvertId}`} />;
   }
 
+  if(isLoading){
+    return  <div className="loading">Loading...</div>
+  }
+
   return (
     <>
       <Header {...props} />

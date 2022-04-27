@@ -11,7 +11,7 @@ export default function Modal({
     <div
     className={classNames("modal", "modal-fade", { "show-modal": isModalOn })}     
       id="exampleModal"
-      tabindex="-1"
+      tabIndex="-1"
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
     >

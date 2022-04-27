@@ -21,10 +21,13 @@ export default function AdvertsPage({ ...props }) {
 
   const advertsCount = adverts.length;
   const filteredAdverts = filterAdverts(adverts, filters);
-  console.log(adverts, filteredAdverts);
 
   if (error && error.statusCode === 404) {
     return <Redirect to="/404" />;
+  }
+
+  if(isLoading){
+    return  <div className="loading">Loading...</div>
   }
 
   return (
