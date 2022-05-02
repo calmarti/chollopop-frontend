@@ -26,7 +26,7 @@ export default function NewAdvertPage({ ...props }) {
     ev.preventDefault();
     try {
       const data = new FormData(ev.target);
-      data.set["photo"] = photoRef.current.value;
+      data.set["photo"] = photoRef.current.files[0];
       const response = await postNewAdvert(data);
       setNewAdvertId(response.id);
     } catch (e) {
