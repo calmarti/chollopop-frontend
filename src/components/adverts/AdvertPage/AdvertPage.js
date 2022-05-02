@@ -56,7 +56,7 @@ export default function AdvertPage({ match, history, ...props }) {
           className="card-image"
           src={
             advert.photo
-              ? `http://chollopopreact.calmartiportfolio.com${advert.photo}`
+              ? `${advert.photo}`
               : placeholder
           }
           alt={advert.name}

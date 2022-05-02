@@ -15,7 +15,7 @@ const AdvertsList = ({ filteredAdverts, handleChange }) => {
                   className="card-img-top"
                   src={
                     advert.photo
-                      ? `http://chollopopreact.calmartiportfolio.com${advert.photo}`
+                      ? `${advert.photo}`
                       : placeholder
                   }
                   alt={advert.name}
