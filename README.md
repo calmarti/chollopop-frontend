@@ -2,7 +2,7 @@
 
 ### Proyecto de frontend de una tienda online en React
  
-## Visualización en producción 
+## Live demo
 ---
 ```sh
 http://chollopopreact.calmartiportfolio.com
