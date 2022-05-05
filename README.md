@@ -13,7 +13,7 @@ http://chollopopreact.calmartiportfolio.com
 ### Requisitos
 - node y npm
 
-## Instalación
+### Instalación
 
 ### Clonar el repo
 ```sh
