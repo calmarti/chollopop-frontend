@@ -30,7 +30,7 @@ export default function NewAdvertPage({ ...props }) {
       const response = await postNewAdvert(data);
       setNewAdvertId(response.id);
     } catch (e) {
-      setState((prevState) => ({ ...prevState, error: e.message }));
+      setState((prevState) => ({ ...prevState, error: e }));
     }
   };
 
