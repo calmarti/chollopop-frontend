@@ -7,7 +7,8 @@ const AdvertsList = ({ filteredAdverts, handleChange }) => {
   return (
     <div className="mx-auto" style={{ width: "75vw" }}>
       <ul className="row">
-        {filteredAdverts.map((advert, index) => (
+        {filteredAdverts.map((advert, index) => (   
+         
           <div key={index} className="col-sm-3 my-5">
             <li className="card" style={{ width: "18rem", backgroundColor: "var(--third-color)"}} key={advert.id}>
               <Link className="card-link" to={`/adverts/${advert.id}`}>
@@ -15,7 +16,7 @@ const AdvertsList = ({ filteredAdverts, handleChange }) => {
                   className="card-img-top"
                   src={
                     advert.photo
-                      ? `http://127.0.0.1:3001${advert.photo}`
+                      ? `http://127.0.0.1:3001/public/${advert.photo}`
                       : placeholder
                   }
                   alt={advert.name}

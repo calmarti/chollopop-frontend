@@ -1,6 +1,6 @@
 import client from "../../api/client";
 
-const advertsBaseUrl = "/api/v1";
+const advertsBaseUrl = "/api";
 
 export function getAdverts() {
   const url = `${advertsBaseUrl}/adverts`;
@@ -9,7 +9,6 @@ export function getAdverts() {
 
 export function postNewAdvert(body) {
   const url = `${advertsBaseUrl}/adverts`;
-
   return client.post(url, body);
 }
 

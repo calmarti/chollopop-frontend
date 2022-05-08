@@ -17,6 +17,7 @@ export default function AdvertPage({ match, history, ...props }) {
     const id = match.params.id;
     getAdvert(id)
       .then((advert) => setAdvert(advert))
+      // .then((advert) => console.log(advert.photo || ''))
       .catch((error) => setError(error));
   }, [match.params.id]);
 
@@ -55,9 +56,7 @@ export default function AdvertPage({ match, history, ...props }) {
         <img
           className="card-image"
           src={
-            advert.photo
-              ? `http://127.0.0.1:3001${advert.photo}`
-              : placeholder
+            advert.photo ? `http://127.0.0.1:3001${advert.photo}` : placeholder
           }
           alt={advert.name}
         />

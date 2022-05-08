@@ -95,7 +95,7 @@ export default function FilterArea({ filters, handleChange }) {
               multiple={true}
             >
               <option value={[""]}>all</option>
-              {tags.map((tag, index) => (
+              {tags && tags.map((tag, index) => (
                 <option key={index} value={tag}>
                   {" "}
                   {tag}{" "}
