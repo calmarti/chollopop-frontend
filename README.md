@@ -2,7 +2,7 @@
 
 ### Proyecto de frontend de una tienda online en React
  
-## Visualización en producción 
+## Live demo
 ---
 ```sh
 http://chollopopreact.calmartiportfolio.com
@@ -13,7 +13,7 @@ http://chollopopreact.calmartiportfolio.com
 ### Requisitos
 - node y npm
 
-## Instalación
+
 
 ### Clonar el repo
 ```sh
