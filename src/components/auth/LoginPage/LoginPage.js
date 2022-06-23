@@ -32,7 +32,7 @@ export default function LoginPage({ onLogin, history, location }) {
 
   return (
     <>
-      <Header history={history} />
+      <Header history={history} location={location} />
 
       <h2 className="login-title">Inicia sesión</h2>
 
