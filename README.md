@@ -11,9 +11,7 @@ http://chollopopreact.calmartiportfolio.com
 ## Instalación y ejecución en entorno local
 
 ### Requisitos
-- node y npm
-
-
+- node v16.14.0 
 
 ### Clonar el repo
 ```sh
