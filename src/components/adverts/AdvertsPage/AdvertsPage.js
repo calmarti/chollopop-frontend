@@ -19,20 +19,24 @@ export default function AdvertsPage({ ...props }) {
     tags: [""],
   });
 
+
   const advertsCount = adverts.length;
+
+
   const filteredAdverts = filterAdverts(adverts, filters);
 
   if (error && error.statusCode === 404) {
     return <Redirect to="/404" />;
   }
 
-  if(isLoading){
-    return  <div className="loading">Loading...</div>
+  if (isLoading) {
+    return <div className="loading">Loading...</div>;
   }
 
   return (
     <>
-      {error && error.statusCode !== 404 ? (
+      {error && error.statusCode !== 404 ? 
+      (
         <Error className="adverts-page-error" error={error} />
       ) : (
         <>

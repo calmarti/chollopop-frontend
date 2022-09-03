@@ -9,7 +9,6 @@ export function getAdverts() {
 
 export function postNewAdvert(body) {
   const url = `${advertsBaseUrl}/adverts`;
-
   return client.post(url, body);
 }
 

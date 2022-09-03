@@ -28,6 +28,7 @@ export default function NewAdvertPage({ ...props }) {
       const data = new FormData(ev.target);
       data.set["photo"] = photoRef.current.files[0];
       const response = await postNewAdvert(data);
+      console.log(photoRef.current.files[0])
       setNewAdvertId(response.id);
     } catch (e) {
       setState((prevState) => ({ ...prevState, error: e }));

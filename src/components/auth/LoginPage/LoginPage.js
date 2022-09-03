@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import { login } from "../service";
 import Types from "prop-types";
 import Header from "../../layout/Header";
@@ -14,6 +14,8 @@ export default function LoginPage({ onLogin, history, location }) {
     password: "",
     remember: false,
   });
+
+  console.log(process.env);
 
   const [error, setError] = useState(null);
 
@@ -32,7 +34,7 @@ export default function LoginPage({ onLogin, history, location }) {
 
   return (
     <>
-      <Header history={history} />
+      <Header history={history} location={location} />
 
       <h2 className="login-title">Inicia sesión</h2>
 
@@ -89,6 +91,8 @@ export default function LoginPage({ onLogin, history, location }) {
           >
             Continuar
           </button>
+          <span>¿Aún no te has registrado?&nbsp;</span>
+          <Link to="/signup">Regístrate</Link>
         </div>
       </form>
       <Footer />
