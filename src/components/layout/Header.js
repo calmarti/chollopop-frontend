@@ -42,11 +42,15 @@ export default function Header({ history, location, ...props }) {
             <Link className="nav-link" to="/"></Link>
           </li>
         </ul>
+
+
         {location.pathname === "/login" && (
           <Link to="/signup" as="button" type="button" className="btn btn-info mx-2">
             Regístrate
           </Link>
         )}
+
+        
         {isLogged ? (
           <div>
             <button

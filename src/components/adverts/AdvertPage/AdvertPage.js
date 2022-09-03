@@ -55,9 +55,7 @@ export default function AdvertPage({ match, history, ...props }) {
       <div className="card-container">
         <img
           className="card-image"
-          src={
-            advert.photo ? `http://127.0.0.1:3001${advert.photo}` : placeholder
-          }
+          src={advert.photo ? `http://127.0.0.1:3001${advert.photo}` : placeholder}
           alt={advert.name}
         />
         <div className="card-info">

@@ -2,7 +2,7 @@
 
 ### Proyecto de frontend de una tienda online en React
  
-## Visualización en producción 
+## Live demo
 ---
 ```sh
 http://chollopopreact.calmartiportfolio.com
@@ -11,9 +11,7 @@ http://chollopopreact.calmartiportfolio.com
 ## Instalación y ejecución en entorno local
 
 ### Requisitos
-- node y npm
-
-## Instalación
+- node v16.14.0 
 
 ### Clonar el repo
 ```sh
@@ -36,7 +34,7 @@ https://github.com/davidjj76/nodepop-api
 ```sh
 npm start
 ```
-- El backend corre por defecto en el puerto 3001
+- El backend se ejecuta por defecto en el puerto 3001
 
 
 ## Autenticar un usuario en la página de inicio:

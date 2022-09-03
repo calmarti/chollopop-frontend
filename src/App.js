@@ -44,6 +44,11 @@ function App({ isAlreadyLogged }) {
               </AuthConsumer>
             )}
           </Route>
+
+
+          <Route path="/signup" component={SignUpPage}></Route>
+          
+          
           <PrivateRoute path="/adverts/new" component={NewAdvertPage} />
           <PrivateRoute path="/adverts/:id" component={AdvertPage} />
           <PrivateRoute path="/adverts">

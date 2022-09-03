@@ -16,7 +16,7 @@ export default function useQuery(query) {
           setState((prevState) => ({
             ...prevState,
             isLoading: false,
-            data: result.data,
+            data: result,
           }))
         )
         .catch((error) =>

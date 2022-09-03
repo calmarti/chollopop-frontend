@@ -35,7 +35,8 @@ export default function AdvertsPage({ ...props }) {
 
   return (
     <>
-      {error && error.statusCode !== 404 ? (
+      {error && error.statusCode !== 404 ? 
+      (
         <Error className="adverts-page-error" error={error} />
       ) : (
         <>
