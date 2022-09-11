@@ -9,6 +9,8 @@ import LoginPage from "./components/auth/LoginPage";
 import AdvertsPage from "./components/adverts/AdvertsPage";
 import AdvertPage from "./components/adverts/AdvertPage";
 import NewAdvertPage from "./components/adverts/NewAdvertPage";
+import SignUpPage from "./components/auth/SignUpPage";
+
 import { useState } from "react";
 import { AuthProvider, AuthConsumer } from "./components/auth/context";
 import PrivateRoute from "./components/auth/PrivateRoute";
