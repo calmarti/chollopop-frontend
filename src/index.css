@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
 :root {
-  --first-color: #85F4FF;
-  --second-color:#B8FFF9;
-  --third-color: #F27843;
+  --first-color: #3D3E99;
+  --second-color:#3D9997;
+  --third-color: #6C4299;  /* unused color yet */
   --text-color: #000000;
 }
 
@@ -13,7 +13,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--first-color);
+  background-color: var(--second-color);
   color: var(--dark-color);
   
 }
