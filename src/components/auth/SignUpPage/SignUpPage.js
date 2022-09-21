@@ -5,6 +5,11 @@
 
 export default function SignUpPage(){
     
-return "";
+return <div>
+    <form>
+        <input type="email" placeholder="Tu email..."></input>
+        <input type="password" placeholder="tu contraseña"></input>
+    </form>
+</div>;
 
 }
