@@ -33,6 +33,7 @@ function App({ isAlreadyLogged }) {
     <Router>
       <AuthProvider value={{ isLogged, handleIsLogged, handleLogout }}>
         <Switch>
+
           <Route path="/login">
             {(routeProps) => (
               <AuthConsumer>
