@@ -45,7 +45,7 @@ export default function Header({ history, location, ...props }) {
 
 
         {location.pathname === "/login" && (
-          <Link to="/signup" as="button" type="button" className="btn btn-outline-info x-2">
+          <Link to="/signup" as="button" type="button" className="btn btn-outline-primary mx-2">
             Regístrate
           </Link>
         )}
@@ -55,7 +55,7 @@ export default function Header({ history, location, ...props }) {
           <div>
             <button
               type="button"
-              className="btn btn-outline-info mx-2"
+              className="btn btn-outline-primary mx-2"
               onClick={logoutConfirmation}
             >
               Salir
@@ -64,7 +64,7 @@ export default function Header({ history, location, ...props }) {
 
             <button
               type="button"
-              className="btn btn-outline-info mx-2"
+              className="btn btn-outline-primary mx-2"
               onClick={handleRedirect}
             >
               Crear anuncio

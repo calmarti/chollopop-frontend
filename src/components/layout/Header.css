@@ -1,5 +1,6 @@
 nav{
-  background-color: var(--first-color);
+  background-color: var(--second-color);
+  color: var(--first-color);
   
 }
 .header {
@@ -13,7 +14,6 @@ nav{
 }
 
 .logo {
-  color: var(--text-color);
   margin-left: 1rem;
   display: block;
   float: left;

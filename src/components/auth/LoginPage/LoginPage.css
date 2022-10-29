@@ -1,18 +1,18 @@
 .login-title {
-  margin: 6rem auto 3rem auto;
-  text-align: center;
+  margin: 1rem auto 1rem auto;
+  font-size:1.5rem;
 }
 
-.login-form-container {
-  padding: 4rem 6rem 4rem 3rem;
+.login-form-container {  
+  padding: 2rem 4rem 4rem 3rem;
   margin: 0 auto;
   position: relative;  
   display: flex;
   flex-flow: column;
-  gap: 3.3rem;
+  gap: 1.5rem;
   align-items: center;
   width: 30%;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.95) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 2px inset;
 }
 
 .login-form-button {
@@ -20,6 +20,7 @@
   left: 4rem;
   width: 13rem;
   height: 3rem;
+
 }
 
 

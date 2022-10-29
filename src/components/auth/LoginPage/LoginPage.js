@@ -36,8 +36,6 @@ export default function LoginPage({ onLogin, history, location }) {
     <>
       <Header history={history} location={location} />
 
-      <h2 className="login-title">Inicia sesión</h2>
-
       {error && error.status === 404 ? <Redirect to="/404" /> : ""}
       {error && error.status !== 404 ? (
         <Error className="login-error" error={error} />
@@ -45,8 +43,9 @@ export default function LoginPage({ onLogin, history, location }) {
         ""
       )}
 
-      <form onSubmit={handleSubmit}>
-        <div className="login-form-container">
+    <form onSubmit={handleSubmit}>
+      <div className="login-form-container">
+          <h2 className="login-title">Inicia sesión</h2>
           <label className="form-label" htmlFor="email">
             Usuario
             <input
@@ -85,7 +84,7 @@ export default function LoginPage({ onLogin, history, location }) {
           </label>
 
           <button
-            className="btn btn-lg btn-info"
+            className="btn btn-lg btn-primary"
             disabled={!credentials.email || !credentials.password}
             type="submit"
           >
@@ -93,8 +92,8 @@ export default function LoginPage({ onLogin, history, location }) {
           </button>
           <span>¿Aún no te has registrado?&nbsp;</span>
           <Link to="/signup">Regístrate</Link>
-        </div>
-      </form>
+      </div>
+     </form>
       <Footer />
     </>
   );

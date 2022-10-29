@@ -14,11 +14,12 @@
   padding: 1rem 1rem;
   margin-top: 10rem;
   background-color: var(--second-color);
+  color: #000000;
  
 }
 
 .footer a {
-  color: var(--color-text);
+  color: #000000;
 }
 
 .footer  svg:hover {
