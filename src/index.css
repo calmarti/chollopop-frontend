@@ -2,7 +2,6 @@
 
 :root {
   --first-color: #052962;
-
   --second-color:#FFFFFF;
   --third-color: #AC2D16;  /* unused color yet */
   --text-color: #FFFFFF;
@@ -20,8 +19,4 @@ body {
   
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
 

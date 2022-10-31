@@ -43,14 +43,6 @@ export default function Header({ history, location, ...props }) {
           </li>
         </ul>
 
-
-        {location.pathname === "/login" && (
-          <Link to="/signup" as="button" type="button" className="btn btn-outline-primary mx-2">
-            Regístrate
-          </Link>
-        )}
-
-        
         {isLogged ? (
           <div>
             <button
@@ -71,7 +63,14 @@ export default function Header({ history, location, ...props }) {
             </button>
           </div>
         ) : (
-          ""
+          <Link
+            to="/signup"
+            as="button"
+            type="button"
+            className="btn btn-outline-primary mx-2"
+          >
+            Regístrate
+          </Link>
         )}
       </div>
     </nav>

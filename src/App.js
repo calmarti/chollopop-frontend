@@ -5,6 +5,7 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
+
 import LoginPage from "./components/auth/LoginPage";
 import AdvertsPage from "./components/adverts/AdvertsPage";
 import AdvertPage from "./components/adverts/AdvertPage";
@@ -33,7 +34,6 @@ function App({ isAlreadyLogged }) {
     <Router>
       <AuthProvider value={{ isLogged, handleIsLogged, handleLogout }}>
         <Switch>
-
           <Route path="/login">
             {(routeProps) => (
               <AuthConsumer>
