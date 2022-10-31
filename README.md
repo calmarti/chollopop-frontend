@@ -2,11 +2,6 @@
 
 ### Proyecto de frontend de una tienda online en React
  
-## Live demo
----
-```sh
-http://chollopopreact.calmartiportfolio.com
-```
 ---
 ## Instalación y ejecución en entorno local
 
