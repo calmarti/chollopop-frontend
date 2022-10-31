@@ -2,19 +2,19 @@
 
 :root {
   --first-color: #052962;
-  --second-color:#FFFFFF;
-  --third-color: #AC2D16;  /* unused color yet */
-  --text-color: #FFFFFF;
+  --second-color:  #455695;
+  --light-color:#FFFFFF;
+
 }
 
 body {
   margin: 0;
   font-family: "Roboto", "sans-serif"
     sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: var(--first-color);
-  color: var(--text-color);
+  /* -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; */
+  background-color: var(--second-color);
+  color: var(--light-color);
  
   
 }

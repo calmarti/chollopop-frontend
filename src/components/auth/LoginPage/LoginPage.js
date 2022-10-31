@@ -56,6 +56,7 @@ export default function LoginPage({ onLogin, history, location }) {
               name="email"
               value={credentials.email}
               autoFocus
+              autoComplete="off"
             ></input>
           </label>
           <label className="form-label" htmlFor="password">
@@ -67,6 +68,7 @@ export default function LoginPage({ onLogin, history, location }) {
               type="password"
               name="password"
               value={credentials.password}
+              autoComplete="off"
             ></input>
           </label>
 

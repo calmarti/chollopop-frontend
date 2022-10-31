@@ -10,7 +10,7 @@ const AdvertsList = ({ filteredAdverts, handleChange }) => {
         {filteredAdverts.map((advert, index) => (   
          
           <div key={index} className="col-sm-3 my-5">
-            <li className="card" style={{ width: "18rem", backgroundColor: "var(--third-color)"}} key={advert.id}>
+            <li className="card"  key={advert.id}>
               <Link className="card-link" to={`/adverts/${advert.id}`}>
                 <img
                   className="card-img-top"

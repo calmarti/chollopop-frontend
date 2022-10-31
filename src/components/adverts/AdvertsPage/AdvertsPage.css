@@ -1,5 +1,5 @@
 .card-styles{
-  color: var(--text-color);
+  color: var(--light-color);
 
 }
 
@@ -8,10 +8,16 @@ img{
   height:200px;
 }
 
+.card{
+ width: 18rem; 
+ background-color: var(--first-color);
+ color: var(--light-color);
+}
 
 .card-link {
   text-decoration: none;
 }
+
 
 
 .adverts-page-error {
