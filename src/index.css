@@ -10,7 +10,7 @@
   --logo-font: "Happy Monkey";
 }
 
-body {
+html, body {
   margin: 0;
   padding: 0;
   font-family: "Roboto", "sans-serif";

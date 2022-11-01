@@ -1,6 +1,33 @@
 .chollopop-title{
 font-family: var(--logo-font), 'Courier New', Courier, monospace;
+position:relative
 }
+
+  .logo-icon {
+    font-size: 1em;
+    display: inline-block;
+    width: 0.4em;
+    box-sizing: content-box;
+    height: 0.4em;
+    border: 0.1em solid red;
+    position: relative;
+    bottom:0.3em;
+    border-radius: 0.35em;
+  }
+
+  .logo-icon:before {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    right: -0.25em;
+    bottom: -0.1em;
+    border-width: 0;
+    background: red;
+    width: 0.35em;
+    height: 0.08em;
+    transform: rotate(45deg);
+  }
+
 
 .chollopop-description{
  font-size: 1.3rem;
