@@ -1,6 +1,5 @@
 .chollopop-title{
-/* font-family */
-
+font-family: var(--logo-font), 'Courier New', Courier, monospace;
 }
 
 .chollopop-description{

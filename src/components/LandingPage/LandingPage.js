@@ -4,7 +4,7 @@ export default function LandingPage() {
   return (
     <div className="mt-5 mx-5">
       <h1 className="chollopop-title mb-3 mx-3">Chollopop</h1>
-      <p className="chollopop-description">El lugar de los que encuentran lo que buscan</p>
+      <p className="chollopop-description">La web de los que encuentran lo que buscan</p>
       <p className="chollopop-question">¿Que necesitas hoy?</p>
 
     <div>SECCION DE ICONOS</div>

@@ -1,16 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Happy+Monkey&display=swap');
+
 
 :root {
   --first-color: #052962;
   --second-color:  #455695;
   --light-color:#FFFFFF;
   --dark-color:#000000;
+  --logo-font: "Happy Monkey";
 }
 
 body {
   margin: 0;
+  padding: 0;
   font-family: "Roboto", "sans-serif";
   background-color: var(--light-color);
+  /* background-color: var(--bs-light-rgb); */
   
 }
 

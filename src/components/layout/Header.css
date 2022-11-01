@@ -20,5 +20,6 @@ nav{
   color:var(--first-color);
   font-weight: 400;
   font-size: 2rem;
+  font-family: var(--logo-font), 'Courier New', Courier, monospace;
 }
 
