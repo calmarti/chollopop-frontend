@@ -1,0 +1,19 @@
+.chollopop-title{
+/* font-family */
+
+}
+
+.chollopop-description{
+ font-size: 1.3rem;
+ opacity: 0.7;
+ width:30rem;
+ margin:0 auto;
+ padding-bottom:1rem;
+
+}
+
+.chollopop-question{
+margin:0 auto;
+font-size:2rem;
+width:20rem;
+}

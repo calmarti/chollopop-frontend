@@ -17,5 +17,8 @@ nav{
   margin-left: 1rem;
   display: block;
   float: left;
+  color:var(--first-color);
+  font-weight: 400;
+  font-size: 2rem;
 }
 

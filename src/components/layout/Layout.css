@@ -13,8 +13,9 @@
   gap: 3rem;
   padding: 1rem 1rem;
   margin-top: 10rem;
-  background-color: var(--second-color);
-  color: #000000;
+  background-color: var(--first-color);
+  color: var(--light-color);
+  height: 7vh;
  
 }
 

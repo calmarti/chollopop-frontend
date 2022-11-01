@@ -4,18 +4,13 @@
   --first-color: #052962;
   --second-color:  #455695;
   --light-color:#FFFFFF;
-
+  --dark-color:#000000;
 }
 
 body {
   margin: 0;
-  font-family: "Roboto", "sans-serif"
-    sans-serif;
-  /* -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; */
-  background-color: var(--second-color);
-  color: var(--light-color);
- 
+  font-family: "Roboto", "sans-serif";
+  background-color: var(--light-color);
   
 }
 

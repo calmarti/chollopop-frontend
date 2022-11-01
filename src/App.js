@@ -11,6 +11,8 @@ import AdvertsPage from "./components/adverts/AdvertsPage";
 import AdvertPage from "./components/adverts/AdvertPage";
 import NewAdvertPage from "./components/adverts/NewAdvertPage";
 import SignUpPage from "./components/auth/SignUpPage";
+import LandingPage from './components/LandingPage/LandingPage';
+
 
 import { useState } from "react";
 import { AuthProvider, AuthConsumer } from "./components/auth/context";
@@ -47,7 +49,9 @@ function App({ isAlreadyLogged }) {
               </AuthConsumer>
             )}
           </Route>
-
+          {/* <Route path="/landing">
+            <LandingPage/>
+          </Route> */}
 
           <Route path="/signup" component={SignUpPage}></Route>
           
@@ -58,7 +62,8 @@ function App({ isAlreadyLogged }) {
             {(props) => <AdvertsPage {...props} />}
           </PrivateRoute>
           <Route exact path="/">
-            <Redirect to="/adverts" />
+            <LandingPage/>
+            {/* <Redirect to="/adverts" /> */}
           </Route>
           <Route path="/404">
             <NotFoundPage />

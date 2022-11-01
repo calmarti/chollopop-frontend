@@ -11,6 +11,7 @@ form{
 
 .login-form-container {  
   background-color: var(--first-color);
+  color:var(--light-color);
   padding: 1.6rem;
   margin: 0 auto;
   position: relative;  
