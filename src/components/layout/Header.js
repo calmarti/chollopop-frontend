@@ -34,23 +34,23 @@ export default function Header({ history, location, ...props }) {
   return (
     <div className="navbar">
       <Link className="logo" to="/">
-        Chollopop
+        Chollopop<span className="logo-icon"></span>
       </Link>
 
       {isLogged ? (
         <div>
-          <button type="button" className="" onClick={logoutConfirmation}>
+          <button type="button" className="header-button" onClick={logoutConfirmation}>
             Salir
           </button>
           <Modal handleClick={handleLogout} {...modalProps} />
 
-          <button type="button" className="" onClick={handleRedirect}>
+          <button type="button" className="header-button" onClick={handleRedirect}>
             Crear anuncio
           </button>
         </div>
       ) : (
         <Link  to="/signup" type="button">
-          <button className="button">Regístrate</button>
+          <button className="header-button">Regístrate</button>
         </Link>
       )}
     </div>

@@ -1,13 +1,6 @@
 
 form{
   margin-top:10rem;
-
-}
-
-.login-title {
-  margin: 1rem auto 1rem auto;
-  font-size:1.5rem;
-  
 }
 
 .login-form-container {  
@@ -18,21 +11,64 @@ form{
   position: relative;  
   display: flex;
   flex-flow: column;
-  gap: 1.5rem;
+  gap: 1.8rem;
   align-items: center;
   width: 25%;
-  border-radius: 3%;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.95) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 2px inset;
+  border-radius: 15px;
+  /* box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.95) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 2px inset; */
+  box-shadow: rgba(80, 63, 205, 0.5) 0 3px 6px;
 }
 
-.login-form-button {
-  position: relative;
-  left: 4rem;
-  width: 13rem;
+.login-title {
+  margin: 1rem auto 1rem auto;
+  font-size:1.5rem;  
+}
+
+.login-field {
+  display:flex;
+  flex-direction: column;
+  gap:0.6rem;
+}
+
+
+.login-input {
+  padding: 0.7rem 0rem 0.7rem 1rem;
+  width: 20rem;
+  border-radius: 8px;
+  outline:none;
+  border:none;
+  box-shadow: 0px 0px 1px 2px #D4D4D4;
+}
+
+
+.login-input:focus {  
+  padding-left: 1rem;
+  box-shadow: 0px 0px 1px 1px #D4D4D4;
+}
+
+.login-button {
+  /* position: relative;
+  left: 4rem; */
+  width: 11rem;
   height: 3rem;
-
+  margin: 0 auto;
+  border-radius: 7px;
+  border:none;
+  outline: none;
+  background-color: var(--second-color);
+  color: var(--light-color);
 }
 
+.login-button:disabled {
+  background-color: var(--second-color);
+  color: var(--light-color);
+}
+
+.signup-text, .signup-text:link, .signup-text:hover {
+  text-decoration: none;
+  color: var(--light-color);
+  font-weight: bold;
+}
 
 .login-error {
   position: relative;

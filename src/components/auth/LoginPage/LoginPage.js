@@ -46,23 +46,22 @@ export default function LoginPage({ onLogin, history, location }) {
     <form onSubmit={handleSubmit}>
       <div className="login-form-container">
           <h2 className="login-title">Inicia sesión</h2>
-          <label className="form-label" htmlFor="email">
+          <label className="login-field" htmlFor="email">
             Usuario
             <input
-              className="form-control form-control-lg"
+              className="login-input"
               id="email"
               onChange={handleChange}
               type="email"
               name="email"
               value={credentials.email}
-              autoFocus
               autoComplete="off"
             ></input>
           </label>
-          <label className="form-label" htmlFor="password">
+          <label className="login-field" htmlFor="password">
             Contraseña
             <input
-              className="form-control form-control-lg"
+              className="login-input"
               id="password"
               onChange={handleChange}
               type="password"
@@ -72,10 +71,10 @@ export default function LoginPage({ onLogin, history, location }) {
             ></input>
           </label>
 
-          <label className="form-check-label" htmlFor="remember">
+          <label className="" htmlFor="remember">
             <span style={{ padding: "1rem" }}>Recordarme en este equipo</span>
             <input
-              className="form-check-input"
+              className=""
               checked={credentials.remember}
               onChange={handleChange}
               type="checkbox"
@@ -86,14 +85,16 @@ export default function LoginPage({ onLogin, history, location }) {
           </label>
 
           <button
-            className="btn btn-lg btn-primary"
+            className="login-button"
             disabled={!credentials.email || !credentials.password}
             type="submit"
           >
             Continuar
           </button>
           <span>¿Aún no te has registrado?&nbsp;</span>
-          <Link to="/signup">Regístrate</Link>
+          <Link to="/signup" className="signup-text">
+            <span >Regístrate</span>
+          </Link>
       </div>
      </form>
       <Footer />

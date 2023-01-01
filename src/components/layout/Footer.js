@@ -7,7 +7,7 @@ export default function Footer() {
           xmlns="http://www.w3.org/2000/svg"
           width="32"
           height="32"
-          fill="currentColor"
+          fill="#000000"
           className="bi bi-linkedin text-primary"
           viewBox="0 0 16 16"
         >
@@ -20,7 +20,7 @@ export default function Footer() {
           xmlns="http://www.w3.org/2000/svg"
           width="32"
           height="32"
-          fill="currentColor"
+          fill="#000000"
           className="bi bi-github text-primary"
           viewBox="0 0 16 16"
         >
