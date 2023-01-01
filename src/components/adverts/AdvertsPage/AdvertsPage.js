@@ -20,8 +20,6 @@ export default function AdvertsPage({ ...props }) {
   });
 
 
-  const advertsCount = adverts.length;
-
 
   const filteredAdverts = filterAdverts(adverts, filters);
 
@@ -49,7 +47,7 @@ export default function AdvertsPage({ ...props }) {
             {filteredAdverts.length ? (
               <AdvertsList filteredAdverts={filteredAdverts} />
             ) : (
-              <Empty advertsCount={advertsCount} {...props} />
+              <Empty advertsCount={adverts.length} {...props} />
             )}
           </Layout>
         </>
