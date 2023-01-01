@@ -32,47 +32,27 @@ export default function Header({ history, location, ...props }) {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg">
-      <div className="container-fluid">
-        <Link className="navbar-brand logo" to="/">
-          Chollopop
+    <div className="navbar">
+      <Link className="logo" to="/">
+        Chollopop
+      </Link>
+
+      {isLogged ? (
+        <div>
+          <button type="button" className="" onClick={logoutConfirmation}>
+            Salir
+          </button>
+          <Modal handleClick={handleLogout} {...modalProps} />
+
+          <button type="button" className="" onClick={handleRedirect}>
+            Crear anuncio
+          </button>
+        </div>
+      ) : (
+        <Link  to="/signup" type="button">
+          <button className="button">Regístrate</button>
         </Link>
-        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-          <li className="nav-item">
-            <Link className="nav-link" to="/"></Link>
-          </li>
-        </ul>
-
-        {isLogged ? (
-          <div>
-            <button
-              type="button"
-              className="btn btn-outline-primary mx-2"
-              onClick={logoutConfirmation}
-            >
-              Salir
-            </button>
-            <Modal handleClick={handleLogout} {...modalProps} />
-
-            <button
-              type="button"
-              className="btn btn-outline-primary mx-2"
-              onClick={handleRedirect}
-            >
-              Crear anuncio
-            </button>
-          </div>
-        ) : (
-          <Link
-            to="/signup"
-            as="button"
-            type="button"
-            className="btn btn-outline-primary mx-2"
-          >
-            Regístrate
-          </Link>
-        )}
-      </div>
-    </nav>
+      )}
+    </div>
   );
 }
