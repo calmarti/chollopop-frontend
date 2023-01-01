@@ -1,10 +1,10 @@
-import "./App.css";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Redirect,
 } from "react-router-dom";
+import { useState } from "react";
 
 import LoginPage from "./components/auth/LoginPage";
 import AdvertsPage from "./components/adverts/AdvertsPage";
@@ -14,7 +14,6 @@ import SignUpPage from "./components/auth/SignUpPage";
 import LandingPage from './components/LandingPage/LandingPage';
 
 
-import { useState } from "react";
 import { AuthProvider, AuthConsumer } from "./components/auth/context";
 import PrivateRoute from "./components/auth/PrivateRoute";
 import { logout } from "./components/auth/service";

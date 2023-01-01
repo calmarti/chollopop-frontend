@@ -11,6 +11,8 @@ const filterName = (advert, name) => {
   return true;
 };
 
+//filterPrice is missing!
+
 const filterSale = (advert, sale) => {
   if (sale !== "all") {
     if (advert.sale === Boolean(sale)) {
@@ -38,6 +40,7 @@ const filterTags = (advert, filter) => {
 const filterAdverts = (adverts, filters) => {
   return adverts
     .filter((advert) => filterName(advert, filters.name))
+    // .filter((advert) => filterPrice(advert, filters.price))
     .filter((advert) => filterSale(advert, filters.sale))
     .filter((advert) => filterTags(advert, filters.tags));
 };
