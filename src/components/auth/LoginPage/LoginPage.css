@@ -33,7 +33,7 @@ form{
 
 .login-input {
   padding: 0.7rem 0rem 0.7rem 1rem;
-  width: 20rem;
+  width: 16vw;
   border-radius: 8px;
   outline:none;
   border:none;
@@ -58,6 +58,12 @@ form{
   background-color: var(--second-color);
   color: var(--light-color);
 }
+
+/* .login-button:hover{
+  background-color: var(--first-color);
+  color: var(--second-color);
+  border: 1px solid var(--second-color);
+} */
 
 .login-button:disabled {
   background-color: var(--second-color);

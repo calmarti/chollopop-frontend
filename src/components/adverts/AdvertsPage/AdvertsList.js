@@ -5,25 +5,27 @@ import "./AdvertsPage.css";
 
 const AdvertsList = ({ filteredAdverts, handleChange }) => {
   return (
-    <div className="mx-auto" style={{ width: "75vw" }}>
-      <ul className="row">
+    <div className="" >
+      <ul className="custom-card-list">
         {filteredAdverts.map((advert, index) => (   
          
-          <div key={index} className="col-sm-3 my-5">
-            <li className="card"  key={advert.id}>
-              <Link className="card-link" to={`/adverts/${advert.id}`}>
+          <div className="">
+
+            <li className="custom-card"  key={advert.id}>
+              <Link className="custom-card-link" to={`/adverts/${advert.id}`}>
                 <img
-                  className="card-img-top"
+                  className=""
                   src={
-                    advert.photo
-                      ? `${advert.photo}`
-                      : placeholder
+                    // advert.photo
+                    //   ? `${advert.photo}`
+                    //   : placeholder
+                    `https://loremflickr.com/320/240`
                   }
                   alt={advert.name}
                 />
-                <div className="card-body card-styles">
-                  <h2 className="card-title">{advert.name}</h2>
-                  <div className="card-text">
+                <div className="custom-card-body">
+                  <h2 className="custom-card-title">{advert.name}</h2>
+                  <div className="">
                     <p>{advert.price}€</p>                    
                     <p>{advert.sale ? "Vendo" : "Compro"}</p>
                     <p>{advert.tags.join(" ")}</p>

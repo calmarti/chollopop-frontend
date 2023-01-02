@@ -6,21 +6,21 @@ export default function FilterArea({ filters, handleChange }) {
   const { data: tags, error } = useQuery(getAdvertTags);
 
   return (
-    <div className="container filter-area">
-      <form className="row">
+    <div className="filter-area">
+      <form className="">
         <div
-          className="col"
-          style={{ display: "flex", alignItems: "flex-start" }}
+          className=""
+          // style={{ display: "flex", alignItems: "flex-start" }}
         >
           <label
-            className="form-label"
-            style={{ paddingRight: "1rem" }}
+            className=""
+            // style={{ paddingRight: "1rem" }}
             htmlFor="name"
           >
             Artículo
           </label>
           <input
-            className="form-control"
+            className=""
             type="text"
             id="name"
             name="name"
@@ -30,20 +30,20 @@ export default function FilterArea({ filters, handleChange }) {
           />
         </div>
 
-        <div className="col">
+        <div className="">
           <label htmlFor="price">
             Precio
             <input type="range" id="price" name="price" min="0" max="1000000" />
           </label>
         </div>
 
-        <div className="form-check col container">
-          <div className="row">
-            <div className="col">
-              <label className="form-check-label" htmlFor="sale">
+        <div className="">
+          <div className="">
+            <div className="">
+              <label className="" htmlFor="sale">
                 Venta
                 <input
-                  className="form-check-input"
+                  className=""
                   name="sale"
                   type="radio"
                   value="true"
@@ -53,11 +53,11 @@ export default function FilterArea({ filters, handleChange }) {
               </label>
             </div>
 
-            <div className="col">
-              <label className="form-check-label" htmlFor="sale">
+            <div className="">
+              <label className="" htmlFor="sale">
                 Compra
                 <input
-                  className="form-check-input"
+                  className=""
                   name="sale"
                   type="radio"
                   value="false"
@@ -67,11 +67,11 @@ export default function FilterArea({ filters, handleChange }) {
               </label>
             </div>
 
-            <div className="col">
-              <label className="form-check-label" htmlFor="sale">
+            <div className="">
+              <label className="" htmlFor="sale">
                 Todos
                 <input
-                  className="form-check-input"
+                  className=""
                   name="sale"
                   type="radio"
                   value="all"
@@ -83,12 +83,12 @@ export default function FilterArea({ filters, handleChange }) {
           </div>
         </div>
 
-        <div className="col tags">
+        <div className="tags">
           <label htmlFor="tags" className="filter-label">
             Categoría
             <select
               id="tags"
-              className="form-select multiple"
+              className=""
               name="tags"
               value={filters.tags}
               onChange={handleChange}

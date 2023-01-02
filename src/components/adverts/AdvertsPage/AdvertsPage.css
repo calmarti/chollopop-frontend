@@ -1,24 +1,41 @@
-.card-styles{
-  color: var(--light-color);
-
-}
 
 img{
-  width:200px;
-  height:200px;
+  height:auto; 
+  max-width: 100%;
 }
 
-.card{
- width: 18rem; 
- background-color: var(--first-color);
- color: var(--light-color);
+.custom-card-list {
+margin: 0 10rem;
+display:flex;
+flex-flow: row wrap;
+gap:3rem;
 }
 
-.card-link {
+.custom-card{
+ width: auto; 
+ background-color:var(--light-color); 
+ border:none;
+ box-shadow: rgba(0, 0, 0, 0.15) 3px 3px 3px;
+ list-style-type: none;
+}
+
+.custom-card:hover  {
+  box-shadow: rgba(0, 0, 0, 0.15) 3px 6px 6px;
+}
+
+.custom-card-link, .custom-card-link:hover, .custom-card-link:link, .custom-card-link:visited  {
   text-decoration: none;
+  color: var(--dark-color);
+  
 }
 
+.custom-card-body {
+  padding: 2rem 1rem;
+}
 
+.custom-card-title {
+  font-size: 26px;
+}
 
 .adverts-page-error {
   position: relative;
