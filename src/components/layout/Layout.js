@@ -11,7 +11,7 @@ import Footer from "./Footer";
 
 export default function Layout({ children, history,  ...props }) {
   return (
-    <div className="layout-container">
+    <div className="">
       <Header history={history} {...props} />
       <main className="layout-main">{children}</main>
       <Footer />

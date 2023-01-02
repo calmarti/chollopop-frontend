@@ -14,10 +14,11 @@
 html, body {
   margin: 0;
   padding: 0;
+  border:0;
+  width:100vw;
   font-family: "Open Sans", "sans-serif";
   background-color: var(--light-color);
-  /* background-color: var(--bs-light-rgb); */
-  
+  overflow-x: hidden;
 }
 
 
