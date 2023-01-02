@@ -1,11 +1,7 @@
-.layout-main {
+/* .layout-main {
   margin-top: 10rem;
   margin-bottom: 16rem;
-}
-
-.header{
-  background-color: var(--second-color);
-}
+} */
 
 .footer {
   display: flex;
@@ -15,7 +11,8 @@
   margin-top: 10rem;
   background-color: var(--first-color);
   color: var(--light-color);
-  height: 7vh;
+  height: auto;
+  
  
 }
 

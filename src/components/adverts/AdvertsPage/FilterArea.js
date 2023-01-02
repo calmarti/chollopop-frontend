@@ -6,21 +6,20 @@ export default function FilterArea({ filters, handleChange }) {
   const { data: tags, error } = useQuery(getAdvertTags);
 
   return (
-    <div className="filter-area">
-      <form className="">
-        <div
-          className=""
-          // style={{ display: "flex", alignItems: "flex-start" }}
+    <div>
+      <form className="custom-form">
+
+        <div className="custom-search-bar-group"
+
         >
           <label
-            className=""
-            // style={{ paddingRight: "1rem" }}
-            htmlFor="name"
+            className="custom-search-label"
+           htmlFor="name"
           >
-            Artículo
-          </label>
+            Buscar
+          </label>       
           <input
-            className=""
+            className="custom-search-bar"
             type="text"
             id="name"
             name="name"
@@ -30,6 +29,7 @@ export default function FilterArea({ filters, handleChange }) {
           />
         </div>
 
+      <div className="filter-area">
         <div className="">
           <label htmlFor="price">
             Precio
@@ -103,6 +103,9 @@ export default function FilterArea({ filters, handleChange }) {
               ))}
             </select>
           </label>
+          </div>
+
+
         </div>
       </form>
     </div>
