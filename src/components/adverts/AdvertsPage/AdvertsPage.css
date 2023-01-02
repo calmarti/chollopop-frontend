@@ -5,7 +5,7 @@ img{
 }
 
 .custom-card-list {
-margin: 0 10rem;
+margin: 0 8rem;
 display:flex;
 flex-flow: row wrap;
 gap:3rem;
@@ -33,10 +33,36 @@ gap:3rem;
   padding: 2rem 1rem;
 }
 
-.custom-card-title {
-  font-size: 26px;
+
+.custom-card-price {
+  font-size:26px;
+  font-weight: bold;
 }
 
+.custom-card-title {
+  font-size: 22px;
+}
+.custom-card-sale {
+  font-size:18px;
+  font-weight: bold;
+  font-family: "Happy Monkey";
+  transform: rotate(-45deg);
+  float:right;
+}
+
+.badge-wrapper {
+  display:flex;
+  gap:0.5rem;
+}
+.custom-card-badge  {
+  background-color: var(--first-color);
+  width: fit-content;
+  border-radius: 11px;
+  padding: 4px 7px;
+  font-size: 15px;
+  font-weight: bold;
+  color: #ffffff;
+}
 .adverts-page-error {
   position: relative;
   top: 1.5em;

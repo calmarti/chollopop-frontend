@@ -5,13 +5,11 @@ import "./AdvertsPage.css";
 
 const AdvertsList = ({ filteredAdverts, handleChange }) => {
   return (
-    <div className="" >
+    <div className="">
       <ul className="custom-card-list">
-        {filteredAdverts.map((advert, index) => (   
-         
-          <div className="">
-
-            <li className="custom-card"  key={advert.id}>
+        {filteredAdverts.map(advert => (
+        
+            <li className="custom-card" key={advert.id}>
               <Link className="custom-card-link" to={`/adverts/${advert.id}`}>
                 <img
                   className=""
@@ -24,16 +22,17 @@ const AdvertsList = ({ filteredAdverts, handleChange }) => {
                   alt={advert.name}
                 />
                 <div className="custom-card-body">
-                  <h2 className="custom-card-title">{advert.name}</h2>
-                  <div className="">
-                    <p>{advert.price}€</p>                    
-                    <p>{advert.sale ? "Vendo" : "Compro"}</p>
-                    <p>{advert.tags.join(" ")}</p>
+                  <p className="custom-card-price">{advert.price}€</p>
+                  <p className="custom-card-title">{advert.name}</p>
+                  <p className="custom-card-sale">{advert.sale ? "Vendo" : "Compro"}</p>
+                  <div className="badge-wrapper">
+                  {advert.tags.map((advert, index) => <div key={index} className="custom-card-badge" >{advert.split(",")}</div>)}
                   </div>
+                  
                 </div>
               </Link>
             </li>
-          </div>
+       
         ))}
       </ul>
     </div>
