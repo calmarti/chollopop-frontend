@@ -2,31 +2,86 @@
   width: 100vw;
 }
 .custom-search-bar-group {
-width: 50vw;
-margin: 0 auto;
-display:flex;
-align-items: center;
-gap:1rem;
+  width: 50vw;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
-.custom-search-label {
- font-size: 18px;
-
-}
 .custom-search-bar {
-width: 50vw;
-margin: 0 auto;
-padding: 0.5rem 0;
-border-radius: 12px;
-outline:none;
-border:none;
-box-shadow: 0px 0px 1px 2px #D4D4D4;
+  width: 50vw;
+  margin: 0 auto;
+  padding: 0.5rem 0.8rem;
+  border-radius: 16px;
+  outline: none;
+  border: none;
+  box-shadow: 0px 0px 1px 2px #d4d4d4;
 }
 
 .filter-area {
-  /* margin: 3rem auto; */
+  padding-top: 6rem;
+  padding-bottom: 7rem;
+  display: flex;
+  justify-content: space-evenly;
+  color: var(--light-color);
+  font-weight: bold;
 }
 
+.filter-price {
+  background-color: var(--first-color);
+  padding: 4rem 5rem 0rem 5rem;
+  border-radius: 12px;
+  box-shadow: rgba(80, 63, 205, 0.5) 0 3px 6px;
+  width: 26rem;
+  height: 10rem;
+}
+
+.filter-sale {
+  background-color: var(--first-color);
+  padding: 4rem;
+  border-radius: 12px;
+  box-shadow: rgba(80, 63, 205, 0.5) 0 3px 6px;
+  width: 26rem;
+  height: 10rem;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.filter-sale-true {
+  display:flex;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.filter-sale-false {
+  display:flex;
+  gap: 0.4rem;
+  align-items: center;
+}
+.filter-sale-all {
+  display:flex;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.filter-tags {
+  background-color: var(--first-color);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: rgba(80, 63, 205, 0.5) 0 3px 6px;
+  width: 26rem;
+  height: 13rem;
+  display: flex;
+  flex-direction: column;
+  gap:1rem;
+}
+
+
+#tags {
+  /* display:flex;
+  flex-flow: column nowrap; */
+}
 .filter-title {
   /* margin-left: 4rem;
   margin-bottom: 3.5rem; */

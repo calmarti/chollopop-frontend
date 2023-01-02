@@ -8,7 +8,8 @@ export default function SignUpPage(){
 return <div>
     <form>
         <input type="email" placeholder="Tu email..."></input>
-        <input type="password" placeholder="tu contraseña"></input>
+        <input type="password" placeholder="Tu contraseña"></input>
+        <input type="password" placeholder="Confirma tu contraseña"></input>
         <button>Continuar</button>        
     </form>
 </div>;

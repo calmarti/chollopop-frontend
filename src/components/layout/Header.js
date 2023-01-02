@@ -34,7 +34,7 @@ export default function Header({ history, location, ...props }) {
   return (
     <div className="navbar">
       <Link className="logo" to="/">
-        Chollopop<span className="logo-icon"></span>
+        <h1>Chollopop<span className="logo-icon"></span></h1>
       </Link>
 
       {isLogged ? (
