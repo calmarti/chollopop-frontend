@@ -1,6 +1,6 @@
 .card-container {
   margin:0 auto;
-  width: 40%;
+  width: 40vw;
   background-color: var(--third-color);
   display:flex;
   gap:1rem;
@@ -9,10 +9,10 @@
   
 }
 
-.card-info {
-  
-    padding-left: 2rem;
-    font-size: 1.3rem;
+
+.card-info {  
+  padding-left: 2rem;
+  font-size: 1.3rem;
 }
 .card-title {
   font-size: 1.5rem;

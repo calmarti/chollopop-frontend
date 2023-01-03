@@ -1,18 +1,13 @@
 
-img{
-  height:auto; 
-  max-width: 100%;
-}
-
 .custom-card-list {
-margin: 0 9rem;
+margin: 0 7rem;
 display:flex;
 flex-flow: row wrap;
-gap:5rem;
+gap:4rem;
 }
 
 .custom-card{
- width: auto; 
+ width: 18vw; 
  background-color:var(--light-color); 
  border:none;
  box-shadow: rgba(0, 0, 0, 0.15) 3px 3px 3px;
@@ -28,6 +23,12 @@ gap:5rem;
   color: var(--dark-color);
   
 }
+
+.custom-card-image {
+  height:auto; 
+  max-width: 100%;
+}
+
 
 .custom-card-body {
   padding: 2rem 1rem;
