@@ -1,10 +1,10 @@
 import storage from "../../utils/storage";
 import client, { addTokenToHeaders } from "../../api/client";
 
-const loginBaseUrl = "/api/auth";
+const authBaseUrl = "/api/auth";
 
 export function login({ remember, ...credentials }) {
-  const url = `${loginBaseUrl}/login`;
+  const url = `${authBaseUrl}/login`;
   return client
     .post(url, credentials)
     .then(({ accessToken }) => {
@@ -27,3 +27,9 @@ export const logout = () => {
     resolve();
   });
 };
+
+
+export function signUp(data) {
+  const url = `${authBaseUrl}/signup`;
+  return client.post(url, data);
+}

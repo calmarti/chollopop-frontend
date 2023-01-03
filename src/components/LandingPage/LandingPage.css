@@ -9,7 +9,7 @@ position:relative
     width: 0.4em;
     box-sizing: content-box;
     height: 0.4em;
-    border: 0.1em solid red;
+    border: 0.1em solid #c11376;
     position: relative;
     bottom:0.3em;
     border-radius: 0.35em;
@@ -22,7 +22,7 @@ position:relative
     right: -0.25em;
     bottom: -0.1em;
     border-width: 0;
-    background: red;
+    background: #c11376;
     width: 0.35em;
     height: 0.08em;
     transform: rotate(45deg);
