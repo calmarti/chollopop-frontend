@@ -5,7 +5,7 @@ img{
 }
 
 .custom-card-list {
-margin: 0 12rem;
+margin: 0 9rem;
 display:flex;
 flex-flow: row wrap;
 gap:5rem;

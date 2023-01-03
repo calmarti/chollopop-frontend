@@ -52,16 +52,15 @@ function App({ isAlreadyLogged }) {
             <LandingPage/>
           </Route> */}
 
-          <Route path="/signup" component={SignUpPage}></Route>
-          
-          
+          <Route path="/signup">{(routeProps) => <SignUpPage {...routeProps} />}</Route>
+
           <PrivateRoute path="/adverts/new" component={NewAdvertPage} />
           <PrivateRoute path="/adverts/:id" component={AdvertPage} />
           <PrivateRoute path="/adverts">
             {(props) => <AdvertsPage {...props} />}
           </PrivateRoute>
           <Route exact path="/">
-            <LandingPage/>
+            <LandingPage />
             {/* <Redirect to="/adverts" /> */}
           </Route>
           <Route path="/404">
