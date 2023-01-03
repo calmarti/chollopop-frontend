@@ -9,6 +9,9 @@ import "../../layout/Header.css";
 import useForm from "../../hooks/useForm";
 import useQuery from "../../hooks/useQuery";
 
+//TODO: cambiar botón "crear anuncio" por "anuncios"
+//TODO: arreglar detalle (AdvertPage) - entre otras cosas, botones: salir y anuncios
+
 export default function NewAdvertPage({ ...props }) {
   const { formValue: fields, handleChange } = useForm({
     name: "",
@@ -50,120 +53,123 @@ export default function NewAdvertPage({ ...props }) {
       {error ? (
         <Error />
       ) : (
-        <div className="">
-          <h2 className="new-advert-title">Crea tu anuncio</h2>
-
+        <div className="new-advert-form-wrapper">
+          <h2 className="new-advert-title">Crea un nuevo anuncio</h2>
           <form
-            className="d-flex flex-column align-items-center my-0 p-3 form-wrapper"
+            className="form"
             encType="multipart/form-data"
             onSubmit={handleSubmit}
           >
-            <div className="mb-5">
-              <label className="form-label" htmlFor="name">
+            <div className="field-group">
+              <label className="" htmlFor="name">
                 Artículo &nbsp;
-                <input
-                  className="form-control"
-                  type="text"
-                  id="name"
-                  name="name"
-                  onChange={handleChange}
-                  value={fields.name}
-                  autoFocus
-                />
               </label>
-
-              <div className="mb-5">
-                <label className="form-label" htmlFor="price">
-                  Precio &nbsp;
-                  <input
-                    className="form-control"
-                    type="number"
-                    id="price"
-                    name="price"
-                    onChange={handleChange}
-                    value={fields.price}
-                  />
-                </label>
-              </div>
-
-              <div className="mb-5 form-check">
-                <label className="form-check-label" htmlFor="sale">
-                  Venta &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <input
-                    className="form-check-input"
-                    name="sale"
-                    type="radio"
-                    value={true}
-                    checked={fields.sale === true}
-                    onChange={handleChange}
-                  />
-                </label>
-
-                <label className="form-check-label" htmlFor="sale">
-                  Compra &nbsp;
-                  <input
-                    className="form-check-input"
-                    name="sale"
-                    type="radio"
-                    value={false}
-                    checked={fields.sale === false}
-                    onChange={handleChange}
-                  />
-                </label>
-              </div>
-
-              <div className="mb-5">
-                <label>
-                  <span
-                    style={{
-                      display: "inline-block",
-                      marginLeft: "0.2rem",
-                      marginBottom: "1rem",
-                    }}
-                    className="new-advert-form-select-span"
-                  >
-                    Categorías:
-                  </span>
-
-                  <select
-                    className="form-select"
-                    name="tags"
-                    value={fields.tags}
-                    onChange={handleChange}
-                    multiple={true}
-                  >
-                    {tags.map((tagvalue, index) => (
-                      <option key={index} value={tagvalue}>
-                        {" "}
-                        {tagvalue}{" "}
-                      </option>
-                    ))}
-                  </select>
-                </label>
-              </div>
-
-              <div className="input-group mb-5">
-                <label className="" htmlFor="photo">
-                  {" "}
-                  Foto: &nbsp;
-                  <input
-                    className="form-control"
-                    type="file"
-                    id="photo"
-                    name="photo"
-                    ref={photoRef}
-                  ></input>
-                </label>
-              </div>
-
-              <button
-                className="btn btn-info"
-                disabled={!fields.name || !fields.price || !fields.tags}
-                type="submit"
-              >
-                Continuar
-              </button>
+              <input
+                className="new-advert-input"
+                type="text"
+                id="name"
+                name="name"
+                onChange={handleChange}
+                value={fields.name}
+                autoFocus
+              />
             </div>
+
+            <div className="field-group">
+              <label className="" htmlFor="price">
+                Precio &nbsp;
+              </label>
+              <input
+                className="new-advert-input"
+                type="number"
+                id="price"
+                name="price"
+                onChange={handleChange}
+                value={fields.price}
+              />
+            </div>
+
+            <div className="sale-field-group">
+              <div className="sell-field-group">
+                <label className="" htmlFor="sale">
+                  Venta &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </label>
+                <input
+                  className=""
+                  name="sale"
+                  type="radio"
+                  value={true}
+                  checked={fields.sale === true}
+                  onChange={handleChange}
+                />
+              </div>
+
+              <div className="buy-field-group">
+                <label className="" htmlFor="sale">
+                  Compra &nbsp;&nbsp;&nbsp;&nbsp;
+                </label>
+                <input
+                  className=""
+                  name="sale"
+                  type="radio"
+                  value={false}
+                  checked={fields.sale === false}
+                  onChange={handleChange}
+                />
+              </div>
+            </div>
+
+            <div className="field-group">
+              <label>
+                <span
+                  style={{
+                    display: "inline-block",
+                    marginLeft: "0.2rem",
+                    marginBottom: "1rem",
+                  }}
+                  className=""
+                >
+                  Categorías:
+                </span>
+
+                <select
+                  className="form-select"
+                  name="tags"
+                  value={fields.tags}
+                  onChange={handleChange}
+                  multiple={true}
+                >
+                  {tags.map((tagvalue, index) => (
+                    <option key={index} value={tagvalue}>
+                      {" "}
+                      {tagvalue}{" "}
+                    </option>
+                  ))}
+                </select>
+              </label>
+            </div>
+
+            <div className="field-group">
+              <label className="" htmlFor="photo">
+                {" "}
+                Foto: &nbsp;
+              </label>
+              <input
+                className="form-control"
+                type="file"
+                id="photo"
+                name="photo"
+                ref={photoRef}
+              ></input>
+            </div>
+
+            <button
+              className="new-advert-button"
+              disabled={!fields.name || !fields.price || !fields.tags}
+              type="submit"
+            >
+              Continuar
+            </button>
           </form>
         </div>
       )}

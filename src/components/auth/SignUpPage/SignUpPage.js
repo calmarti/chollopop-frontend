@@ -34,7 +34,7 @@ console.log(disabled);
   return (
     <>
       <Header history={history} location={location} />
-      <div className="form-wrapper">
+      <div className="signup-form-wrapper">
         <h2 className="form-title">Regístrate</h2>
 
         <form className="signup-form" onSubmit={handleSubmit}>

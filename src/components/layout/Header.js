@@ -24,7 +24,16 @@ export default function Header({ history, location, ...props }) {
   const { isLogged, handleLogout } = useContext(AuthContext);
 
   const handleRedirect = () => {
-    history.push("/adverts/new");
+    switch (location.pathname){
+      case '/adverts/new':
+      history.push("/adverts");
+      break;
+      case '/adverts':
+      history.push("/adverts/new")
+      break;
+      default:
+      history.push("/adverts")
+    }
   };
 
   const logoutConfirmation = () => {
@@ -44,25 +53,25 @@ export default function Header({ history, location, ...props }) {
           <button
             type="button"
             className="header-button"
+            onClick={handleRedirect}
+          >
+          {location.pathname === ('/adverts' || '/adverts/') ?  'Crear anuncio' : 'Ver anuncios'}      
+          </button>
+
+          <button
+            type="button"
+            className="header-button"
             onClick={logoutConfirmation}
           >
             Salir
           </button>
           <Modal handleClick={handleLogout} {...modalProps} />
-
-          <button
-            type="button"
-            className="header-button"
-            onClick={handleRedirect}
-          >
-            Crear anuncio
-          </button>
         </div>
-      ) : location.pathname === "/signup" ?
-      <Link to="/login" type="button">
+      ) : location.pathname === "/signup" ? (
+        <Link to="/login" type="button">
           <button className="header-button">Inicia sesión</button>
         </Link>
-      : (
+      ) : (
         <Link to="/signup" type="button">
           <button className="header-button">Regístrate</button>
         </Link>

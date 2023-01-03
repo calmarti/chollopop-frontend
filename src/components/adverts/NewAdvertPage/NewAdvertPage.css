@@ -1,22 +1,76 @@
 
-.form-wrapper{
+.new-advert-form-wrapper{
   margin:0 auto;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  width:50%;
-  
+  background-color: var(--first-color);
+  color: var(--light-color);
+  width:26vw;
+  height: 80vh;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  box-shadow: rgba(80, 63, 205, 0.5) 0 3px 6px; 
+  border-radius: 15px;
 }
 
+.form{
+  display:flex;
+  flex-direction: column;
+  gap:2rem;
+}
 
 .new-advert-title {
-  margin-left:47rem;
-  margin-top:3rem;
-  margin-bottom:2rem;
-  
+  font-size:1.3rem;
+  position:relative;
+  top:2.5rem;    
 }
 
-.file-field {
-  position: relative;
-  left: 4rem;
-
+.field-group {
+  display:flex;
+  flex-direction: column;
+  gap:0.7rem;
 }
 
+.new-advert-input {
+  padding: 0.4rem 0rem 0.7rem 1rem;
+  width: 18vw;
+  border-radius: 8px;
+  outline:none;
+  border:none;
+  box-shadow: 0px 0px 1px 2px #D4D4D4;
+}
+
+.new-advert-input:focus {
+  padding-left: 1rem;
+  box-shadow: 0px 0px 1px 1px #D4D4D4;
+}
+
+
+.sale-field-group {
+  display:flex;
+  justify-content: center;
+  gap:5rem;
+}
+
+.sell-field-group {
+  display:flex;
+  flex-direction: row;
+}
+
+.buy-field-group {
+  display:flex;
+}
+
+
+.new-advert-button {
+  background-color: var(--second-color);
+  color: var(--light-color);
+  height: 45px;
+  border-radius: 7px;
+  margin-top:1.3rem;
+}
+
+.new-advert-button:disabled {
+  background-color: var(--second-color);
+  color: var(--light-color);
+}
