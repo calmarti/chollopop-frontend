@@ -9,8 +9,6 @@ import "../../layout/Header.css";
 import useForm from "../../hooks/useForm";
 import useQuery from "../../hooks/useQuery";
 
-//TODO: cambiar botón "crear anuncio" por "anuncios"
-//TODO: arreglar detalle (AdvertPage) - entre otras cosas, botones: salir y anuncios
 
 export default function NewAdvertPage({ ...props }) {
   const { formValue: fields, handleChange } = useForm({

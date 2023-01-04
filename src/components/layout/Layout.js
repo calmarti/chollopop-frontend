@@ -6,11 +6,11 @@ import Footer from "./Footer";
 //1. Tema renderizado de imagenes en bd del swagger (solve this once and for all!)
 
 
-export default function Layout({ children, history,  ...props }) {
+export default function Layout({ children, bgColor, history,  ...props }) {
   return (
-    <div className="">
+    <div style={{"backgroundColor": bgColor}}>
       <Header history={history} {...props} />
-      <main className="layout-main">{children}</main>
+      <main className="">{children}</main>
       <Footer />
     </div>
   );

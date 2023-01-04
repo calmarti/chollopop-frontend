@@ -1,28 +1,55 @@
-.card-container {
-  margin:0 auto;
-  width: 40vw;
-  background-color: var(--third-color);
-  display:flex;
-  gap:1rem;
-  justify-content: center;
-  padding:8rem 0rem;
-  
-}
 
 
-.card-info {  
-  padding-left: 2rem;
-  font-size: 1.3rem;
+.custom-detail-card-container {
+  position: relative;
+  top: 7rem;
+  margin: 0 auto;
+  width: 65vw;
+  display: flex;
+  gap: 2rem;
+  justify-content: space-evenly;
+  align-items: center;
+  /* box-shadow: var(--first-color) 1px 3px 4px; */
+  padding:7rem;
+  border:none;
+  background-color: var(--light-color);
+  border-radius: 10px;
 }
-.card-title {
+
+.custom-detail-card-image {
+  /* max-width: 100%; */
+  max-width: 500px;
+  height: auto;
+}
+
+.custom-detail-card-content-and-button {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.custom-detail-price {
+font-size:2rem;
+font-weight: bold;
+}
+
+.custom-detail-card-title {
   font-size: 1.5rem;
-  display:inline-block;
+  display: inline-block;
 }
 
-.card:hover{
-  transform: scale(1.02);
+.custom-detail-card-sale {
+  font-size:1.2rem;
 }
 
-.card-delete-button {
-    align-self: flex-end;
+
+.custom-card-delete-button {
+  width: 6rem;
+  height: 2.6rem;
+  border-radius: 7px;
+  border:none;
+  outline: none;
+  background-color: var(--second-color);
+  color: var(--light-color);
+
 }

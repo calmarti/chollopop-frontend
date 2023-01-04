@@ -38,7 +38,7 @@ export default function AdvertsPage({ ...props }) {
         <Error className="adverts-page-error" error={error} />
       ) : (
         <>
-          <Layout {...props}>
+          <Layout bgColor={"var(--shade-color-1)"} {...props}>
             <FilterArea
               filters={filters}
               handleChange={handleChange}

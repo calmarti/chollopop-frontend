@@ -52,7 +52,9 @@ function App({ isAlreadyLogged }) {
             <LandingPage/>
           </Route> */}
 
-          <Route path="/signup">{(routeProps) => <SignUpPage {...routeProps} />}</Route>
+          <Route path="/signup">
+            {(routeProps) => <SignUpPage {...routeProps} />}
+          </Route>
 
           <PrivateRoute path="/adverts/new" component={NewAdvertPage} />
           <PrivateRoute path="/adverts/:id" component={AdvertPage} />
@@ -60,8 +62,7 @@ function App({ isAlreadyLogged }) {
             {(props) => <AdvertsPage {...props} />}
           </PrivateRoute>
           <Route exact path="/">
-            <LandingPage />
-            {/* <Redirect to="/adverts" /> */}
+            <Redirect to="/adverts" />
           </Route>
           <Route path="/404">
             <NotFoundPage />

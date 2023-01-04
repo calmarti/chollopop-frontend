@@ -8,6 +8,8 @@ import placeholder from "../../../assets/default_photo.jpg";
 import Error from "../../shared/Error";
 import "./AdvertPage.css";
 
+//TODO: rehacer estilos de AdvertPage
+
 export default function AdvertPage({ match, history, ...props }) {
   const [advert, setAdvert] = useState([]);
   const [error, setError] = useState(null);
@@ -17,7 +19,6 @@ export default function AdvertPage({ match, history, ...props }) {
     const id = match.params.id;
     getAdvert(id)
       .then((advert) => setAdvert(advert))
-      // .then((advert) => console.log(advert.photo || ''))
       .catch((error) => setError(error));
   }, [match.params.id]);
 
@@ -51,32 +52,36 @@ export default function AdvertPage({ match, history, ...props }) {
   };
 
   return (
-    <Layout history={history} {...props}>
-      <div className="card-container">
+    <Layout history={history} bgColor={"var(--shade-color-1)"} {...props}>
+      <div className="custom-detail-card-container">
+     
         <img
-          className="card-image"
+          className="custom-detail-card-image"
           src={advert.photo ? `http://127.0.0.1:3001${advert.photo}` : placeholder}
           alt={advert.name}
         />
-        <div className="card-info">
-          <h2 className="card-title">{advert.name}</h2>
-          <p>{advert.price}€</p>
-          <p>{advert.sale ? "Vendo" : "Compro"}</p>
-          <p className="card-tags">
-            {/* &nbsp;{" "} */}
-            {advert.tags ? advert.tags.join("  ") : advert.tags}
-          </p>
-        </div>
 
-        <button
-          className="btn btn-md btn-outline-dark card-delete-button"
+        <div className="custom-detail-card-content-and-button">
+
+          <p className="custom-detail-price">{advert.price}€</p>
+          <p className="custom-detail-card-title">{advert.name}</p>
+          <p className="card-tags">
+            {advert.tags ? advert.tags.join("  ") : advert.tags}
+            {/* &nbsp;{" "} */}
+          </p>
+          <p className="custom-detail-card-sale">{advert.sale ? "Venta" : "Compra"}</p>
+
+          <button
+          className="custom-card-delete-button"
           onClick={modalProps.showModal}
+          
         >
           Borrar
         </button>
         <div className="modal" tabIndex="-1"></div>
       </div>
       <Modal handleClick={handleDelete} {...modalProps} />
+        </div>       
     </Layout>
   );
 }

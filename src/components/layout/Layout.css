@@ -1,14 +1,11 @@
-/* .layout-main {
-  margin-top: 10rem;
-  margin-bottom: 16rem;
-} */
+
 
 .footer {
   display: flex;
   justify-content: center;
   gap: 3rem;
   padding: 1rem 1rem;
-  margin-top: 10rem;
+  margin-top: 16rem;
   background-color: var(--first-color);
   color: var(--light-color);
   height: auto;

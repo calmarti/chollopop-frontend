@@ -2,7 +2,9 @@
   background-color: var(--light-color);
   color: var(--first-color);
   display:flex;
-  padding-top:2rem;
+  align-items:center;
+  padding-top:1rem;
+  padding-bottom: 1rem;
   padding-right:2rem;
 }
 
@@ -51,7 +53,6 @@
   color: var(--light-color);
   padding: 8px 20px;
   margin-right: 2rem;
-  margin-top:1rem;
   border:none;
   border-radius: 5px;
   box-shadow: rgba(80, 63, 205, 0.5) 0 3px 6px;
