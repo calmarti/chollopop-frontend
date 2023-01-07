@@ -1,9 +1,11 @@
 import "./FilterArea.css";
 import { getAdvertTags } from "../service";
 import useQuery from "../../hooks/useQuery";
+import PriceRange from "../../shared/PriceRange";
 
 export default function FilterArea({ filters, handleChange }) {
   const { data: tags, error } = useQuery(getAdvertTags);
+  const range = { min: 0, max: 100000 };
 
   return (
     <div>
@@ -23,17 +25,28 @@ export default function FilterArea({ filters, handleChange }) {
         </div>
 
         <div className="filter-area">
+
           <div className="filter-price">
-            <label htmlFor="price">
-              Precio
-              <input
+            <label htmlFor="price">Precio</label>
+
+            {/* <input
                 type="range"
                 id="price"
                 name="price"
                 min="0"
                 max="1000000"
-              />
-            </label>
+                disabled
+              /> */}
+
+            <PriceRange
+              min={range.min}
+              max={range.max}
+              // value={filters.price}
+              name="price"
+              onChange={handleChange}
+              // style={{ width: 200, margin: 24, backgroundColor: '#5AD4C5;' }}
+              marks={{ [range.min]: range.min, [range.max]: range.max }}
+            ></PriceRange>
           </div>
 
           <div className="filter-tags">

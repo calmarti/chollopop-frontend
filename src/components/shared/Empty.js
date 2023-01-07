@@ -10,8 +10,7 @@ export default function Empty({ history, advertsCount, ...props }) {
     <div className="empty-container">
       {advertsCount > 0 ? (
         <p className="empty-main-message">
-          No hay anuncios con los filtros seleccionados, haz una nueva
-          búsqueda!
+          No hay anuncios con los filtros seleccionados!
         </p>
       ) : (
         <>

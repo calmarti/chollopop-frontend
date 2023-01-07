@@ -1,13 +1,19 @@
 .empty-container {
-  position: relative;
+  /* position: relative;
   top: 1rem;
-  left: 12rem;
+  left: 12rem; */
+  margin: 0 auto;
   width: 60%;
   height: 100%;
   border: solid 1px black;
   padding: 5rem 10rem 5rem 10rem;
-  background-color: var(--first-color);
+  background-color: var(--shade-color-2);
+  color:var(--light-color);
+  border-radius: 9px;
+  border:none;
+  font-size: 0.8rem;
 }
+
 
 .empty-main-message {
   font-size: 1.5rem;

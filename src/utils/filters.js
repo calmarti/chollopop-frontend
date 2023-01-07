@@ -11,7 +11,20 @@ const filterName = (advert, name) => {
   return true;
 };
 
-//filterPrice is missing!
+//filtro precio cpiado tal cual de solución del módulo
+
+const filterByPrice =
+  filter =>
+  ({ price }) => {
+    if (!filter.length) {
+      return true;
+    }
+    const [min, max] = filter;
+    if (!max) {
+      return price >= min;
+    }
+    return price >= min && price <= max;
+  };
 
 const filterSale = (advert, sale) => {
   if (sale !== "all") {

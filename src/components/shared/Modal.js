@@ -30,12 +30,12 @@ export default function Modal({
             <button
               onClick={hideModal}
               type="button"
-              className="btn btn-secondary"
+              className="btn btn-danger"
               data-bs-dismiss="modal"
             >
               Cancelar
             </button>
-            <button onClick={handleClick} type="button" className="btn btn-primary">
+            <button onClick={handleClick} type="button" className="btn btn-success">
               Ok
             </button>
           </div>

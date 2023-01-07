@@ -24,23 +24,25 @@
   padding-bottom: 7rem;
   display: flex;
   justify-content: center;
-  gap:2rem;
+  gap: 2rem;
   color: var(--light-color);
   font-weight: bold;
 }
 
 .filter-price {
   background-color: var(--shade-color-2);
-  padding: 1.5rem 5rem 0rem 6rem;
+  padding: 2rem 5rem 3.5rem 3.5rem;
   border-radius: 12px;
   box-shadow: rgba(80, 63, 205, 0.5) 0 3px 6px;
   width: 26rem;
   height: 4rem;
+  display: flex;
+  gap: 30px;
 }
 
 .filter-sale {
-  background-color:var(--shade-color-2);
-  padding: 2rem 0rem 2rem 4rem;
+  background-color: var(--shade-color-2);
+  padding: 3rem 0rem 2.5rem 4rem;
   border-radius: 12px;
   box-shadow: rgba(80, 63, 205, 0.5) 0 3px 6px;
   width: 26rem;
@@ -50,18 +52,18 @@
 }
 
 .filter-sale-true {
-  display:flex;
+  display: flex;
   gap: 0.4rem;
   align-items: center;
 }
 
 .filter-sale-false {
-  display:flex;
+  display: flex;
   gap: 0.4rem;
   align-items: center;
 }
 .filter-sale-all {
-  display:flex;
+  display: flex;
   gap: 0.4rem;
   align-items: center;
 }
@@ -75,9 +77,8 @@
   height: 13rem;
   display: flex;
   flex-direction: column;
-  gap:1rem;
+  gap: 1rem;
 }
-
 
 #tags {
   /* display:flex;
