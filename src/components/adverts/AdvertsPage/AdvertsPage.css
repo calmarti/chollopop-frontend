@@ -10,12 +10,14 @@ gap:4rem;
  width: 18vw; 
  background-color:var(--light-color); 
  border:none;
- box-shadow: rgba(0, 0, 0, 0.15) 3px 3px 3px;
+ /* box-shadow: rgba(0, 0, 0, 0.15) 3px 3px 3px; */
+ box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
  list-style-type: none;
 }
 
 .custom-card:hover  {
-  box-shadow: rgba(0, 0, 0, 0.15) 3px 6px 6px;
+  /* box-shadow: rgba(0, 0, 0, 0.15) 3px 6px 6px; */
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 1px 1px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 
 .custom-card-link, .custom-card-link:hover, .custom-card-link:link, .custom-card-link:visited  {

@@ -11,6 +11,8 @@ export default function useForm(initialValue) {
       case "textarea":
       case "select":
       case "file":
+        console.log(ev.target.type);
+        console.log(ev.target.value);
         setFormValue((currentValue) => ({
           ...currentValue,
           [ev.target.name]: ev.target.value,

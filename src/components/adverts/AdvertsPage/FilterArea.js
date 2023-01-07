@@ -22,10 +22,12 @@ export default function FilterArea({ filters, handleChange }) {
             value={filters.name}
             autoFocus
           />
+        
+          
         </div>
+        
 
         <div className="filter-area">
-
           <div className="filter-price">
             <label htmlFor="price">Precio</label>
 

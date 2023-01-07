@@ -9,7 +9,7 @@ function PriceRange({ name, onChange, min, max, ...props }) {
   const handleChange = ([minValue, maxValue]) => {
     onChange({ target: { name, value: [minValue || min, maxValue || max] } });
   };
-  return <Range onChange={handleChange} min={min} max={max} {...props} />;
+  return <Range disabled onChange={handleChange} min={min} max={max} {...props} />;
 }
 
 PriceRange.propTypes = {

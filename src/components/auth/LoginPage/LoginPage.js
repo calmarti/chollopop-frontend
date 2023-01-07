@@ -71,18 +71,20 @@ export default function LoginPage({ onLogin, history, location }) {
             ></input>
           </label>
 
-          <label className="" htmlFor="remember">
+          <div className="checkbox-wrapper-1">        
             <span style={{ padding: "1rem" }}>Recordarme en este equipo</span>
             <input
-              className=""
+              id="remember"
+              className="substituted"
               checked={credentials.remember}
               onChange={handleChange}
               type="checkbox"
               name="remember"
-              id="remember"
               value={credentials.remember}
             />
-          </label>
+              <label className="remember" htmlFor="remember">
+            </label>
+          </div>
 
           <button
             className="login-button"
