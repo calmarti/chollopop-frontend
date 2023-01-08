@@ -1,7 +1,10 @@
-# Aplicación de tienda de segunda mano 'Chollopop' 
+# MVP de tienda de segunda mano 'Chollopop' 
 
 ### Proyecto de frontend de una tienda online en React
- 
+---
+
+-Realizada en Reactjs
+
 ---
 ## Instalación y ejecución en entorno local
 
@@ -30,6 +33,7 @@ https://github.com/davidjj76/nodepop-api
 npm start
 ```
 - El backend se ejecuta por defecto en el puerto 3001
+
 
 
 ## Autenticar un usuario en la página de inicio:
