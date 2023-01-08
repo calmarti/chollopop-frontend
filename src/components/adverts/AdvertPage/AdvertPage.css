@@ -53,3 +53,17 @@ font-weight: bold;
   color: var(--light-color);
 
 }
+
+.badge-wrapper {
+  display:flex;
+  gap:0.5rem;
+}
+.custom-card-badge  {
+  background-color: var(--first-color);
+  width: fit-content;
+  border-radius: 11px;
+  padding: 4px 7px;
+  font-size: 15px;
+  font-weight: bold;
+  color: #ffffff;
+}

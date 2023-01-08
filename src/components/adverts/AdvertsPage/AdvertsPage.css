@@ -1,9 +1,11 @@
 
 .custom-card-list {
-margin: 0 7rem;
+margin: 0 2.5rem 0 2.5rem;
 display:flex;
 flex-flow: row wrap;
-gap:4rem;
+gap:1rem;
+justify-content: center;
+align-items:center;
 }
 
 .custom-card{

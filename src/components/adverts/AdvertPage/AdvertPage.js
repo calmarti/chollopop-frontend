@@ -57,7 +57,8 @@ export default function AdvertPage({ match, history, ...props }) {
      
         <img
           className="custom-detail-card-image"
-          src={advert.photo ? `http://127.0.0.1:3001${advert.photo}` : placeholder}
+          // src={advert.photo ? `http://127.0.0.1:3001${advert.photo}` : placeholder}
+          src={`https://loremflickr.com/320/240`}
           alt={advert.name}
         />
 
@@ -65,10 +66,13 @@ export default function AdvertPage({ match, history, ...props }) {
 
           <p className="custom-detail-price">{advert.price}€</p>
           <p className="custom-detail-card-title">{advert.name}</p>
-          <p className="card-tags">
+          <div className="card-badge">
+          <p className="card-tags custom-card-badge">
             {advert.tags ? advert.tags.join("  ") : advert.tags}
             {/* &nbsp;{" "} */}
           </p>
+          </div>
+         
           <p className="custom-detail-card-sale">{advert.sale ? "Venta" : "Compra"}</p>
 
           <button

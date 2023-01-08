@@ -3,33 +3,40 @@
   margin:0 auto;
   background-color: var(--first-color);
   color: var(--light-color);
-  width:26vw;
+  width:36vw;
   height: 80vh;
   display:flex;
   flex-direction: column;
   align-items: center;
-  justify-content: start;
+  justify-content: center;
   /* box-shadow: rgba(80, 63, 205, 0.5) 0 3px 6px;  */
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
   border-radius: 15px;
+  font-size: 0.8rem !important;
+  height: 130vh;
 }
 
 .form{
   display:flex;
   flex-direction: column;
+  justify-content: center;
   gap:2rem;
+  height: 130vh;
+
 }
 
 .new-advert-title {
-  font-size:1.3rem;
+  font-size:1.2rem;
   position:relative;
-  top:2.5rem;    
+  top:5.5rem;    
+
 }
 
 .field-group {
   display:flex;
   flex-direction: column;
   gap:0.7rem;
+  margin: 0 auto;
 }
 
 .new-advert-input {
@@ -62,6 +69,9 @@
   display:flex;
 }
 
+.file-input {
+  font-size: 0.9rem;
+}
 
 .new-advert-button {
   background-color: var(--second-color);
