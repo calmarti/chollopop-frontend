@@ -2,10 +2,6 @@
 
 ### Proyecto de frontend de una tienda online en React
 ---
-
--Realizada en Reactjs
-
----
 ## Instalación y ejecución en entorno local
 
 ### Requisitos
