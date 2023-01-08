@@ -5,7 +5,7 @@ import "./AdvertsPage.css";
 
 const AdvertsList = ({ filteredAdverts, handleChange }) => {
   return (
-    <div className="">
+    // <div className="">
       <ul className="custom-card-list">
         {filteredAdverts.map((advert) => (
           <li className="custom-card" key={advert.id}>
@@ -13,10 +13,10 @@ const AdvertsList = ({ filteredAdverts, handleChange }) => {
               <img
                 className="custom-card-image"
                 src={
-                  advert.photo
-                    ? `http://127.0.0.1:3001${advert.photo}`
-                    : placeholder
-                  // `https://loremflickr.com/320/240`
+                  // advert.photo
+                    // ? `http://127.0.0.1:3001${advert.photo}`
+                    // : placeholder
+                  `https://loremflickr.com/320/240`
                 }
                 alt={advert.name}
               />
@@ -38,7 +38,7 @@ const AdvertsList = ({ filteredAdverts, handleChange }) => {
           </li>
         ))}
       </ul>
-    </div>
+    // </div>
   );
 };
 

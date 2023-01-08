@@ -57,7 +57,8 @@ export default function AdvertPage({ match, history, ...props }) {
      
         <img
           className="custom-detail-card-image"
-          src={advert.photo ? `http://127.0.0.1:3001${advert.photo}` : placeholder}
+          // src={advert.photo ? `http://127.0.0.1:3001${advert.photo}` : placeholder}
+          src={`https://loremflickr.com/320/240`}
           alt={advert.name}
         />
 

@@ -153,7 +153,7 @@ export default function NewAdvertPage({ ...props }) {
                 Foto: &nbsp;
               </label>
               <input
-                className="form-control"
+                className="form-control file-input"
                 type="file"
                 id="photo"
                 name="photo"
