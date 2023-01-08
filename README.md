@@ -20,8 +20,9 @@ npm install
 ```sh
 npm start
 ```
-## Arranque del dummy backend 
-- El proyecto utiliza el backend implementado en Nestjs y desarrollado por David Jiménez:
+## Arranque del backend 
+- El backend se basa en aquel implementado en Nestjs y desarrollado originalmente por David Jiménez:
+- 
 https://github.com/davidjj76/nodepop-api
 
 - Una vez clonado e instaladas sus dependencias, ejecutar:
@@ -29,7 +30,6 @@ https://github.com/davidjj76/nodepop-api
 npm start
 ```
 - El backend se ejecuta por defecto en el puerto 3001
-
 
 
 ## Autenticar un usuario en la página de inicio:
