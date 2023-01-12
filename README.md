@@ -45,7 +45,7 @@ username: user@user.com, password: 123
 
 - Darse de alta con un nuevo usuario 
 
-- Autenticar las credenciales de un usuario contra el backend
+- Autenticar un usuario contra el backend
 
 - Recordar las credenciales en el equipo del usuario
 
