@@ -1,7 +1,4 @@
-# Aplicación de tienda de segunda mano 'Chollopop' 
-
-### Proyecto de frontend de una tienda online en React
- 
+# MVP de tienda de segunda mano 'Chollopop' - Reactjs
 ---
 ## Instalación y ejecución en entorno local
 
@@ -21,9 +18,13 @@ npm install
 ```sh
 npm start
 ```
-## Arranque del dummy backend 
-- El proyecto utiliza el backend implementado en Nestjs y desarrollado por David Jiménez:
+## Arranque del backend 
+
+- El backend se basa en aquel implementado en Nestjs y desarrollado originalmente por David Jiménez:
+
+```
 https://github.com/davidjj76/nodepop-api
+```
 
 - Una vez clonado e instaladas sus dependencias, ejecutar:
 ```sh
@@ -42,7 +43,9 @@ username: user@user.com, password: 123
 
 ## Funcionalidades básicas
 
-- Autenticar las credenciales de un usuario contra el backend
+- Darse de alta con un nuevo usuario 
+
+- Autenticar un usuario contra el backend
 
 - Recordar las credenciales en el equipo del usuario
 
