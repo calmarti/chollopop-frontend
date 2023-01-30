@@ -1,14 +1,14 @@
 .signup-form-wrapper {
     background-color: var(--first-color);
     color: var(--light-color);
-    height: 130vh;
-    width:28vw;
+    height: 110vh;
+    width:30vw;
     border-radius: 9px;
     margin:0 auto;
     display:flex;
     flex-direction: column;
     align-items:center;
-    justify-content: center;
+    justify-content: start;
     /* margin-top:1rem; */
     box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
     font-size:1rem !important;
@@ -16,8 +16,8 @@
 
 .form-title {
 font-size:1.2rem;
-padding-bottom: 1rem;
-padding-top:0.6rem;
+padding-bottom: 2.3rem;
+padding-top:5rem;
 }
 
 .signup-form {
@@ -55,7 +55,7 @@ padding-top:0.6rem;
 .signup-button {
     width: 11rem;
     height: 3rem;
-    margin: 0 auto;
+    margin: 2rem 0 auto;
     border-radius: 7px;
     border:none;
     outline: none;
