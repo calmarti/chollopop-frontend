@@ -5,7 +5,7 @@ import "./AdvertsPage.css";
 
 const AdvertsList = ({ filteredAdverts, handleChange }) => {
   return (
-    // <div className="">
+
       <ul className="custom-card-list">
         {filteredAdverts.map((advert) => (
           <li className="custom-card" key={advert.id}>

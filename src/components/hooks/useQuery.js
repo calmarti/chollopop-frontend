@@ -12,7 +12,7 @@ export default function useQuery(query) {
   useEffect(() => {
     if (query) {
       query()
-        .then((result) =>
+        .then(({result}) =>
           setState((prevState) => ({
             ...prevState,
             isLoading: false,
