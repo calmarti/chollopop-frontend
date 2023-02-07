@@ -8,8 +8,8 @@ const AdvertsList = ({ filteredAdverts, handleChange }) => {
 
       <ul className="custom-card-list">
         {filteredAdverts.map((advert) => (
-          <li className="custom-card" key={advert.id}>
-            <Link className="custom-card-link" to={`/adverts/${advert.id}`}>
+          <li className="custom-card" key={advert._id}>
+            <Link className="custom-card-link" to={`/adverts/${advert._id}`}>
               <img
                 className="custom-card-image"
                 src={

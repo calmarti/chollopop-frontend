@@ -16,7 +16,9 @@ export default function AdvertPage({ match, history, ...props }) {
   const [isModalOn, setIsModalOn] = useState(false);
 
   useEffect(() => {
+    console.log(match.params)
     const id = match.params.id;
+    console.log('id en front', id)
     getAdvert(id)
       .then((advert) => setAdvert(advert))
       .catch((error) => setError(error));
