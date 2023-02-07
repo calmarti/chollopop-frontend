@@ -4,7 +4,9 @@ const storage = {
     if (!value) {
       return null;
     }
-    return JSON.parse(value);
+    console.log(value);
+    const result = JSON.parse(value);
+    return result;
   },
 
   set(key, value) {

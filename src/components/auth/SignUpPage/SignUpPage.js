@@ -20,7 +20,7 @@ console.log(newUser);
 const handleSubmit = (event) => {
   event.preventDefault();
   signUp(newUser)
-  .then(()=> history.push("/adverts"))
+  .then(()=> history.push("/login"))
   .catch(error=>console.log(error));
   //TODO: crear mensajes de error general
 }
