@@ -63,7 +63,7 @@ export default function FilterArea({ filters, handleChange }) {
               onChange={handleChange}
               multiple={true}
             >
-              <option value={[""]}>all</option>
+              <option value={[""]}>Todas las categorías</option>
               {tags &&
                 tags.map((tag, index) => (
                   <option key={index} value={tag}>

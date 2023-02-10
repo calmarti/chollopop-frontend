@@ -23,6 +23,6 @@ export function deleteAdvert(id) {
 }
 
 export function getAdvertTags() {
-  const url = `${advertsBaseUrl}/adverts/tags`;
+  const url = `${advertsBaseUrl}/tags`;
   return client.get(url);
 }

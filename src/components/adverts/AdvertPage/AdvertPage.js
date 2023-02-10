@@ -8,7 +8,7 @@ import placeholder from "../../../assets/default_photo.jpg";
 import Error from "../../shared/Error";
 import "./AdvertPage.css";
 
-//TODO: rehacer estilos de AdvertPage
+
 
 export default function AdvertPage({ match, history, ...props }) {
   const [advert, setAdvert] = useState([]);
