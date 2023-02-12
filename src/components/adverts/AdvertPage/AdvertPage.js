@@ -18,9 +18,8 @@ export default function AdvertPage({ match, history, ...props }) {
   useEffect(() => {
     console.log(match.params)
     const id = match.params.id;
-    console.log('id en front', id)
     getAdvert(id)
-      .then((advert) => setAdvert(advert))
+      .then(({result}) => setAdvert(result))
       .catch((error) => setError(error));
   }, [match.params.id]);
 
