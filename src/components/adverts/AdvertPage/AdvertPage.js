@@ -4,7 +4,7 @@ import { Redirect } from "react-router-dom";
 import Layout from "../../layout/Layout";
 import { deleteAdvert, getAdvert } from "../service";
 import Modal from "../../shared/Modal";
-import placeholder from "../../../assets/default_photo.jpg";
+//import placeholder from "../../../assets/default_photo.jpg";
 import Error from "../../shared/Error";
 import "./AdvertPage.css";
 
@@ -16,8 +16,7 @@ export default function AdvertPage({ match, history, ...props }) {
   const [isModalOn, setIsModalOn] = useState(false);
 
   useEffect(() => {
-    console.log(match.params)
-    const id = match.params.id;
+     const id = match.params.id;
     getAdvert(id)
       .then(({result}) => setAdvert(result))
       .catch((error) => setError(error));

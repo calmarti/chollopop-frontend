@@ -11,7 +11,6 @@ import AdvertsPage from "./components/adverts/AdvertsPage";
 import AdvertPage from "./components/adverts/AdvertPage";
 import NewAdvertPage from "./components/adverts/NewAdvertPage";
 import SignUpPage from "./components/auth/SignUpPage";
-import LandingPage from './components/LandingPage/LandingPage';
 
 
 import { AuthProvider, AuthConsumer } from "./components/auth/context";

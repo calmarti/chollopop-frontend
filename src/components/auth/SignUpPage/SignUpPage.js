@@ -15,7 +15,7 @@ const handleChange = (event) => {
   setNewUser((prevState)=> ({...prevState, [event.target.name]: event.target.value}))
 }
 
-console.log(newUser);
+
 
 const handleSubmit = (event) => {
   event.preventDefault();
@@ -27,9 +27,8 @@ const handleSubmit = (event) => {
 
 
 const disabled = !newUser.name || !newUser.username || !newUser.email || !newUser.password || (newUser.password !== confirmedPassword);
-console.log(disabled);
 
-// console.log(confirmedPassword.current.value);
+
 
   return (
     <>
