@@ -28,11 +28,11 @@ export default function NewAdvertPage({ ...props }) {
     try {
       const data = new FormData(ev.target);
       data.set["photo"] = photoRef.current.files[0];
-      const response = await postNewAdvert(data);
+      const { result } = await postNewAdvert(data);
       console.log(photoRef.current.files[0])
-      setNewAdvertId(response.id);
-    } catch (e) {
-      setState((prevState) => ({ ...prevState, error: e }));
+      setNewAdvertId(result._id);
+    } catch (error) {
+      setState((prevState) => ({ ...prevState, error: error }));
     }
   };
 
@@ -49,7 +49,7 @@ export default function NewAdvertPage({ ...props }) {
       <Header {...props} />
 
       {error ? (
-        <Error />
+        <Error error={error} />
       ) : (
         <div className="new-advert-form-wrapper">
           <h2 className="new-advert-title">Crea un nuevo anuncio</h2>

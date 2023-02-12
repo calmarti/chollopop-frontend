@@ -15,7 +15,6 @@ export default function LoginPage({ onLogin, history, location }) {
     remember: false,
   });
 
-  console.log(process.env);
 
   const [error, setError] = useState(null);
 
