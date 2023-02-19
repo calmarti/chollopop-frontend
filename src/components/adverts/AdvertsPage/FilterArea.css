@@ -100,7 +100,7 @@
 }
 
 
-@media screen and (max-width:410px){
+@media screen and (max-width:460px){
   
   .filter-area{
     flex-flow:column nowrap;   

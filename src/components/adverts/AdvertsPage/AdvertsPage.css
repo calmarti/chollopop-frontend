@@ -78,7 +78,7 @@ align-items:center;
   padding: 0.5rem;
 }
 
-@media screen and (max-width:410px){
+@media screen and (max-width:460px){
   .custom-card-list{
     gap:2rem;
   }

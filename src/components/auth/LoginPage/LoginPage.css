@@ -167,7 +167,7 @@ form{
     color: rgba(0, 0, 0, 0.275);
   }
 
-@media screen and (max-width:410px){
+@media screen and (max-width:460px){
   .login-form-container{
     width:75%
   }
