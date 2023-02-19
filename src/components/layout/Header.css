@@ -64,3 +64,14 @@ background-color: var(--second-color);
 border-color: var(--first-color);
 }
 
+@media screen and (max-width:410px){
+  .navbar{
+ flex-direction:column;
+ align-items: center;
+  }
+
+  .header-button{
+    margin-left:3.5rem;
+    margin-top:2rem;
+  }
+}

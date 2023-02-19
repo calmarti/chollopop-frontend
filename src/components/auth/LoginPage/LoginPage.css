@@ -1,6 +1,7 @@
 
 form{
   margin-top:5rem;
+
 }
 
 .login-form-container {  
@@ -166,3 +167,13 @@ form{
     color: rgba(0, 0, 0, 0.275);
   }
 
+@media screen and (max-width:410px){
+  .login-form-container{
+    width:75%
+  }
+
+  .login-input {
+    width: 50vw;
+  }
+
+}

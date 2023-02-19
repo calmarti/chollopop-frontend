@@ -98,3 +98,17 @@
   /* position: relative;
   right: -10rem; */
 }
+
+
+@media screen and (max-width:410px){
+  
+  .filter-area{
+    flex-flow:column nowrap;   
+    }
+
+    .filter-price, .filter-tags, .filter-sale {
+      width:90vw;
+      margin-left:2rem;
+     }
+
+}

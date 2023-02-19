@@ -64,3 +64,15 @@ padding-top:5rem;
     /* position:relative;
     top:1rem; */
 }
+
+@media screen and (max-width:410px){
+    .signup-form-wrapper{
+    width:80vw;
+}
+.signup-input{
+    width: 50vw;
+}
+.signup-button{
+    margin-top: 0.5rem;
+}
+}
